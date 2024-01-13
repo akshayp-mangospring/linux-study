@@ -1,0 +1,29 @@
+A Linux distro comprises of:
+  - Linux Kernel
+  - GNU Shell Utils
+  - GUI if needed.
+
+What's a kernel of an OS?
+- It's common to all Linux distros. It provides an interface in the hardware and the software of the system.
+This is the website of the Linux kernel: https://kernel.org/ - Right now it's 6.7 release.
+
+Most of the internet servers are made up of Ubuntu or Red Hat Linux Distros.
+Red hat enterprise Linux distro is used by Large companies like Banks, Telecom or Retailers.
+Linus Torvalds wrote the Linux Kernel.
+Android OS is actually a modified Linux Kernel.
+
+Popular Distros of Linux:
+  Ubuntu
+  Kali - Hacking, penetration testing. This is essential for QA guys.
+  Arch
+  CentOS
+  Red Hat - It's owned by IBM, so it ain't open source. So that's IBM survived the Apple and Microsoft onslaught. They should thank Linus Torvalds for saving their ass.
+  Linux Mint
+  Debian
+  Fedora
+  Raspberry Pi
+  Alpine Linux
+
+Open Source Enterprise Linux distros, they're managed by the Linux community:
+  Rocky Linux
+  Alma Linux
