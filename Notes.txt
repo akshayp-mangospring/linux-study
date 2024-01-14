@@ -41,3 +41,36 @@ Windows => Linux Terminnologies:
   Folder => Directory
   File => File
   Application => Package
+
+Linux Directory Structure:
+Just observe this terminal o/p.
+```
+akshay-pawar@akshay-pawar:~$ pwd
+/home/akshay-pawar
+akshay-pawar@akshay-pawar:~$ cd ../..
+akshay-pawar@akshay-pawar:/$ ls
+bin  boot  cdrom  dell  dev  etc  home  lib  lib32  lib64  libx32  lost+found  media  mnt  opt  proc  root  run  sbin  snap  srv  swapfile  sys  tmp  usr  var
+akshay-pawar@akshay-pawar:/$
+```
+As we can observe that I am not the root user so, my terminal opens up in the `/home/akshay-pawar` directory instead of the `/root` directory by default.
+
+Everything in Linux is a file. So, every config, every setting is a file.
+Following are the important directories in Linux:
+  /home:
+    Home directory for other users.
+  /root:
+    It's the home directory for root user.
+  /boot:
+    It contains bootable files for Linux.
+  /etc:
+    It contains all the config files.
+  /usr:
+    By default all software is installed in this directory.
+  /bin:
+    It contains commands used by all users.
+  /sbin:
+    It contains commands used by root user.
+  /opt:
+    Optional software application packages.
+  /dev:
+    This includes device files. This includes terminal, usb device or any other device attached to the system.
