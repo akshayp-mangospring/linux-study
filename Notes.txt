@@ -11,19 +11,27 @@ Most of the internet servers are made up of Ubuntu or Red Hat Linux Distros.
 Red hat enterprise Linux distro is used by Large companies like Banks, Telecom or Retailers.
 Linus Torvalds wrote the Linux Kernel.
 Android OS is actually a modified Linux Kernel.
+Linux is based on Andrew Tanenbaum's MINIX which is a microkernel OS. It's also somewhat based on UNIX.
 
 Popular Distros of Linux:
   Ubuntu
   Kali - Hacking, penetration testing. This is essential for QA guys.
   Arch
-  CentOS
+  CentOS - Community Enterprise OS(CentOS) - It's the fastest OS.
   Red Hat - It's owned by IBM, so it ain't open source. So that's IBM survived the Apple and Microsoft onslaught. They should thank Linus Torvalds for saving their ass.
+  Debian - Free and Paid
+  Fedora - Free and Paid
+  Amazon Linux - Paid
   Linux Mint
-  Debian
-  Fedora
   Raspberry Pi
   Alpine Linux
 
 Open Source Enterprise Linux distros, they're managed by the Linux community:
   Rocky Linux
   Alma Linux
+
+Advantages of Linux:
+  FREE SOFTWARE MOVEMENT
+  Secure, hence prone to less amount of attacks than Windows systems
+  Light Weight - It's faster with memory and CPU usage because it's small in kernel size
+  Multi User and Multi Tasking support is easily available
