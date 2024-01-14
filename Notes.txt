@@ -35,3 +35,9 @@ Advantages of Linux:
   Secure, hence prone to less amount of attacks than Windows systems
   Light Weight - It's faster with memory and CPU usage because it's small in kernel size
   Multi User and Multi Tasking support is easily available
+
+Windows => Linux Terminnologies:
+  Admin User => Root User
+  Folder => Directory
+  File => File
+  Application => Package
