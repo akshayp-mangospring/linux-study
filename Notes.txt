@@ -12,6 +12,7 @@ Red hat enterprise Linux distro is used by Large companies like Banks, Telecom o
 Linus Torvalds wrote the Linux Kernel.
 Android OS is actually a modified Linux Kernel.
 Linux is based on Andrew Tanenbaum's MINIX which is a microkernel OS. It's also somewhat based on UNIX.
+MacOS has a UNIX ancestor specifically BSD.
 
 Popular Distros of Linux:
   Ubuntu
@@ -60,17 +61,23 @@ Following are the important directories in Linux:
     Home directory for other users.
   /root:
     It's the home directory for root user.
-  /boot:
+  /boot - Boot loaders:
     It contains bootable files for Linux.
-  /etc:
+  /etc - Etcetera:
     It contains all the config files.
-  /usr:
-    By default all software is installed in this directory.
-  /bin:
+  /mnt - Mount:
+    It contains info about all the mount media.
+  /proc - Processes:
+    It contains info about all the processes.
+  /sys - System:
+    It contains all the info about interacting with the Kernel.
+  /usr - User Software Directory:
+    By default all software is installed in this directory. So, it installs all the software which is not necessary for the functioning of the system/kernel.
+  /bin - Binaries:
     It contains commands used by all users.
-  /sbin:
+  /sbin - System Binaries:
     It contains commands used by root user.
   /opt:
     Optional software application packages.
-  /dev:
+  /dev - Device drivers:
     This includes device files. This includes terminal, usb device or any other device attached to the system.
