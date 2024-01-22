@@ -1,0 +1,4 @@
+Day 1 - 22 January 2024:
+Learnt about the Vim editor from scratch.
+I am writing in this file inside the Vim editor itself.
+I'll just have to practice it now daily.
