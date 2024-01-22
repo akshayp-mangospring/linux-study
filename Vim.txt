@@ -94,3 +94,10 @@ Keys to navigate:
     Delete the selected lines - d
 
 The Coolest thing about Vim is that we can actually use combos of commands with a number to execute the command that many times. It comes along with that many times
+
+Macros in Vim => Revolutionary!!!
+It's not possible in any other editor that I know about.
+It allows us to replay a bunch of commands in the editor. We can record macros with the help of `@` and the key in which the macro will be saved to.
+So, `@w` will save the macro to `@w` key combo. So, when we hit `@w` then all the keystrokes which were saved to the macro will be fired.
+
+The classic use case is to get all of my PRs from Github and remove the extra " and , from the editor and give us the bunch of PRs in a list format.
