@@ -1,0 +1,74 @@
+Vim Editor is an extended version of the Vi editor. It comes pre installed in Linux, Mac.
+
+To open up any file in Vim, just type:
+`vim path_to_your_file`
+
+Vim editor opens up in Command mode by default. You can switch quickly between Insert mode and Command mode by pressing `i` and `Esc` respectively.
+Whenever we start editing a file in Vim editor a temporary file with the `.swp` extension gets created in the same directory in which the file resides. That file is useful to keep track to avoid multiple terminals making edits in the same file. So that helps avoid conflicting changes in the file.
+
+For example:
+If I am editing `primes.go` in the current directory, then a `primes.go.swp` temp file will get created in the current working directory as the editing of the file is taking place. Now if we try to edit the same file from another terminal window/tab then we will get a prompt saying that anotehr terminal is editing the same file. As we exit the Vim editor that temp file will get deleted.
+
+Modes of Vim:
+  Command Mode - Default mode:
+    In this mode we can operate on the already existing content of the file.
+  Insert Mode:
+    This mode is specifically to add new contents in a file.
+  Visual Mode:
+    You actually enter selection mode. In it, you can actually see the selection to operate upon.
+    This mode is useful for visually seeing the selections being made in the file upon which the operations will be performed.
+    It operates upon lines.
+
+Whenever we hit Esc key we get switched back to the default Command mode of the Vim editor from any mode like Insert or Visual.
+
+Modes to operate in Vim:
+  To Save - :w
+  To Save and Quit - :wq
+  To quit without saving - :q!
+  To enter Insert mode - i
+  To exit Insert mode - Esc
+  To enter Visual Mode - V
+
+Keys to navigate:
+  In Command mode:
+    Up - k
+    Down - j
+    Left - h
+    Right - l
+    On the keyboard layout:
+      hjkl - Left Bottom Up Right (LBUR)
+
+    Move to the bottom of the file - G
+    Move to the top of the file - gg
+    Undo - u
+    Redo - Ctrl + r
+    Cut a line - dd
+    Copy a line - yy
+    Paste a line - p
+    Move the cursor up a block of code - {
+    Move the cursor down a block of code - }
+    Move the cursor # of times in the code:
+      10 lines down - 10j
+      10 lines up - 10k
+      10 places left - 10h
+      10 places right - 10l
+    Add a new line below and switch to Insert mode - o
+    Add a new line above and switch to Insert mode - O
+    Move cursor to the next word - w
+    Move cursor to the previous word - b
+    Go to line - :line_number
+    Go to the beginning of the line - 0
+    Go to the first word of the line - 0w
+    Go to the first desired letter in the line - f(desired letter)
+      Example: Go to first `!` with `f!`
+    Change a word and switch to insert mode - cw
+    Delete a word and switch to insert mode - dw
+
+  In Insert mode:
+    Up - Up arrow
+    Down - Down arrow
+    Left - Left arrow
+    Right - Right arrow
+
+  In Visual Mode:
+    Delete the selected lines - d
