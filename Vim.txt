@@ -53,6 +53,7 @@ Keys to navigate:
     Redo - Ctrl + r
     Delete a character - x
     Replace a character - r
+    Copy Selection - y
     Cut a line - dd
     Copy a line - yy
     Paste a line - p
@@ -101,3 +102,7 @@ It allows us to replay a bunch of commands in the editor. We can record macros w
 So, `@w` will save the macro to `@w` key combo. So, when we hit `@w` then all the keystrokes which were saved to the macro will be fired.
 
 The classic use case is to get all of my PRs from Github and remove the extra " and , from the editor and give us the bunch of PRs in a list format.
+
+Unresolved questions:
+Usage of %
+Search in file
