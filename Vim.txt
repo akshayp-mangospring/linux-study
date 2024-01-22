@@ -1,9 +1,15 @@
-Vim Editor is an extended version of the Vi editor. It comes pre installed in Linux, Mac.
+Vim Editor is an improvised version of the Vi editor(Vi IMproved) - VIM. It comes pre installed in Linux, Mac and all the remote SSH Linux servers, Kubernetes clients.
+
+Why learn Vim?
+Because it's the only code editor available on the Cloud Servers. It's the default code editor. We don't have Nano, Cat, etc. on the servers, we get only Vim on remote Linux SSH servers and Kubernetes clients. That's why you shluld learn Vim.
+Devs also claim that it leterally increases your productivity, because we never have to touch our mouse or move our hand out that much. It helps us move around the file faster.
+
+Type in `vimtutor` on the terminal to get all the help related to Vim.
 
 To open up any file in Vim, just type:
 `vim path_to_your_file`
 
-Vim editor opens up in Command mode by default. You can switch quickly between Insert mode and Command mode by pressing `i` and `Esc` respectively.
+Vim editor opens up in Command mode by default. You can switch quickly between Insert mode and Command mode by pressing `i` or `a` for Insert mode and `Esc` to switch back to Command mode.
 Whenever we start editing a file in Vim editor a temporary file with the `.swp` extension gets created in the same directory in which the file resides. That file is useful to keep track to avoid multiple terminals making edits in the same file. So that helps avoid conflicting changes in the file.
 
 For example:
@@ -25,7 +31,7 @@ Modes to operate in Vim:
   To Save - :w
   To Save and Quit - :wq
   To quit without saving - :q!
-  To enter Insert mode - i
+  To enter Insert mode - i or a
   To exit Insert mode - Esc
   To enter Visual Mode - V
 
@@ -42,6 +48,7 @@ Keys to navigate:
     Move to the top of the file - gg
     Undo - u
     Redo - Ctrl + r
+    Delete a character - x
     Cut a line - dd
     Copy a line - yy
     Paste a line - p
