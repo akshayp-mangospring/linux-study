@@ -1,8 +1,10 @@
-Vim Editor is an improvised version of the Vi editor(Vi IMproved) - VIM. It comes pre installed in Linux, Mac and all the remote SSH Linux servers, Kubernetes clients.
+Vi was a text editor created for the Unix OS. Vim Editor is an improvised version of the Vi editor(Vi IMproved) - VIM. It comes pre installed in Linux, Mac and all the remote SSH Linux servers, Kubernetes clients. Perhaps `emacs` or `nano` might not be installed but Vim is always installed on all Linux systems, even on the Cloud.
+There's also a more advanced version on Vim available to everyone and it's called `Neovim`. I haven't checked that out yet. Will check it out later because I'm not sure that it's pre installed on all the SSH Linux Servers on the cloud nor on the Kubernetes clients. We can also integrate Vim on VSCode via some extensions.
 
 Why learn Vim?
 Because it's the only code editor available on the Cloud Servers. It's the default code editor. We don't have Nano, Cat, etc. on the servers, we get only Vim on remote Linux SSH servers and Kubernetes clients. That's why you shluld learn Vim.
 Devs also claim that it leterally increases your productivity, because we never have to touch our mouse or move our hand out that much. It helps us move around the file faster.
+Vim also helps us read files with `man` or `less` or `tail` very quickly. So learning the knowledge of Vim is transferable to other terminal based editors as well.
 
 Type in `vimtutor` on the terminal to get all the help related to Vim.
 
@@ -34,6 +36,7 @@ Modes to operate in Vim:
   To enter Insert mode - i or a
   To exit Insert mode - Esc
   To enter Visual Mode - V
+  To Show line numbers - :set number
 
 Keys to navigate:
   In Command mode:
@@ -49,6 +52,7 @@ Keys to navigate:
     Undo - u
     Redo - Ctrl + r
     Delete a character - x
+    Replace a character - r
     Cut a line - dd
     Copy a line - yy
     Paste a line - p
@@ -70,6 +74,15 @@ Keys to navigate:
       Example: Go to first `!` with `f!`
     Change a word and switch to insert mode - cw
     Delete a word and switch to insert mode - dw
+    Delete everything until the end of the line - D
+    Delete everything until the end of the line and switch to insert mode - C
+    Delete everything until a specific letter of the line and switch to insert mode - ct(desired letter)
+    Delete everything until a specific letter in a line - dt(desired letter)
+
+    Find all instances of a function or variable - *
+      It's similar to Ctrl + d in VSCode.
+    Toggle the case of a character - ~
+    Rerun the previous command - . => Super Important
 
   In Insert mode:
     Up - Up arrow
@@ -79,3 +92,5 @@ Keys to navigate:
 
   In Visual Mode:
     Delete the selected lines - d
+
+The Coolest thing about Vim is that we can actually use combos of commands with a number to execute the command that many times. It comes along with that many times
