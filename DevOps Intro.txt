@@ -1,0 +1,25 @@
+What's the need of a DevOps guy in a Company? What problem does he solve?
+The problem that DevOps guy solves are as follows:
+- Fast Delivery:
+    Deploy the app as and when new releases are done of the App.
+- Reduce Outages:
+    Whenever the site is down bring it up
+- Quicker Turnaround on Bugs in the app
+- Less Capital Expenditure(Capex) and Operational Expenditure(Opex):
+    Initially the companies needed to buy and maintain their own servers. Now we can simply rent a swerver fom a Cloud Providr for less than 10% price of maintaining an independent server.
+- Monitoring:
+    Monitor the load on the site and manage the load efficiently, so that the site doesn't go down.
+
+In the SDLC we have got the Post Software Development stages to get the App live, that's where the DevOps guy comes in. Those stages are:
+- Release:
+    Pull out the code from the tag from GitHub uploaded by developers
+    Tools: GitHub
+- Build:
+    Tools: Maven, Jenkins
+- Deploy:
+    Tools: Chef, Ansible, Puppet, Docker, Kubernetes
+- Monitoring:
+    Tools: Cloudwatch, Nagios
+
+Need to learn all of the above tools. At least get an idea of what each thing does in the SDLC.
+Maven, Jenkins, Chef, Puppet, Ansible, Docker, Kubernetes, Cloudwatch, Nagios.

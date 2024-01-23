@@ -71,6 +71,7 @@ Keys to navigate:
     Go to line - :line_number
     Go to the beginning of the line - 0
     Go to the first word of the line - 0w
+    Go to the end of the line - $
     Go to the first desired letter in the line - f(desired letter)
       Example: Go to first `!` with `f!`
     Change a word and switch to insert mode - cw
