@@ -1,0 +1,12 @@
+EmailID used: abp9834@gmail.com
+
+Pre Requisites:
+We need to have a Debit/Credit Card, an Email Id and PAN Card to create an account on AWS.
+We need to install Putty, PuttyGen to SSH into the server.
+
+Creating a Linux machine on AWS:
+We need to create a Linux machine(EC2 instance) on the Server, with which we can play and SSH into.
+We need to stop the machine after each session so as to avoid billing.
+Just a caveat - We can also waive off our bill with a request to AWS.
+
+Through Putty we can SSH into the server and start playing with the server very quickly.

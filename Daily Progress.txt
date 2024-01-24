@@ -5,3 +5,7 @@ I'll just have to practice it now daily.
 
 Day 2 - 23 January 2024:
 Learnt the role of a DevOps guy in SDLC.
+
+Day 3- 24 January 2024:
+Learnt a bit about AWS account creation, Putty, PuttyGen.
+Created my AWS account.
