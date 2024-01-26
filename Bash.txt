@@ -29,4 +29,4 @@ You can do things with Bash Scripting such as Create a new file, add a new user,
 Note - Something to study further:
   Python and Ansible are the advancements to Bash.
   Python is often used for advanced scripts. Bash scripts are included often in Python Scripts.
-  Whereas Ansible offers a good option to manage multiple system whcih is difficult to do in Bash.
+  Whereas Ansible offers a good option to manage multiple systems which is difficult to do in Bash.
