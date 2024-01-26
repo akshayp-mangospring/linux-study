@@ -1,0 +1,39 @@
+`#!` - Shebang Operator. We need to add this operator at the top of every bash script, which is supposed to be followed by the path to our bash binary.
+We have to add the Shebang operator to our bash script because we want to indicate which script are we writing, it could be a bash script or a Python script or even a program written in Go lang. So, adding the Shebang operator followed by a path to our bash binary tells that we are writing a bash script.
+
+We can get the path to our bash by using `which $SHELL`.
+
+A Bash script is just a bunch of command line commands but instead of doing them one by one we put them up in a `.sh` file and run it in one instance.
+
+To run a shell script we can run `bash ./your_bash_script.sh`.
+We can also run it directly without the `bash` command, but we need to modify the permissions of the file from just `read-write` to `read-write-execute`. We can do that by:
+`chmod +x your_bash_script.sh` - This adds execution permissions to a file.
+Then we can directly run the file like:
+`./your_bash_script.sh`
+
+Example o/p from terminal:
+```
+akshay-pawar@akshay-pawar:~/linux-study/code/bash$ ls
+hello_world.sh
+akshay-pawar@akshay-pawar:~/linux-study/code/bash$ ls -la
+total 12
+drwxrwxr-x 2 akshay-pawar akshay-pawar 4096 Jan 26 20:30 .
+drwxrwxr-x 3 akshay-pawar akshay-pawar 4096 Jan 26 20:11 ..
+-rw-rw-r-- 1 akshay-pawar akshay-pawar   33 Jan 26 19:23 hello_world.sh
+akshay-pawar@akshay-pawar:~/linux-study/code/bash$ chmod +x ./hello_world.sh
+akshay-pawar@akshay-pawar:~/linux-study/code/bash$ ls -la
+total 12
+drwxrwxr-x 2 akshay-pawar akshay-pawar 4096 Jan 26 20:30 .
+drwxrwxr-x 3 akshay-pawar akshay-pawar 4096 Jan 26 20:11 ..
+-rwxrwxr-x 1 akshay-pawar akshay-pawar   33 Jan 26 19:23 hello_world.sh
+akshay-pawar@akshay-pawar:~/linux-study/code/bash$ ./hello_world.sh
+Hello, World!
+akshay-pawar@akshay-pawar:~/linux-study/code/bash$
+```
+Thus we were successfully able to convert a non executable file to an executable file.
+
+Scheduling scripts to run at specific times:
+We can even schedule to run our scripts using the `at` command or the `crontab -e` file.
+The `at` command is useful to run stuff just once at a specific time. But if we want to run stuff repeatedly at specific times then we have to use `crontab -e`.
+When writing scripts intended for cron jobs, we should use commands using the full paths `/usr/bin/eho` instead of just `echo` becuase cron jobs aren't run in the shell environment.
+But I'll study more on that later.
