@@ -32,6 +32,24 @@ akshay-pawar@akshay-pawar:~/linux-study/code/bash$
 ```
 Thus we were successfully able to convert a non executable file to an executable file.
 
+Variables:
+We can declare variables in a Shell script using the `UPPER_CASE_ONLY`.
+Then we can use those variables with `$` prepended to it.
+For example:
+```
+NAME="Akshay Pawar"
+echo "Hello $NAME!"
+```
+
+Reading user input from Shell:
+We can read user input from Shell using the `read` command.
+For example:
+```
+echo "Enter your name:"
+read NAME
+echo "Hello $NAME!"
+```
+
 Scheduling scripts to run at specific times:
 We can even schedule to run our scripts using the `at` command or the `crontab -e` file.
 The `at` command is useful to run stuff just once at a specific time. But if we want to run stuff repeatedly at specific times then we have to use `crontab -e`.

@@ -17,3 +17,4 @@ Didn't study myself though.
 
 Day 5 - 26 January 2024:
 Started to learn Bash Scripting.
+Learnt basics of scripts, interactive scripts, also basics about Scheduling scripts.
