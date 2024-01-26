@@ -1,0 +1,32 @@
+Shell is a User Interface that allos us to access OS Services. There can be multiple shell providers like Bash, Zsh, iTerm or Warp. But Bash is the king of Linux by default.
+
+Bourne Again SHell - BASH.
+If you want to become a Hacker or Cloud Engineer in IT then learning Bash will give you superpowers.
+Bash is also called as Shell or Terminal interchangeabley, because it's the Shell which can interact directly with the OS.
+Before our terminal starts, the `~/.bashrc` file is fired up, also `~/.bash_profile` file is fired up to load up all the Paths and Configs. It is the main reason why we can add our own bash aliases or custom commands on our bash in the `~/.bashrc` file and have it working on all our terminal windows.
+
+Commands can be fired on the shell which will be interpreted and executed on the OS.
+
+`which $SHELL` is used to identify which shell are we using.
+
+Main Motto to learn Bash:
+  YOU CAN AUTOMATE THINGS WITH BASH.
+
+Bash Scripts are Dynamically Interpreted Command Language. Bash Scripting has support for variables, positional arguments, conditional logic, looping, background processing, etc. Bash is the only scripting language available on the Linux OS.
+
+To run any bash script we just do: `bash path_to_your_file.sh`
+
+Zsh as an Alternative!!!!:
+  Zsh is an alternative bash. That's why we have `/.zshrc` file residing in our systems which have got Zsh installed.
+  But isn't available on AWS Linux servers by default.
+  Zsh is the default shell on Mac OS, whereas Bash is the default shell on Linux distros.
+  We can set our default terminal to be Zsh if we want to.
+  Zsh is more advanced than Bash because it was invented later than Bash. All the Bash scripts are compatible in Zsh, but the converse isn't true.
+  Zsh however is more customizable. But Bash is universally accessible.
+
+You can do things with Bash Scripting such as Create a new file, add a new user, HACK!
+
+Note - Something to study further:
+  Python and Ansible are the advancements to Bash.
+  Python is often used for advanced scripts. Bash scripts are included often in Python Scripts.
+  Whereas Ansible offers a good option to manage multiple system whcih is difficult to do in Bash.

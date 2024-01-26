@@ -10,3 +10,10 @@ Day 3- 24 January 2024:
 Learnt a bit about AWS account creation, Putty, PuttyGen.
 Created my AWS account.
 Used Hitesh's credit card for it. I'm thankful to him for that.
+
+Day 4 - 25 January 2024:
+Encouraged everyone to open AWS accounts.
+Didn't study myself though.
+
+Day 5 - 26 January 2024:
+Started to learn Bash Scripting.
