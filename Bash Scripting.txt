@@ -161,9 +161,33 @@ Conditionals:
     ```
 
 Arrays:
+We can create a list of things in Bash with the usage of normal variables. But they just needs to be initialized differently.
+Arrays in Bash aren't created with `[]` because that's reserved for Expressions. We need to declare our list in a variable separated by spaces inside `()`.
+Similar to other programming languages, arrays in Bash script are also based on zero index.
+For Example:
+```
+MY_FIRST_LIST=(Heil mein Fuhrer!)
+# This prints the first item in the list
+echo ${MY_FIRST_LIST[0]}
+# This prints the whole list
+echo ${MY_FIRST_LIST[@]}
+```
 
 Looping:
+Now that we can store items in a list. We can loop over them using a `for` loop. There are other loops in Bash as well, such as `while` loop, `until` loop. There are even advanced forms of `for` loops with ranges and stuff, but we'll study those later.
+Just like we can break and continue in loops in other programming languages, we can do it over here too.
 
+'For' Example:
+```
+NATIONS=(Bharat Deutschland Germany Russia Japan)
+
+for nation in ${NATIONS[@]}; do
+  if [ $nation == Germany ]; then
+    continue
+  fi
+  echo $nation
+done
+```
 Functions:
 
 `awk` Command:
