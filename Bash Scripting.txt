@@ -50,6 +50,52 @@ read NAME
 echo "Hello $NAME!"
 ```
 
+Output:
+```
+akshay-pawar@akshay-pawar:~/linux-study/code/bash$ ./interactive.sh
+Enter your first name:
+Akshay
+Enter your last name:
+Pawar
+Hello Akshay Pawar!
+akshay-pawar@akshay-pawar:~/linux-study/code/bash$
+```
+
+Positional Arguments:
+We can pass in args from the Shell itself separated by spaces when we are running a Shell script. These are called as Positional Arguments.
+They always are named $1, $2, $3, $4... according to the position that it is passed in.
+
+Piping in Bash:
+You can pass in multiple commands separated by `|` - Pipes to the shell. Then these commands are run one by one by the bash in order that they were passed in.
+Technically, the o/p of the first command before the `|` is sent as an argument to the next command after the `|`.
+
+```
+akshay-pawar@akshay-pawar:~/linux-study/code/bash$ ls -l /usr/bin | grep 'bash'
+-rwxr-xr-x 1 root   root      1183448 Apr 18  2022 bash
+-rwxr-xr-x 1 root   root         6794 Apr 18  2022 bashbug
+-rwxr-xr-x 1 root   root         2446 Jan 26  2020 dh_bash-completion
+lrwxrwxrwx 1 root   root            4 Apr 18  2022 rbash -> bash
+akshay-pawar@akshay-pawar:~/linux-study/code/bash$
+```
+
+Write to files from Shell:
+We can write to a file from the Shell using `<` and `<<` operators.
+< Operator- Override the contents of the file completely and write whatever is provided in the command.
+<< Operator - Append the contents of the file with whatever is provided in the command. The appending is always done on a new line and not directly after the last character of the file.
+Note that we have to use the `echo` command to pass on the text from the Shell to the intended file.
+
+For example:
+```
+akshay-pawar@akshay-pawar:~/linux-study/code/bash$ echo 'Hello, World!' > ./written_from_shell.txt
+akshay-pawar@akshay-pawar:~/linux-study/code/bash$ cat ./written_from_shell.txt
+Hello, World!
+akshay-pawar@akshay-pawar:~/linux-study/code/bash$ echo 'Hello, World again!' >> ./written_from_shell.txt
+akshay-pawar@akshay-pawar:~/linux-study/code/bash$ cat ./written_from_shell.txt
+Hello, World!
+Hello, World again!
+akshay-pawar@akshay-pawar:~/linux-study/code/bash$
+```
+
 Scheduling scripts to run at specific times:
 We can even schedule to run our scripts using the `at` command or the `crontab -e` file.
 The `at` command is useful to run stuff just once at a specific time. But if we want to run stuff repeatedly at specific times then we have to use `crontab -e`.
