@@ -18,3 +18,8 @@ Didn't study myself though.
 Day 5 - 26 January 2024:
 Started to learn Bash Scripting.
 Learnt basics of scripts, interactive scripts, also basics about Scheduling scripts.
+
+Day 6 - 27 January 2024:
+In bash scripting learnt about Positional arguments, Piping & Writing to files from shell.
+Created a bash alias using Bash script to Search on Google from the Shell ====> Revolutionary!!!!!!!!!
+`search 'Sieg Heil'`

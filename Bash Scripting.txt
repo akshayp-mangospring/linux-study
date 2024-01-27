@@ -96,6 +96,21 @@ Hello, World again!
 akshay-pawar@akshay-pawar:~/linux-study/code/bash$
 ```
 
+Conditionals:
+  If-Else Blocks:
+
+  Switch statements:
+
+Arrays:
+
+Looping:
+
+Functions:
+
+`awk` Command:
+
+`sed` Command:
+
 Scheduling scripts to run at specific times:
 We can even schedule to run our scripts using the `at` command or the `crontab -e` file.
 The `at` command is useful to run stuff just once at a specific time. But if we want to run stuff repeatedly at specific times then we have to use `crontab -e`.
