@@ -32,6 +32,14 @@ akshay-pawar@akshay-pawar:~/linux-study/code/bash$
 ```
 Thus we were successfully able to convert a non executable file to an executable file.
 
+Delimiting Lines:
+`;` can be used as a line delimiter in Bash scripts if you want to type out multiple commands just on one line.
+
+For Example:
+```
+if [ $1 == 1 ]; then echo "It's first"; elif [ $1 == 2 ]; then echo "It's second"; else echo "It's last"; fi
+```
+
 Variables:
 We can declare variables in a Shell script using the `UPPER_CASE_ONLY`.
 Then we can use those variables with `$` prepended to it.
@@ -96,10 +104,61 @@ Hello, World again!
 akshay-pawar@akshay-pawar:~/linux-study/code/bash$
 ```
 
+Expressions:
+Expressions in Bash Script is put up between `[]` and is usually used in conditionals and variables.
+For Example:
+```
+#!/bin/bash
+# Expression's result is stored in a variable
+IS_EQUAL=$(echo [ 1 == 21 ])
+
+if $IS_EQUAL
+then
+  echo "It's equal"
+else
+  echo "It's not equal"
+fi
+```
+
+Arithmetic Comparison Operators:
+`-eq` - Equals To
+`-lt` - Less Than
+`-gt` - Greater Than
+
+The above operators are generally used in expressions.
+For Example:
+`[ 10 -eq $1 ]`
+Here we are trying to fing out whether the first positional argument entered by the user was `10` or not.
+
+Parameter Expansion:
+  - Brace Expansion
+  - Filename Expansion
+  - Globbing
+
 Conditionals:
   If-Else Blocks:
-
+    It's very similar to the `If-Else` statements in all the programming languages. Just the syntax for expressions and ending of a `If-Else` block is different.
+    It ends with `fi`, and I don't know what it means as of now. Expressions are put up between `[]`, but you can also put up variables in place of expressions as I have done above in the notes.
   Switch statements:
+    Well the syntax of switch statements is really something which needs to be wrapped my head around, but it's easy later on. Here the `|` operator is used like an 'OR' operator. `;;` is like the `break` statement. `esac` acts like the end of the switch statement.
+
+    For Example:
+    ```
+    OWNER='Akshay'
+    case $OWNER in
+        'Akshay' | 'Bunty' | 'Saheb')
+                echo "Hello, you're the Boss here. Welcome!"
+                ;;
+
+        'help')
+                echo "Just tell your name, Duh!"
+                ;;
+
+        *)
+                echo "You ain't gonna enter here. This is a place just for owners."
+                ;;
+    esac
+    ```
 
 Arrays:
 
