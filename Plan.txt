@@ -1,0 +1,13 @@
+Until 4 February 2024:
+Linux - In Detail, YAML, Bash Vim.
+
+Until 4 March 2024:
+Actual AWS exam syllabus and courses study.
+Get the main topics from DevOps team to better organize the study and focus.
+
+Until 4 April 2024:
+8 AWS Practice exams to be given.
+One each on every Saturday & Sunday.
+
+13 April 2024:
+Exam of AWS - Solutions Architect Associate.
