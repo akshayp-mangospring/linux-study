@@ -1,0 +1,29 @@
+What is YAML?
+YAML is Yaml Ain't Markup Language(YAML).
+YAML is a data serialization language. Just like JSON, XML. It's a standard format to transfer data. Like JSON is.
+YAML files work with both extensions like `.yml` and `.yaml`.
+Just like Python, YAML works on indentations and line breaks.
+YAML is very similar to JSON which involves a lot of key-value pairs and data grouped together. However it's much cleaner to look at than a JSON file.
+
+Why is YAML important?
+Configuration files are all written in YAML.
+It's used for almost all the DevOps Tools and Apps. Like Docker, Kubernetes, Ansible, Prometheus, etc.
+
+How to write YAML?
+It has got:
+  Key-value pairs - Basic key-value pair like Json. The key names needs to be `camelCased` in case of multi word keys.
+  Comments - Everything after `#` is ignored
+  Objects - A collection of key-value pairs under one key.
+  Lists - It can be a collection of key-value-pairs or objects. Or a mix of both.
+  Booleans - Booleans like any other programming language. The values accepted in Booleans are: `true`, `false`, `yes`, `no`, `on` and `off`.
+  Multi-line strings - A key in Yaml file can also have multi line strings as it's value. They begin with the `|` symbol.
+  Environment Variables - We can access Env variables in a Yaml file using the `$` symbol.
+  Placeholders - We can access placeholders using the `{{ }}` syntax. It's used in Ansible and Helm. The values inside the placeholders will get replaced with actual values.
+We can even write multiple YAML documents inside a single `.yml` file. All we have to do is to add a separator `---` which won't let the conflict of same key names arise in the same YAML file. But it ain't recommended.
+
+Please have a look at `code/test.yml` file for getting to know YAML in real.
+
+We have got online tools in which we can validate our YAML file before we actually use it in Docker, Kubernetes, etc.
+Websites:
+- https://onlineyamltools.com/edit-yaml
+- https://jsonformatter.org/yaml-validator
