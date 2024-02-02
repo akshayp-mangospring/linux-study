@@ -1,0 +1,1 @@
+A running instance of a program is called as a Process. Each time we execute a command a new Process starts.
