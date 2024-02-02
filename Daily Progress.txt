@@ -23,3 +23,7 @@ Day 6 - 27 January 2024:
 In bash scripting learnt about Positional arguments, Piping & Writing to files from shell.
 Created a bash alias using Bash script to Search on Google from the Shell ====> Revolutionary!!!!!!!!!
 `search 'Sieg Heil'`
+Learnt about Conditionals, Arrays, Loops, Functions.
+Added a shell script using bash function to show the uptime of the machine.
+
+Need to study about Parameter Expansion.
