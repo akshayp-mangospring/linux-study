@@ -1,1 +1,49 @@
 A running instance of a program is called as a Process. Each time we execute a command a new Process starts.
+A process has the same privileges as the user who created it. Also, any process will be executed according to the rights of the user who is executing it.
+Just like we get asked for Super User persmissions to edit files like `~/.bashrc`.
+
+To get to know which program will spin up a process we just have to run the `type` command.
+For Example:
+```
+akshay-pawar@akshay-pawar:~/linux-study$ type vim
+vim is /usr/bin/vim
+akshay-pawar@akshay-pawar:~/linux-study$
+```
+Any command which resides inside `/usr/bin/` folder will spin up a process.
+
+We are never allowed to execute anything with the `root` user.
+
+Creation of a Process:
+Linux provides a system call named `fork` which allows us to create a new process. The system by default spins up a few processes. The System init process always has the id: 1. It's spin up by the `root` user.
+For Example:
+```
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 Feb01 ?        00:00:02 /sbin/init splash
+root           2       0  0 Feb01 ?        00:00:00 [kthreadd]
+root           3       2  0 Feb01 ?        00:00:00 [rcu_gp]
+root           4       2  0 Feb01 ?        00:00:00 [rcu_par_gp]
+root           5       2  0 Feb01 ?        00:00:00 [slub_flushwq]
+root           6       2  0 Feb01 ?        00:00:00 [netns]
+root           8       2  0 Feb01 ?        00:00:00 [kworker/0:0H-events_highpri]
+root          10       2  0 Feb01 ?        00:00:00 [mm_percpu_wq]
+root          11       2  0 Feb01 ?        00:00:00 [rcu_tasks_rude_]
+```
+In the above each thing stands like this: UID - User ID, PID - Process ID, PPID - Parent Process ID, STIME - Start TIME, CMD - CoMmanD.
+The most important processes for the system are launched with `root` user and we can't perform any action as the root user ourselves. It's kind of like the system user that we can't log into.
+
+Types of Processes:
+  Parent
+  Child
+  Daemon
+  Zombie
+  Orphan
+
+A parent process can spin up multiple child processes. A parent can have multiple children but a child can have only a single parent.
+The OS maintains a table of all the running processes. When a process terminates it's execution the OS releases all of it's resources.
+Some processes whose data/resources haven't been recollected are called as Zombie processes. OS tries to remove the Zombie processes quickly though.
+Orphan processes occur when a parent process terminates before a child process. It often occurs when a process takes a long time to execute so the parent process was terminated by the user then all the child processes will receive a hangup signal.
+Once a hangup signal is received by any process, then it's terminated immediately and all the related system resources are released.
+
+Important Note:
+THREAD !== PROCESS
+Typically a process generally conatins a single thread. But a process can spin up multiple threads in it based on requirement. So, one process can have multiple threads in it. Two independent threads within the same process can share resources. However two independent processes can't share resources.
