@@ -1,0 +1,67 @@
+# Key Value Pairs
+# Note that below `user-authentication` is a string, you can surround it with quotes if needed, if the string is multi word or has special chars in it. But until the it's not necessary.
+app: user-authentication
+port: 9000
+version: 1.7
+
+# Objects:
+# Objects are nothing but a group of Key-Value pairs under one key. There can be nested objects as well.
+# Below is a `micoservice` object with data in it
+microservice:
+  app: booking-service
+  port: 4000
+  version: 1.0
+
+# List of Objects, Key-value pair, it also has booleans in it.
+microservices:
+  - name: book-my-show
+  - app: booking-service
+    port: 4000
+    version: 1.0
+    deployed: off
+  - app: user-authentication
+    port: 9000
+    version: 1.7
+    deployed: on
+  - app: file-server
+    mountPath: /usr/nginx/html # Multi Word keys
+    ports:
+      serverPort: 3000
+      containerPort: 3001
+    versions: [1.0, 1.1, 1.2]
+    deployed: false
+  - app: ai-chatbot
+    port: 5000
+    version: 2.0
+    deployed: true
+
+# List of strings
+microservice-names:
+  - booking-service
+  - user-authentication
+  - file-server
+  - ai-chatbot
+
+# Another way to declare an array/list apart from `-` syntax
+microservice-names-arr: [booking-service, user-authentication, file-server, ai-chatbot]
+
+# Multi Line Strings:
+multiLineString: |
+  Everything after the `|` symbol above
+  will be considered as a multi line string
+  along with the line breaks until the Yaml file
+  encounters another key like the below one
+anotherMulltiLineString: |
+  Multi line strings are used in reading
+  the file contents, also in writing entire shell scripts
+  which will be executed as a command by the YAML file.
+
+# Acessing Env variables
+current-user: $USER
+
+# Plaeholder Values
+metadata:
+  name: {{ .Values.service.name }}
+spec:
+  selector:
+    app: {{ .Values.service.app }}

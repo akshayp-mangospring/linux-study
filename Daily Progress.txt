@@ -27,3 +27,7 @@ Learnt about Conditionals, Arrays, Loops, Functions.
 Added a shell script using bash function to show the uptime of the machine.
 
 Need to study about Parameter Expansion.
+
+Day 7 - 30 January 2024:
+Had two bad days in a row. Didn't Study. But I'm back on track now.
+YAML study.
