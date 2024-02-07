@@ -33,3 +33,8 @@ YAML study.
 
 Day 8 - 2 February 2024 - Jumbo's 3rd Birthday:
 Started studying about Linux Processes.
+
+Day 9 - 6 February 2024 - Thorli's 37th Birthday:
+Studied the basics of the process command.
+
+Day 10 - 7 February 2024:

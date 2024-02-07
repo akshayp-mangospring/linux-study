@@ -47,3 +47,25 @@ Once a hangup signal is received by any process, then it's terminated immediatel
 Important Note:
 THREAD !== PROCESS
 Typically a process generally conatins a single thread. But a process can spin up multiple threads in it based on requirement. So, one process can have multiple threads in it. Two independent threads within the same process can share resources. However two independent processes can't share resources.
+
+Process Commands:
+ps - Process status
+  It returns the running processes in the terminal. This command can be run with a lot of flags.
+```
+akshay-pawar@akshay-pawar:~$ ps -a
+    PID TTY          TIME CMD
+   3382 tty2     00:00:25 Xorg
+   3397 tty2     00:00:00 gnome-session-b
+   7903 pts/1    00:00:00 ps
+akshay-pawar@akshay-pawar:~$
+```
+Here PID stands for Process ID, which is a unique positive integer generated and assigned by the kernel to each process.
+To get the details of all the processes we should use `-ef` flags.
+
+Daemon processes are the processes which are run in the background. They are not given any control over directly from the terminal.
+Some examples of Daemon applications are: `httpd` - Apex HTTP Daemon, `sshd` - SSH Daemon, `mysqld` - Database server Daemon.
+
+`ps aux` returns all the info of the processes that are running. It also gives the usage of Memory and CPU.
+
+Process Signals:
+A signal is an async
