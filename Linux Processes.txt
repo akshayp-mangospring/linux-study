@@ -46,7 +46,7 @@ Once a hangup signal is received by any process, then it's terminated immediatel
 
 Important Note:
 THREAD !== PROCESS
-Typically a process generally conatins a single thread. But a process can spin up multiple threads in it based on requirement. So, one process can have multiple threads in it. Two independent threads within the same process can share resources. However two independent processes can't share resources.
+Typically a process generally contains a single thread. But a process can spin up multiple threads in it based on requirement. So, one process can have multiple threads in it. Two independent threads within the same process can share resources. However two independent processes can't share resources.
 
 Process Commands:
 ps - Process status
@@ -68,4 +68,140 @@ Some examples of Daemon applications are: `httpd` - Apex HTTP Daemon, `sshd` - S
 `ps aux` returns all the info of the processes that are running. It also gives the usage of Memory and CPU.
 
 Process Signals:
-A signal is an async
+Sometimes a process might consume a lot of resources or become unresponsive and we might have to terminate them. For that we generally use the `kill` command. But the `kill` command needs to be sent a signal code with which it should terminate the process. A signal is an async catalyst for terminating a process. By default the kill command is sent a signal 15 which stands for `SIGTERM`. Observe the o/p below.
+```
+akshay-pawar@akshay-pawar:~/linux-study$ kill -l
+ 1) SIGHUP	 2) SIGINT	 3) SIGQUIT	 4) SIGILL	 5) SIGTRAP
+ 6) SIGABRT	 7) SIGBUS	 8) SIGFPE	 9) SIGKILL	10) SIGUSR1
+11) SIGSEGV	12) SIGUSR2	13) SIGPIPE	14) SIGALRM	15) SIGTERM
+16) SIGSTKFLT	17) SIGCHLD	18) SIGCONT	19) SIGSTOP	20) SIGTSTP
+21) SIGTTIN	22) SIGTTOU	23) SIGURG	24) SIGXCPU	25) SIGXFSZ
+26) SIGVTALRM	27) SIGPROF	28) SIGWINCH	29) SIGIO	30) SIGPWR
+31) SIGSYS	34) SIGRTMIN	35) SIGRTMIN+1	36) SIGRTMIN+2	37) SIGRTMIN+3
+38) SIGRTMIN+4	39) SIGRTMIN+5	40) SIGRTMIN+6	41) SIGRTMIN+7	42) SIGRTMIN+8
+43) SIGRTMIN+9	44) SIGRTMIN+10	45) SIGRTMIN+11	46) SIGRTMIN+12	47) SIGRTMIN+13
+48) SIGRTMIN+14	49) SIGRTMIN+15	50) SIGRTMAX-14	51) SIGRTMAX-13	52) SIGRTMAX-12
+53) SIGRTMAX-11	54) SIGRTMAX-10	55) SIGRTMAX-9	56) SIGRTMAX-8	57) SIGRTMAX-7
+58) SIGRTMAX-6	59) SIGRTMAX-5	60) SIGRTMAX-4	61) SIGRTMAX-3	62) SIGRTMAX-2
+63) SIGRTMAX-1	64) SIGRTMAX
+akshay-pawar@akshay-pawar:~/linux-study$ pidof vlc
+9964
+akshay-pawar@akshay-pawar:~/linux-study$ kill -SIGINT (pidof vlc)
+-bash: syntax error near unexpected token `('
+akshay-pawar@akshay-pawar:~/linux-study$ kill -SIGINT $(pidof vlc)
+akshay-pawar@akshay-pawar:~/linux-study$
+```
+When the process receives a signal 15 it actually receives an 'invitation' to terminate. The process can decide to accept a signal immediately or after some delay. SIGTERM is actually a soft kill signal which can be executed immediately or after a delay.
+Non privileged users can send signals only to their own processes while the root user can send signals to any process.
+
+`SIGKILL` or `-9` is a hard kill.
+
+`pkill` and `killall` are the alternatives to the `kill` command.
+pkill takes in the name of a process and kills it.
+killall takes in the name of a process and kills all the instances iof of the processes of it.
+
+pgrep command:
+```
+akshay-pawar@akshay-pawar:~/linux-study$ pgrep -l sshd
+11245 sshd
+akshay-pawar@akshay-pawar:~/linux-study$
+```
+
+There are two types of processes:
+Foreground Processes:
+  These are started by the user and we can't start another process from the same terminal until the current Foreground process has finished running.
+
+  For Example:
+  ```
+  akshay-pawar@akshay-pawar:~$ sleep 20
+
+
+
+  akshay-pawar@akshay-pawar:~$
+  ```
+  When I ran `sleep 20` from the terminal then the terminal froze until 20 seconds pressing `Enter` also had no effect. Similarly, when I start a Rails server, NodeJS server or start Webpack, then I can't run another process in the same terminal as the Rails server until ther server is stopped. These are examples of Foreground processes.
+
+Background Processes:
+  System Processes are by default started by the System in the background. In the case of Background Processes, a Foreground process can be run in the same terminal as the Background process. We can manually choose to run any foreground process in the background by just appending the command with `&`.
+  For Example:
+  ```
+  akshay-pawar@akshay-pawar:~$ sleep 20 &
+  [1] 7191
+  akshay-pawar@akshay-pawar:~$ echo "Hello World"
+  Hello World
+  akshay-pawar@akshay-pawar:~/linux-study$ ifconfig > output/output.txt 2> output/errors.txt &
+  [1] 7746
+  [1]+  Done                    ifconfig > output/output.txt 2> output/errors.txt
+  akshay-pawar@akshay-pawar:~/linux-study$ ping -c 3 google.com > output/google.txt &
+  [1] 7932
+  akshay-pawar@akshay-pawar:~/linux-study$ cat output/google.txt
+  PING google.com(bom12s17-in-x0e.1e100.net (2404:6800:4009:82a::200e)) 56 data bytes
+  64 bytes from bom12s17-in-x0e.1e100.net (2404:6800:4009:82a::200e): icmp_seq=1 ttl=116 time=62.8 ms
+  64 bytes from bom12s17-in-x0e.1e100.net (2404:6800:4009:82a::200e): icmp_seq=2 ttl=116 time=51.5 ms
+  64 bytes from bom12s17-in-x0e.1e100.net (2404:6800:4009:82a::200e): icmp_seq=3 ttl=116 time=39.8 ms
+
+  --- google.com ping statistics ---
+  3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+  rtt min/avg/max/mdev = 39.848/51.385/62.833/9.383 ms
+  [1]+  Done                    ping -c 3 google.com > output/google.txt
+  akshay-pawar@akshay-pawar:~/linux-study$
+  [1]+  Done                    sleep 20
+  akshay-pawar@akshay-pawar:~$
+  ```
+  Note that in the above, we were able to run multiple foreground commands in the background and we were also able to run a new foreground command in the terminal while others were still executing.
+
+Jobs and Processes:
+When starting a process in the background we can see 2 numbers printed in the terminal. One is between square brackets and another one is the process id.
+The Jobs are maintained by the current terminal and are local to the current terminal. The one in square brackets is the Job Id. Job Ids are unique within the terminal whereas the process ids are unique within the system.
+We can list the jobs running in the background via `jobs -l` and we can get the status of the jobs. We get the job id, process id, running status in it.
+For Example:
+```
+akshay-pawar@akshay-pawar:~/linux-study$ sleep 15 &
+[1] 8235
+akshay-pawar@akshay-pawar:~/linux-study$ sleep 20 &
+[2] 8237
+akshay-pawar@akshay-pawar:~/linux-study$ jobs -l
+[1]-  8235 Done                    sleep 15
+[2]+  8237 Running                 sleep 20 &
+akshay-pawar@akshay-pawar:~/linux-study$
+```
+
+Suspending Processes and bringing them back:
+We can suspend a running foreground process by pressing `Ctrl+Z`, then it'll get suspended and stop executing from the current shell. We can bring the process back up by using the `fg` command. We can even switch a background process to foreground can be done via the `fg` command. Syntax for it is `fg %job_id`
+Note that suspending a process doesn't kill it. It just halts from the executing at the very instanct `Ctrl+Z` was pressed. We can bring it back up as and when needed in the same terminal.
+
+For Example:
+```
+akshay-pawar@akshay-pawar:~/test_blog$ rs
+=> Booting Puma
+=> Rails 7.0.5 application starting in development
+=> Run `bin/rails server --help` for more startup options
+Puma starting in single mode...
+* Puma version: 5.6.6 (ruby 3.1.2-p20) ("Birdie's Version")
+*  Min threads: 5
+*  Max threads: 5
+*  Environment: development
+*          PID: 9257
+* Listening on http://127.0.0.1:3000
+* Listening on http://[::1]:3000
+Use Ctrl-C to stop
+^Z
+[1]+  Stopped                 rails s
+akshay-pawar@akshay-pawar:~/test_blog$ jobs -l
+[1]+  9257 Stopped                 rails s
+akshay-pawar@akshay-pawar:~/test_blog$ fg %1
+rails s
+Started GET "/" for ::1 at 2024-02-08 05:08:01 +0530
+  ActiveRecord::SchemaMigration Pluck (0.3ms)  SELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  Article Load (0.6ms)  SELECT "articles".* FROM "articles"
+  ↳ app/views/articles/index.html.erb:4
+  Rendered articles/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1140)
+  Rendered layout layouts/application.html.erb (Duration: 198.3ms | Allocations: 36263)
+Completed 200 OK in 218ms (Views: 203.4ms | ActiveRecord: 0.6ms | Allocations: 41135)
+```
+
+`nohup` Command:
+Until now we noticed that when we close the terminal all the processes in it gets killed. Because at the time of closing the terminal a hangup signal is sent to all the processes in the terminal. But just in case we don't want a process to be killed and ignore all the hangup signals then we can use the `nohup` command to do so. But I didn't find a use case for it until now. So, I'll study it later.
