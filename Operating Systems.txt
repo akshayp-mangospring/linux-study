@@ -1,0 +1,65 @@
+What is an OS?
+  OS is an interface between the Hardware and User Applications(Google Chrome, VSCode, etc.). It essentialy comprises of the Kernel, Drivers(Keyboard driver, Mourse driver, etc.) and System Applications(Bash Shell, File Explorer, etc.).
+
+  Hardware typically comprises of:
+  Central Processing Unit - CPU or Processor in short
+  Memory
+  Hard Drives
+  Keyboard
+  Mouse
+  Monitors
+  Printers
+
+  The main functions of an OS are:
+  Memory Management
+  Process Management
+  Disk Management
+
+  The main OSes are Unix, Linux, Android, Mac OS, iOS, Windows. There's another special type of OS which is Real Time OS(RTOS) - It's generally used in IoT devices, embedded systems, Control systems. Such systems are majorly used by the Military and Space research folks. It involves a lot of communication with the hardware even for the basic stuff for performance reasons.
+
+Architecture of CPU:
+  A CPU consists of:
+    Multiple Cores
+    Memory Controller
+    I/O Controller
+    Cache
+
+  Modern systems have got multiple cores in it such as quad(4) cores, octa(8) cores.
+  The components of a core are as follows:
+    Control Unit
+    Arithmetic & Logic Unit - ALU
+    Clock
+    Registers
+    Cache
+
+What is the difference between a CPU and a GPU?
+  Both are processing units of a computer, both have a Control Unit, Memory and a Core, although CPU is the main processor of the system, a Graphics Processing Unit - GPU is more specialized for more complex tasks and mathematical calculations. It's faster because it has got more ALUs in it. GPUs are specially designed for high throughput because it can run more operations in parallel in general than a regular CPU. A GPU can be considered as an assistant to a CPU, but it just has more processing power. It's like a master-slave architecture. GPUs were initially designed for smooth rendering of games on PCs and Gaming consoles because rendering games requires complex math calculations at a very high rate. But these days GPUs are also deployed on cloud infra servers which have got very high traffic for better processing and faster perfroamce on the cloud server.
+
+Process v/s Thread v/s Program?
+  Program:
+  It's basically coding that we do. It's lines of instructions written in a particular programming language and executed in a specific order. It is an executable code. A program can spin up multiple processes. Spinning up new processes is also called as Process Spawning.
+
+  Process:
+  A process is actually an instance of a program in execution. A process occupies resources of a computer while executing, once executed the resources are freed/deacllocated. A process has it's own Program Counter, Stack, variables and execution context(Program Control Block - PCB). A process terminates when the execution of the program is complete regardless if sucessful or not. Processes can be concurrent and communicate with each other through Inter Process Communication - IPC. IPC happens through a Bus Memory. A process can spin up multiple threads within itself. However typically a light weight process is single threaded, only heavy processes are multi threaded. Spinning up new threads is also called as Thread Spawning.
+
+  Thread:
+  A thread is an independent light weight unit or sequence of execution within a process that can be run in parallel with other threads within the same process. A process can have several threads and they can share resources amongst each other, that includes memory, compute, data and communication. Processes don't share resources, however threads within the same process can share resources if a process spins up multiple threads. A thread also has it's own Program Counter Stack.
+
+What is Concurrent Execution?
+  In one line it's - Full utilization and better performance. Concurrent execution of Threads, Programs or Processes ensures better utilisation of the computer's resources. Thus improving the performance of the system to work faster and provide a better user experience.
+
+How is a program executed?
+  Suppose that we wanna play a game like Battlefield or Call of Duty, we know these are huge programs which can be 100 GB on the Hard drive/Secondary storage as well. We know that most computers have 16 GB RAM. Still we can play the game. So how does it work out to play a 100 GB game on a 16 GB computer? The answer is during execution of a process, the relevant resources are pulled from Secondary memory(Hard Drive) to Primary memory and the execution is started. There's something called Virtual Memory which plays out a role in such cases. Will study more on that later.
+
+What's Multi Processing, Multi Programming, Multi Tasking and Multi Threading?
+  Multi Processing:
+  Multi Process refers to the execution of multiple processes on a system with multiple CPUs or CPU cores. Each process is an instance of a program and multiple processes can execute concurrently.
+
+  Multi Programming:
+  Multi Programming is the technique where multiple programs are loaded into the Computer memory at the same time for concurrent execution. The CPU switches between these multiple programs to execute instructions. This switching between programs facilitates maximum CPU utilization, suppose that one program is waiting for I/O then the other program is picked up for execution. This will keep the CPU continuously busy. Each program has got it's own memory space.
+
+  Multi Threading:
+  Multi Threading is done with the motto of dividing tasks of a process into smaller units of work that can be executed concurrently.
+
+  Multi Tasking:
+  Multi Tasking allows execution of multiple tasks, processes and programs to run in parallel on a Single Core. The Core's clock time is divided and swicthed rapidly between processes. Thus higher clock speeds are considered better for a faster core and CPU performance. Modern OSes use Multi Tasking on almost every second when from the time when the system is turned on until it's turned off.

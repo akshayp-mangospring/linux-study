@@ -39,3 +39,6 @@ Studied the basics of the process command.
 
 Day 10 - 7 February 2024:
 Studied Linux Processes.
+
+Day 11 - 10 February 2024:
+Studied Concepts of OS.
