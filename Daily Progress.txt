@@ -42,3 +42,6 @@ Studied Linux Processes.
 
 Day 11 - 10 February 2024:
 Studied Concepts of OS.
+
+Day 12 - 11 February 2024:
+Studied Concepts of OS.

@@ -46,7 +46,7 @@ Process v/s Thread v/s Program?
   A thread is an independent light weight unit or sequence of execution within a process that can be run in parallel with other threads within the same process. A process can have several threads and they can share resources amongst each other, that includes memory, compute, data and communication. Processes don't share resources, however threads within the same process can share resources if a process spins up multiple threads. A thread also has it's own Program Counter Stack.
 
 What is Concurrent Execution?
-  In one line it's - Full utilization and better performance. Concurrent execution of Threads, Programs or Processes ensures better utilisation of the computer's resources. Thus improving the performance of the system to work faster and provide a better user experience.
+  In one line it's - Full utilization and better performance. Concurrent execution of Threads, Programs or Processes ensures better utilization of the computer's resources. Thus improving the performance of the system to work faster and provide a better user experience.
 
 How is a program executed?
   Suppose that we wanna play a game like Battlefield or Call of Duty, we know these are huge programs which can be 100 GB on the Hard drive/Secondary storage as well. We know that most computers have 16 GB RAM. Still we can play the game. So how does it work out to play a 100 GB game on a 16 GB computer? The answer is during execution of a process, the relevant resources are pulled from Secondary memory(Hard Drive) to Primary memory and the execution is started. There's something called Virtual Memory which plays out a role in such cases. Will study more on that later.
@@ -63,3 +63,41 @@ What's Multi Processing, Multi Programming, Multi Tasking and Multi Threading?
 
   Multi Tasking:
   Multi Tasking allows execution of multiple tasks, processes and programs to run in parallel on a Single Core. The Core's clock time is divided and swicthed rapidly between processes. Thus higher clock speeds are considered better for a faster core and CPU performance. Modern OSes use Multi Tasking on almost every second when from the time when the system is turned on until it's turned off.
+
+Process Execution LifeCycle:
+  The OS has complete control over how a process must be executed and in which order must it be picked up and in which state a particular process must be put in.
+  Typical Process Execution LifeCycle is:
+    New => Ready => Run => Termination
+  But there are intermediate states involed in the LifeCycle as well, such states might be introduced based on the situation that the process is in.
+  For Example, a process might halt it's execution temporarily(be suspended or in wait state) if another High Priority process might require the critical resources of CPU such as time and compute. Also, it might halt or suspend it's execution if it's waiting for I/O from the user or from the network. After the wait is over the process is picked back up for execution. If the wait time is too long then it might be killed altogether by the system itself. Such as a request with 408 status code.
+
+  A process for whether to pick up for execution depends on several things; such as priority, wait queue, suspend state, scheduling algo, etc.
+  Additional States of a Process in execution LifeCycle are:
+    Wait/Block - Wait for I/O, or wait for another process in execution to be over
+    Suspend/Wait - Suspended and moved to Wait Queue
+    Suspend/Ready - Suspended but moved to Ready Queue
+
+  Things involved in Process execution LifeCycle are:
+    Scheduling Algorithm
+    Priority Queue
+    Wait Queue
+    Suspend Queue
+
+CPU Scheduling Algorithm:
+  CPU scheduling algorithms are used by the OS to determine the order in which processes are executed on the CPU.
+  Some of the well known algorithms are:
+
+  First Come First Serve(FCFS):
+  The meaning of the Algo is self explanatory in nature but it might lead to poor CPU utilization because in such a case a long process might occupy the entire time of the CPU and thus leave shorter processes too long in the Wait queue, also might abandon them altogether due to long wait times. It's also called Starvation in technical terms.
+
+  Shortest Job Next(SJN) or Shortest Job First(SJF):
+  SJF selects the process in which a process with the shortest execution time(burst time) is picked up first. This algo amins to minimize the average wait times and is suitable when Burst times are known in advance. Long processes might starve due to this approach.
+
+  Round Robin(RR):
+  This algo assigns a fixed time or Quantum for each process to execute and all the processes in the ready queue are given a chance for it's execution reagrdless of it's burst time known or unknown. Once a process exhausts it's quantum time from the CPU, then it's moved back to ready queue or wait queue depending upon the situation. But the disadvantage here is that it requires high amount of context switching and might be an overkill for long processes.
+
+  Priority Scheduling:
+  This assigns a priority all the processes, nataurally the processes with the highest priorities are executed first. Processes with the priority 0 is considered as highest priority. Subsequently processes with lower priority are executed. Due to which the currently executing process might have to move into Ready queue as per the situation. In this approach Lower priority processes might starve.
+
+  Multilevel Queue Scheduling:
+  Multilevel queue scheduling divides the ready queue into multiple priority queues eahc has it's own scheduling algorithms. Processes are initially placed in the highest priority queue and can move between queues based on a criteria of switching. Each queue can use a different scheduling algorithm suitable for the queue.
