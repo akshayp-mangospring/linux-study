@@ -100,4 +100,60 @@ CPU Scheduling Algorithm:
   This assigns a priority all the processes, nataurally the processes with the highest priorities are executed first. Processes with the priority 0 is considered as highest priority. Subsequently processes with lower priority are executed. Due to which the currently executing process might have to move into Ready queue as per the situation. In this approach Lower priority processes might starve.
 
   Multilevel Queue Scheduling:
-  Multilevel queue scheduling divides the ready queue into multiple priority queues eahc has it's own scheduling algorithms. Processes are initially placed in the highest priority queue and can move between queues based on a criteria of switching. Each queue can use a different scheduling algorithm suitable for the queue.
+  Multilevel queue scheduling divides the ready queue into multiple priority queues eahc has it's own scheduling algorithms. Processes are initially placed in the highest priority queue and can move between queues based on a criteria of switching. Each queue can use a different scheduling algorithm suitable for the queue. But it's usually a combination of Round Robin along with Priority scheduling.
+
+Critical Section Problem:
+  This problem occurs when multiple processes are trying to modify the same or a shared resource. This might lead to loss of data consistency, integrity and relaibility.
+  To maintain data integrity it must be ensured that only one process/thread must be allowed to modify a resource at the time. To achieve this it must be done in a mutually exclusive manner. Usually locks are applied on resources on which the actions are being performed upon. Generally Write locks are much more important than Read locks. Process synchronization plays a major role in this scenario.
+
+Process Synchronization:
+  This serves as a traffic signal to help regulate the flow of vehicles at an intersection. Process synchronization thet coordindate and communicate properly to avoid conflicts and proper order of execution of processes. It helps prevent issues like Race Conditions, Data Inconsistencies or Deadlocks when multiple processes access shared resources. We have to build a Process Synchronization mechanism to ensure smooth running of the system.
+  The requirements for building a Process Synchronization mechanism are as follows:
+    Mutual Exclusion - Mutex:
+    Every mechanism should enforce Mutual Exclusion or Mutex in short for all the shared resources, which means that no other process or thread should access a shared resource when another process or thread is accessing it to avoid data inconsistency.
+
+    Progress Tracking:
+    Every process should make continuous progress and should not be executing indefinitely nor be halted in execution. The continuous progress ensures that we don't arrive to a deadlock situation where the current process is not leaving the control of a shared resource whereas the other processes are waiting to access that shared resource.
+
+    Bounded Waiting:
+    Every process should have a bounded waiting time so that it is not starved indefinitely. This ensures that every process gets a chance to access a shared resource.
+
+Process Synchronization Mechanisms:
+
+  Types of Locks:
+    Read Lock
+    Write Lock
+    Mutex
+    Semaphore
+
+  Deadlocks & Deadlock Avoidance:
+
+Concepts of OS:
+  System Calls:
+    Process System Calls:
+      fork()
+      wait()
+      exit()
+    File Management System Calls:
+      open()
+      read()
+      write()
+      close()
+      chmod()
+      unmask()
+    Information Management:
+      getpid()
+      alarm()
+      sleep()
+
+  System Initialization Process:
+    UEFI
+    Boot Loader
+    GRUB
+
+  Memory Allocation Methods:
+    Paging Table
+    Segmentation
+    Virtual Memory
+    Demand Paging
+    Page Faults
