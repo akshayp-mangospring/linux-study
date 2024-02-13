@@ -40,7 +40,7 @@ Process v/s Thread v/s Program?
   It's basically coding that we do. It's lines of instructions written in a particular programming language and executed in a specific order. It is an executable code. A program can spin up multiple processes. Spinning up new processes is also called as Process Spawning.
 
   Process:
-  A process is actually an instance of a program in execution. A process occupies resources of a computer while executing, once executed the resources are freed/deacllocated. A process has it's own Program Counter, Stack, variables and execution context(Program Control Block - PCB). A process terminates when the execution of the program is complete regardless if sucessful or not. Processes can be concurrent and communicate with each other through Inter Process Communication - IPC. IPC happens through a Bus Memory. A process can spin up multiple threads within itself. However typically a light weight process is single threaded, only heavy processes are multi threaded. Spinning up new threads is also called as Thread Spawning.
+  A process is actually an instance of a program in execution. A process occupies resources of a computer while executing, once executed the resources are freed/deallocated. A process has it's own Program Counter, Stack, variables and execution context(Program Control Block - PCB). A process terminates when the execution of the program is complete regardless if sucessful or not. Processes can be concurrent and communicate with each other through Inter Process Communication - IPC. IPC happens through a Bus Memory. A process can spin up multiple threads within itself. However typically a light weight process is single threaded, only heavy processes are multi threaded. Spinning up new threads is also called as Thread Spawning.
 
   Thread:
   A thread is an independent light weight unit or sequence of execution within a process that can be run in parallel with other threads within the same process. A process can have several threads and they can share resources amongst each other, that includes memory, compute, data and communication. Processes don't share resources, however threads within the same process can share resources if a process spins up multiple threads. A thread also has it's own Program Counter Stack.
@@ -127,6 +127,40 @@ Process Synchronization Mechanisms:
     Semaphore
 
   Deadlocks & Deadlock Avoidance:
+  Deadlocks means that the system can't move further and will have to be shutdown. The following are the necessary conditions for the deadlock to occur:
+    Mutual Exclusion
+    Hold and Wait
+    No preemption
+    Circular Wait
+
+  Deadlock Handling Techniques:
+    Deadlock Prevention
+    Deadlock Avoidance
+    Deadlock Detection
+    Deadlock Recovery
+    Deadlock Ignorance
+  But most systems like Linux and Windows focus more on performance than preventing Deadlocks, because most sytems are used for personal use.
+
+Memory Management:
+  Fixed partitioning and dynamic partitioning are the techniques used for allocation of memory and manage resources.
+
+  Fixed Partitioning:
+  In fixed partitioning the memory is divided into fixed size partitions or blocks and each partition is assigned a specific process or task. That partition remains fixed throughout the execution. Fixed partition is relatively simple to implement but causes a lot of memory to be unused and thus wasted. This is known as Internal Fragmentation.
+
+  Dynamic Partitioning:
+  This is also called as variable partitioning, it allows memory to be allocated and deallocated dynamically based on size requirements of processes. This solves the problem of Internal Fragmentation to a great extent, but managing fragmentation and efficiently allocating and deallocating memory can be more complex. But a problem over here is that it may lead to External Fragmentation, which means that when a process is unlaoded from the memory then a new process of a larger size will not be to be loaded within the same fragment as that of the deallocated process. Thus it will lead to memory wastage again.
+  The problem of Internal and External fragmentation is solved through Paging Algorithms, we'll study that later.
+  Techniques like first-fit, best-fit and worst fit are used in systems which use Dynamic Partitioning.
+
+    First Fit: Allocates the first available memory block that is large enough to accomodate the process. It starts searching the memory and allocates the first available block suitable for the process.
+    Best Fit: This algo also searches the memory and allocates a block which is equivalent or a little larger than the process and then allocate it there.
+    Worst Fit: It finds the biggest space and then starts dumping all the processes in it.
+
+  Paging:
+  Better than Dynamic partitioning.
+
+  Segmentation:
+  Better than Paging.
 
 Concepts of OS:
   System Calls:
