@@ -141,8 +141,15 @@ Process Synchronization Mechanisms:
     Deadlock Ignorance
   But most systems like Linux and Windows focus more on performance than preventing Deadlocks, because most sytems are used for personal use.
 
+FUN QUESTION ABOUT INCREASING RAM AND MEMORY:
+Why is it advised that we increase the RAM whenever our computer becomes slow?
+It's because when we increase the RAM it doesn't mean that our CPU has become faster, thus the computer has become faster. The CPU speed depends on the Clock speed. But instead of CPU becoming faster the degree of Multi Programming has increased due to availability of more memory when we increase the RAM. The processor can now use more memory to execute more processes in parallel. In collaboration of Virtual Memory and Main Memory the computer becomes faster.
+
 Memory Management:
   Fixed partitioning and dynamic partitioning are the techniques used for allocation of memory and manage resources.
+
+  Fragmentation:
+  Unused space in memory.
 
   Fixed Partitioning:
   In fixed partitioning the memory is divided into fixed size partitions or blocks and each partition is assigned a specific process or task. That partition remains fixed throughout the execution. Fixed partition is relatively simple to implement but causes a lot of memory to be unused and thus wasted. This is known as Internal Fragmentation.
@@ -156,8 +163,20 @@ Memory Management:
     Best Fit: This algo also searches the memory and allocates a block which is equivalent or a little larger than the process and then allocate it there.
     Worst Fit: It finds the biggest space and then starts dumping all the processes in it.
 
-  Paging:
-  Better than Dynamic partitioning.
+  Paging - Revolutionary:
+  Better than Dynamic Partitioning.
+  It's a storage mechanism that is used to retrieve processes from Secondary Storage into the Main Memory in the form of Pages. The main idea is to divide the memory in the form of Pages. The main memory will also be divided in the form of Frames. One page of the process can be stored in the frames of the memory. The pages can be stored in different places in memory but the priority is to always find out contiguous frames of memory. Typical size of pages is 1KB for instance.
+    Page Table:
+    Pages of the process are brought into the main memory only when they are required otherwise they reside in the secondary storage.
+    Pages are managed by the Memory Management Unit(MMU). The MMU basically maps the pages and addresses of the memory locations on which a process is currently residing and executing. This is called as Page Table.
+    The Program counter executes in a serial manner and works in coordindation of the Page Table for getting the Physical addresses of the memory locations.
+    The Page Table has got 2 columns, the Logical address column and the Physical address column. The Program counter reaches the Logical address and accesses the Physical address from the memory for execution.
+
+  Virtual Memory:
+  Virtual memory is a OS concept that lets computer use more memory than it actually has. It creates an imaginary memory space that combines Main Memory and Secondary memory. When a program needs more memory than is available on the RAM, it moves some data temporarily to Secondary Storage. This allows the computer to run larger programs and handle multiple tasks at once. Virtual Memory also provides Memory protection.
+  Instead of loading one big process in the main memory the OS loads different parts of more than one process in the main memory. By doing this Multi Programming will increase and therefore the CPU utilization will also be increased.
+
+  Demand Paging:
 
   Segmentation:
   Better than Paging.
@@ -186,8 +205,6 @@ Concepts of OS:
     GRUB
 
   Memory Allocation Methods:
-    Paging Table
     Segmentation
-    Virtual Memory
     Demand Paging
     Page Faults
