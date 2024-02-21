@@ -51,3 +51,8 @@ Studied Concepts of OS.
 
 Day 14 - 16 February 2024:
 Completed basic concepts of OS.
+
+Day 14 - 21 February 2024:
+Over the past few days, I wasn't able to study. I was not focused.
+But I bought the Practice Exam questions course and I am back on track now. Our group went over the questions yesterday.
+Now, we are focusing fully on AWS only. The phase of learning Linux basics is over now. AWS begins...
