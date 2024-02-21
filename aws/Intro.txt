@@ -1,0 +1,17 @@
+This exam will focus on architecting an application. I'll be studying over 30 AWS services. Brace yourself, it's gonna change your life. It's gonna be Revolutionary!!!
+
+The topics to focus upon:
+  IAM and AWS CLI
+  EC2
+  S3
+  Route 53
+  RDS, Aurora, ElastiCache
+  Serverless
+  SNS, SQS, Kinesis, Active MQ
+  CloudFront
+  S3 Security
+  VPC
+  Whitepapers
+
+In Cloud Practitioner, we only study about S3 and EC2, nothing else. But in Solutions Architect Associate, we study about a lot more services.
+Just keep in mind, that all the services are linked and interconnected to each other.

@@ -56,3 +56,5 @@ Day 14 - 21 February 2024:
 Over the past few days, I wasn't able to study. I was not focused.
 But I bought the Practice Exam questions course and I am back on track now. Our group went over the questions yesterday.
 Now, we are focusing fully on AWS only. The phase of learning Linux basics is over now. AWS begins...
+
+Went over the topics to study in AWS, completed the section 1, 2, 3  of the course and also began playing with the AWS console a bit.
