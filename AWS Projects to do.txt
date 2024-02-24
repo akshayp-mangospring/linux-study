@@ -1,0 +1,52 @@
+Relevant Specializations and Guided Projects
+  Create Virtual Machine EC2
+    Link: https://www.coursera.org/projects/create-virtual-machine-aws-ec2
+
+    Steps to perform:
+      Explain the Use of Virtual Machines
+      Compare and Contrast Cloud Platforms
+      Set Up a Amazon Web Services (AWS) Account
+      Create Two Virtual Machines in AWS
+      Test and Run a Virtual Machine in AWS
+
+  Hosting Static Page in AWS S3
+    Link: https://www.coursera.org/projects/hosting-static-web-site-aws
+
+    Steps to perform:
+    Task 1: You will be introduced to project details and see proposed static website in action in AWS S3 and explore entire files.
+    Task 2: You will be able to understand how AWS S3 main components work and how to use them to create and upload our static website.
+    Task 3: You will be able to configure AWS S3 to host a static website, configure main pages, error pages and see website endpoint, in any region around the world.
+    Task 4: You will be able to set the right permissions and security configurations to make our static website public and available for all internet users.
+    Task 5: You will be able to configure versioning for your static website, make updates and roll back updates.
+
+  Publish a NodeJS Website
+    Link: https://www.coursera.org/projects/aws-publish-nodejs-website-from-scratch
+
+    Steps to perform:
+      Launch an AWS instance
+      Configure Static IP address
+      Open up a private port
+      Configure SSH client and upload the website
+      Use Apache to serve a static website
+      Change the Apache config to serve a NodeJS app
+      Automate application start
+
+  MySQL DB with AWS RDS
+    Link: https://www.coursera.org/projects/mysql-aws-rds
+
+    Steps to perform:
+      Create a security group
+      Creating a MySQL DB instance
+      Connecting to the DB instance via MySQL client
+      Populating data on the database
+      Terminating MySQL DB instance
+
+  Create Amazon Aurora DB
+    Link: https://www.coursera.org/projects/create-your-first-amazon-aurora-database-in-aws
+
+    Steps to perform:
+      Understand the overall project and you will also create VPC in AWS
+      Create Public and Private Subnets and Setup networking using Route Tables
+      Create EC2 instance in Public Subnet
+      Create Amazon Aurora Database cluster
+      Connect to Amazon Aurora Database using MySQL Workbench
