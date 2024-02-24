@@ -1,0 +1,13 @@
+Identity and Access Management - IAM. Manage Access to AWS resources.
+When we create our AWS account we create it as a root user. But we should never use it after that. We should just create user groups and then we should perform actions using those specific users.
+Users are users within our organization and can be grouped. Just like we can create users and user groups in Linux, we can do the same way in AWS as well.
+We can spot the same in Service Manager of MangoApps as well. Some people have deployment rights and some don't. We have to assign them specific permissions.
+
+Important sentence:
+Groups only have users and it can't contain other groups and a user can be a part of Multiple groups.
+
+Permissions(Policies):
+Users or Groups can be assigned as JSON documents called Policies.
+In AWS we apply a principle called as the Least Privilege Principle, which means that all the users must ahve the least privileges possible for operation of their specific roles. So, don't give more permissions than the user needs.
+
+Just like Route 53. IAM is a global service. It doesn't operate upon a specific region. We can define stuff later for operations.

@@ -10,3 +10,8 @@ We need to stop the machine after each session so as to avoid billing.
 Just a caveat - We can also waive off our bill with a request to AWS.
 
 Through Putty we can SSH into the server and start playing with the server very quickly.
+
+AWS IAM user login:
+https://akshay-437.signin.aws.amazon.com/console
+IAM user name: akshay-pawar
+Password: AdolfHitler_12

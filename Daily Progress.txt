@@ -58,3 +58,7 @@ But I bought the Practice Exam questions course and I am back on track now. Our 
 Now, we are focusing fully on AWS only. The phase of learning Linux basics is over now. AWS begins...
 
 Went over the topics to study in AWS, completed the section 1, 2, 3  of the course and also began playing with the AWS console a bit.
+
+Day 15 - 24 February 2024:
+Studied AWS Regions, AZs, Edge Locations, etc.
+Also Studied basics of IAM.
