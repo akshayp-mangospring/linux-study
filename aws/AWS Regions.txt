@@ -1,0 +1,32 @@
+AWS has Global Infrastructure. It's AWS's own private network which also is called as AWS Global Infrastructure. Thus it's available globally.
+
+AWS Regions:
+An AWS Region is a cluster of Data Centers. Most of the AWS services are region scoped. That means that the specific service will be served from that specific region only. So, we have the power to choose an AWS region and each region provides it's own set of services, some of the services are specifically available in some regions only. So, which region we choose depends on a set factors:
+  Compliance:
+    Some of the data which is sensitive, such as data from the government projects, legal rules, it'll never leave a particular region without our explicit permission.
+  Proximity:
+    The latency is reduced the nearest region we choose for hosting the app. So, for us, the Mumbai Region(ap-south-1) would be the most suitable to host our own apps.
+  Availability of Services:
+    Some of the services are available in specific regions only as specified above.
+  Pricing:
+    It varies from region to region and it's specified in the pricing page of the services.
+
+  North Virginia(us-east-1) is the biggest region available for everyone to use. But I'll be choosing Mumbai Region for my own purposes as I think it ahs got all the services available for my own purposes.
+  To see the available services in a specific Region please check:
+  https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/
+
+AWS Availability Zones:
+Each region has Availability Zones(AZs) in it. Minimum is 3 and Max is 6. But usually, it's 3.
+For example - The Sydney Region will look like this in terms of AZs:
+ap-southeast-2a
+ap-southeast-2b
+ap-southeast-2c
+
+All the above 3 are AZs in the Sydney Region.
+Eahc AZ will be at physically distant locations so that they're not prone to disasters.
+Each AZ will have discrete data centers. Each AZ is connected with a ultra high bandwidth, low latency and secure network to all the AZs in the region, thus forming a Region of AWS.
+
+AWS Data Centers:
+
+AWS Edge Locations/Points of Presence:
+AWS has 400+ Edge Locations and 10+ Regional Caches. Thus content is delivered to end users with lower latency.

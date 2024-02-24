@@ -6,7 +6,7 @@ Go Lang - Easy
 Python - Easy
 Docker - Black Box for me as of now. Need to find out the purpose for it's study.
 Jenkins - Black Box for me as of now. Need to find out the purpose for it's study.
-Kubernetes - Black Box for me as of now. Need to find out the purpose for it's study.
 Ansible - Black Box for me as of now. Need to find out the purpose for it's study.
 Terraform - Black Box for me as of now. Need to find out the purpose for it's study.
 Prometheus - Black Box for me as of now. Need to find out the purpose for it's study.
+Kubernetes - Black Box for me as of now. Need to find out the purpose for it's study.

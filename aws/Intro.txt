@@ -1,17 +1,28 @@
 This exam will focus on architecting an application. I'll be studying over 30 AWS services. Brace yourself, it's gonna change your life. It's gonna be Revolutionary!!!
 
 The topics to focus upon:
-  IAM and AWS CLI
-  EC2
-  S3
-  Route 53
+  IAM - Identity and Access Management
+  AWS CLI - AWS console
+  EC2 - Elastic Compute Cloud - Infrastructure as a Service - Virtual Servers in the Cloud
+  Elastic BeanStalk - Platform as a Service
+  Cloud Formation - Platform as a Service - Automate Resource Provision
+  Lambda - Function as a Service
+  Rekognition - Software as a Service
+  S3 - Simple Storage Service - Scalable Storage in the Cloud
+  Route 53 - Scalable Cloud Domain Name System (DNS) web service
   RDS, Aurora, ElastiCache
   Serverless
-  SNS, SQS, Kinesis, Active MQ
-  CloudFront
+  Kinesis, Active MQ
+  SQS - Simple Queue Service
+  SNS - Simple Notification Service
+  SES - Simple Email Service
+  CloudFront - Content Delivery Network
   S3 Security
   VPC
   Whitepapers
 
 In Cloud Practitioner, we only study about S3 and EC2, nothing else. But in Solutions Architect Associate, we study about a lot more services.
 Just keep in mind, that all the services are linked and interconnected to each other.
+
+Right now: Netflix, Dropbox, Airbnb, NASA, Activision, McDonald's uses AWS for the Cloud Storage - That's Amazing!!!
+SQS, S3 and EC2 all were launched in 2006 as part of their initial release - 1.0.
