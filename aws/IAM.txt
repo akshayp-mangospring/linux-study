@@ -7,7 +7,35 @@ Important sentence:
 Groups only have users and it can't contain other groups and a user can be a part of Multiple groups.
 
 Permissions(Policies):
-Users or Groups can be assigned as JSON documents called Policies.
-In AWS we apply a principle called as the Least Privilege Principle, which means that all the users must ahve the least privileges possible for operation of their specific roles. So, don't give more permissions than the user needs.
+Users or Groups can be assigned as JSON documents called Policies. We can also create inline policies for a specific user so that he has different privileges if he is not a part of any group.
+A policy applied to a group is always applicable to every member in the group.
+In AWS we apply a principle called as the Least Privilege Principle, which means that all the users must have the least privileges possible for operation of their specific roles. So, don't give more permissions than the user needs.
 
 Just like Route 53. IAM is a global service. It doesn't operate upon a specific region. We can define stuff later for operations.
+
+Structure of Policies Document:
+  Version - This includes the version language in which the document is written, it's always "2012-10-17"
+  Id - An identifier for the policy - Optional
+  Statement - An array of Individual Statements. It's required for the policy to be effective.
+    Sid - Statement Id - Optional
+    Effect - It can be either one of `Allow` or `Deny`, thus defines either allow or deny access to the resources
+    Principal - Not a part of the policies now. We have to manage it with User groups. Account/User/Role that this policy is applied to.
+    Action - List of actions this policy allows or denies.
+    Resource - The resource upon which the effect and action is applied or denied.
+
+Example Policy Structure JSON:
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "*",
+            "Resource": "*"
+        }
+    ]
+}
+```
+The above Policy indicates that this user is allowed to do every Action as the Root user is allowed to do so. `Allow` effect with  a `*` indicates allow every action on every resource.
+
+Check out `./admin_access_amplify.json` to get to know more detailed specification of the policies written.
