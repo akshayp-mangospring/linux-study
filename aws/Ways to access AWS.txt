@@ -1,0 +1,10 @@
+We have 3 ways to access AWS:
+  AWS Management Console - Web Interface - Secured with a Password and MFA.
+  AWS CLI - Protected with Access Keys.
+  AWS SDK - Protected with Access Keys. It's actually useful to call AWS from within our App. Just like it's been done in Service Manager.
+
+  To Do:
+  Ask Sid Da, that did we use AWS SDK in Service Manager?
+
+We can generate access keys with AWS Management Console - Web Interface.
+Users can manage their own access keys. Access keys are just like passwords, so don't share them.

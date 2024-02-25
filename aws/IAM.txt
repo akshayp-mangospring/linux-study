@@ -11,6 +11,11 @@ Users or Groups can be assigned as JSON documents called Policies. We can also c
 A policy applied to a group is always applicable to every member in the group.
 In AWS we apply a principle called as the Least Privilege Principle, which means that all the users must have the least privileges possible for operation of their specific roles. So, don't give more permissions than the user needs.
 
+There are 3 ways to attach a policy to a user:
+  Via a User Group
+  Via Directly - Attaching a AWS pre-shipped policy
+  Via Inline - Custom policy created for this user only
+
 Just like Route 53. IAM is a global service. It doesn't operate upon a specific region. We can define stuff later for operations.
 
 Structure of Policies Document:
@@ -38,4 +43,10 @@ Example Policy Structure JSON:
 ```
 The above Policy indicates that this user is allowed to do every Action as the Root user is allowed to do so. `Allow` effect with  a `*` indicates allow every action on every resource.
 
-Check out `./admin_access_amplify.json` to get to know more detailed specification of the policies written.
+Check out `./policies/admin_access_amplify.json` to get to know more detailed specification of the policies written. That policy is an AWS pre-shipped policy.
+Also check out other policies in that folder.
+
+Every IAM user needs to have Multi Factor Authentication(MFA) on their account, because the passwords are predictable to machines these days. It's a must and recommended to use it. At least the root user needs to be protected in every case.
+
+To do:
+Protect the root user of my account.

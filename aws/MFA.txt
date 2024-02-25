@@ -1,0 +1,14 @@
+Multi Factor Authentication(MFA):
+A password that you know + A secure device that you own(Mobile phone in our case).
+Thus, Password + MFA => Successful Login.
+
+Main benefit of MFA is that even if a password is stolen or hacked, the account is still not compromised.
+MFA can be with Software options:
+  Google Authenticator
+  Authy
+
+MFA can be with Hardware options:
+  Universal 2nd Factor(U2F) Security Key => YubiKey - Multiple root IAM users using a single hardware security key.
+  SurePassID => AWS GovCloud
+
+It's recommended to secure every AWS root account with MFA. It's a must.

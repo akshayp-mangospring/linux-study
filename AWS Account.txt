@@ -15,3 +15,8 @@ AWS IAM user login:
 https://akshay-437.signin.aws.amazon.com/console
 IAM user name: akshay-pawar
 Password: AdolfHitler_12
+
+AWS IAM Practice User login:
+https://akshay-437.signin.aws.amazon.com/console
+IAM user name: new-user
+Password: YogeshTheZopes@7276
