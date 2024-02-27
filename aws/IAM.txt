@@ -8,6 +8,7 @@ Groups only have users and it can't contain other groups and a user can be a par
 
 Permissions(Policies):
 Users or Groups can be assigned as JSON documents called Policies. We can also create inline policies for a specific user so that he has different privileges if he is not a part of any group.
+These policies are not only limited to user roles and user groups but also applicable for IAM Roles, which some AWS services needs permissions to perform actions on your behalf.
 A policy applied to a group is always applicable to every member in the group.
 In AWS we apply a principle called as the Least Privilege Principle, which means that all the users must have the least privileges possible for operation of their specific roles. So, don't give more permissions than the user needs.
 
@@ -59,3 +60,22 @@ Common Roles:
 EC2 Instance Roles
 Lambda Function Roles
 Roles for CloudFormation
+
+IAM Security Tools:
+  IAM Credentials Report:
+  A Report which lists all your user's accounts and their status of the credentials - meaning how much secure their credentials are, then we can tell them to increase the security of those credentials if necessary.
+
+  IAM Access Advisor:
+  Access Advisor knows the service permissions granted to a user and when those were last accessed. This can help us to reduce the permissions level for the users who are not accessing the services. This is followed because of the Principle of Least Privileges.
+
+Best Practices:
+  Don't use the root user account except when creating the account itself.
+  Create another user with sufficient privileges and use that user.
+  One physical user = One AWS account.
+  Assign users to groups and assign permissions to those groups, not to individual users themselves with inline policies.
+  Create a strong password policy.
+  Enforce MFA for users, at least for the root user.
+  Create and use IAM roles when giving permissions to AWS services like EC2, etc.
+  Use Access Key, Secret Access Key when using AWS CLI.
+  To audit the permissions of your account use IAM Credentials Report and IAM Access Advisor.
+  Never share your Creds....
