@@ -1,10 +1,24 @@
 We have 3 ways to access AWS:
-  AWS Management Console - Web Interface - Secured with a Password and MFA.
-  AWS CLI - Protected with Access Keys.
-  AWS SDK - Protected with Access Keys. It's actually useful to call AWS from within our App. Just like it's been done in Service Manager.
+  AWS Management Console:
+  Web Interface - Secured with a Password and MFA.
+
+  AWS CLI:
+  Protected with Access Keys.
+  We can access remote servers from our local shell.
+
+  Installed the AWS CLI:
+  ```
+  akshay-pawar@akshay-pawar:~/linux-study$ aws --version
+  aws-cli/2.15.23 Python/3.11.6 Linux/5.15.0-97-generic exe/x86_64.ubuntu.20 prompt/off
+  akshay-pawar@akshay-pawar:~/linux-study$
+  ```
+
+  AWS SDK:
+  Protected with Access Keys. It's actually useful to call AWS from within our App. Just like it's been done in Service Manager.
+  We can access AWS services programatically when we embed the AWS SDK in our app.
 
   To Do:
-  Ask Sid Da, that did we use AWS SDK in Service Manager?
+  Ask Sid Da, that did we use AWS SDK in Service Manager? Maybe we might also be doing it in MangoApps.
 
 We can generate access keys with AWS Management Console - Web Interface.
 Users can manage their own access keys. Access keys are just like passwords, so don't share them.

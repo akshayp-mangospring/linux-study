@@ -69,3 +69,6 @@ Created new user groups on AWS console.
 Added users to those user groups on AWS console.
 Attached policies to users via User Groups, Inline and attaching directly(AWS pre-shipped) on AWS console.
 Secured my root user account with MFA.
+
+Day 17 - 27 February 2024:
+Started study on AWS CLI.

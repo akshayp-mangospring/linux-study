@@ -49,4 +49,4 @@ Also check out other policies in that folder.
 Every IAM user needs to have Multi Factor Authentication(MFA) on their account, because the passwords are predictable to machines these days. It's a must and recommended to use it. At least the root user needs to be protected in every case.
 
 To do:
-Protect the root user of my account.
+Protect the root user of my account - Done

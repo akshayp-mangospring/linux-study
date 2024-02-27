@@ -2,7 +2,7 @@ This exam will focus on architecting an application. I'll be studying over 30 AW
 
 The topics to focus upon:
   IAM - Identity and Access Management
-  AWS CLI - AWS console
+  AWS CLI - AWS console, but with it you can access the server from local
   EC2 - Elastic Compute Cloud - Infrastructure as a Service - Virtual Servers in the Cloud
   Elastic BeanStalk - Platform as a Service
   Cloud Formation - Platform as a Service - Automate Resource Provision

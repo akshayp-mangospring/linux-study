@@ -1,4 +1,5 @@
 EmailID used: abp9834@gmail.com
+Password: AdolfHitler_12
 
 Pre Requisites:
 We need to have a Debit/Credit Card, an Email Id and PAN Card to create an account on AWS.
@@ -20,3 +21,7 @@ AWS IAM Practice User login:
 https://akshay-437.signin.aws.amazon.com/console
 IAM user name: new-user
 Password: YogeshTheZopes@7276
+
+Root User Access Keys:
+Access Key: AKIAVRUVT3YTRPDLU45F
+Secret Access Key: 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
