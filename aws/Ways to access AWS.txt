@@ -12,6 +12,51 @@ We have 3 ways to access AWS:
   aws-cli/2.15.23 Python/3.11.6 Linux/5.15.0-97-generic exe/x86_64.ubuntu.20 prompt/off
   akshay-pawar@akshay-pawar:~/linux-study$
   ```
+  Further we can configure AWS CLI using `aws-configure` command and provide the access key, secret access key and start using the AWS via our very own shell.
+
+  After configuring AWS CLI we can use it like this:
+  ```
+  akshay-pawar@akshay-pawar:~$ aws iam list-users
+  {
+      "Users": [
+          {
+              "Path": "/",
+              "UserName": "akshay-pawar",
+              "UserId": "AIDAVRUVT3YTXSIXDRZJU",
+              "Arn": "arn:aws:iam::381492125223:user/akshay-pawar",
+              "CreateDate": "2024-02-24T17:18:51+00:00",
+              "PasswordLastUsed": "2024-02-25T06:48:27+00:00"
+          },
+          {
+              "Path": "/",
+              "UserName": "new-user",
+              "UserId": "AIDAVRUVT3YTYPM6RXCMW",
+              "Arn": "arn:aws:iam::381492125223:user/new-user",
+              "CreateDate": "2024-02-25T07:21:43+00:00",
+              "PasswordLastUsed": "2024-02-25T07:30:25+00:00"
+          },
+          {
+              "Path": "/",
+              "UserName": "practise-user",
+              "UserId": "AIDAVRUVT3YTUZK7KA3IX",
+              "Arn": "arn:aws:iam::381492125223:user/practise-user",
+              "CreateDate": "2024-02-25T04:45:49+00:00"
+          },
+                  {
+            "Path": "/",
+            "UserName": "yogesh-zope",
+            "UserId": "AIDAVRUVT3YT6N5GHWNKH",
+            "Arn": "arn:aws:iam::381492125223:user/yogesh-zope",
+            "CreateDate": "2024-02-24T17:35:29+00:00",
+            "PasswordLastUsed": "2024-02-25T04:13:13+00:00"
+        }
+      ]
+  }
+  akshay-pawar@akshay-pawar:~$
+  ```
+
+  We can also use AWS CloudShell. It's available in the Mumbai region(ap-south-1) that I use.
+  It's actually a browser based shell built by AWS. It's the same as AWS CLI, but it's on the cloud itself. But I don't prefer it. I prefer the local shell, it's best because I can get to use al the aliases which I have configured.
 
   AWS SDK:
   Protected with Access Keys. It's actually useful to call AWS from within our App. Just like it's been done in Service Manager.

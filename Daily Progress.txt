@@ -72,3 +72,5 @@ Secured my root user account with MFA.
 
 Day 17 - 27 February 2024:
 Started study on AWS CLI.
+Added Access Key, Secret Key, for the user.
+Also played with CloudShell but I'm not liking it. I like the AWS CLI more.

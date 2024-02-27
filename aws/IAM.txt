@@ -50,3 +50,12 @@ Every IAM user needs to have Multi Factor Authentication(MFA) on their account, 
 
 To do:
 Protect the root user of my account - Done
+
+IAM Roles for Services:
+Some AWS services needs to perform actions on your behalf. To do so, we will assign permissions to AWS services with IAM Roles.
+IAM Role is not a physical user, instead it's supposed to be used by the EC2 instances. An EC2 instance is just like a virtual server.
+
+Common Roles:
+EC2 Instance Roles
+Lambda Function Roles
+Roles for CloudFormation
