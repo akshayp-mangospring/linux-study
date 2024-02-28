@@ -1,0 +1,6 @@
+Billing Info is accessible only to the Root Account and not to any other account in AWS by default, we need to enable it to IAM users if necessary.
+Right now I've enabled the Billing info to the IAM users with full admin access.
+
+Budgets:
+We can set up a budget which basically is an alert notification sent via email to get to know that we have reached a particular threshold to avoid any extra costs to be billed to us.
+We can turn off the specific or set of services when we have reached the threshold. We need to be much more familiar to the Billing section of AWS for this, because it eventually decides the cost for any project.

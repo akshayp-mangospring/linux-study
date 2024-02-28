@@ -77,3 +77,7 @@ Also played with CloudShell but I'm not liking it. I like the AWS CLI more.
 Created IAM role for EC2 as well, but still have got no idea of how to use it. It'll be cleared in the next section of the course.
 Completed the Section 4 of IAM and AWS CLI from the Udemy Course.
 Cleared out the IAM and AWS CLI quiz at the end of the section as well.
+
+Day 18 - 28 February 2024:
+Set up a zero spend budget on my AWS account. Also, set up notifiers for Hitesh, Yogesh Zope and I for the same.
+Started on the study of EC2.
