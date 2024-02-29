@@ -74,10 +74,13 @@ Day 17 - 27 February 2024:
 Started study on AWS CLI.
 Added Access Key, Secret Key, for the user.
 Also played with CloudShell but I'm not liking it. I like the AWS CLI more.
+CloudShell is paid which is kind of a bummer.
 Created IAM role for EC2 as well, but still have got no idea of how to use it. It'll be cleared in the next section of the course.
 Completed the Section 4 of IAM and AWS CLI from the Udemy Course.
 Cleared out the IAM and AWS CLI quiz at the end of the section as well.
 
 Day 18 - 28 February 2024:
 Set up a zero spend budget on my AWS account. Also, set up notifiers for Hitesh, Yogesh Zope and I for the same.
+
+Day 19 - 29 February 2024:
 Started on the study of EC2.

@@ -57,6 +57,7 @@ We have 3 ways to access AWS:
 
   We can also use AWS CloudShell. It's available in the Mumbai region(ap-south-1) that I use.
   It's actually a browser based shell built by AWS. It's the same as AWS CLI, but it's on the cloud itself. But I don't prefer it. I prefer the local shell, it's best because I can get to use al the aliases which I have configured.
+  Also, CloudShell is a paid service which is kind of a bummer.
 
   AWS SDK:
   Protected with Access Keys. It's actually useful to call AWS from within our App. Just like it's been done in Service Manager.

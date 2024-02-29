@@ -1,0 +1,10 @@
+It's the most popular and the most important AWS offering.
+
+EC2 stands for Elastic Compute Cloud.
+It mainly consists of:
+Renting Virtual Machines - EC2
+Storing data on virtual drives - Elastic Block Store - EBS
+Distributing the load across machines - Elastic Bean Stalk - ELB
+Auto Scaling the services using an Auto Service Group - ASG
+
+Knowing EC2 is the most important step in learning how AWS works or the Cloud works in general.
