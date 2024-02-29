@@ -1,6 +1,6 @@
 Root User:
 EmailID used: abp9834@gmail.com
-Password: AdolfHitler_12
+Password: JosephStalin_12
 
 Pre Requisites:
 We need to have a Debit/Credit Card, an Email Id and PAN Card to create an account on AWS.

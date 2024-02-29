@@ -1,10 +1,65 @@
 It's the most popular and the most important AWS offering.
 
-EC2 stands for Elastic Compute Cloud.
+EC2 stands for Elastic Compute Cloud. It is AWS's Infrastructure as a Service.
 It mainly consists of:
 Renting Virtual Machines - EC2
 Storing data on virtual drives - Elastic Block Store - EBS
-Distributing the load across machines - Elastic Bean Stalk - ELB
+Distributing the load across machines - Elastic Load Balancing - ELB
 Auto Scaling the services using an Auto Service Group - ASG
 
 Knowing EC2 is the most important step in learning how AWS works or the Cloud works in general.
+
+When we are configuring the EC2 instance, we need to decide upon:
+  Which OS to choose - Either Linux, MacOS or Windows
+  How much compute power - Cores
+  How much memory - RAM
+  How much storage space:
+    Network attached - EBS & Elastic File System - EFS
+    Hardware - EC2 instance store
+  Public IP, Private IPs
+  Security Groups - Firewalls
+  Bootstrap script - Configure the first launch - EC2 User Data
+
+  The above is just like buying a laptop - We choose the OS, CPU, RAM, Hard Drive. We just have a few extra things over here such as Network, Firewall and Bootup script.
+
+EC2 User Data:
+  Bootstrap means launching commands when a machine starts. It's possible to bootstrap our EC2 instances using EC2 User Data Scripts. It runs once when the system is booted.
+  EC2 User data is used to automate the boot tasks such as:
+    Installing updates
+    Installing software
+    Downloading common files from the internet, etc.
+
+  Boot scripts run only with the root user. So, it'll require to be run as `sudo` from the SSH shell.
+
+EC2 Instance Types:
+Some of the instances are as follows:
+```
+t2.xlarge - 4 Cores, 16GB RAM
+c5d.4xlarge - 16 Cores, 32GB RAM
+m5.8xlarge - 32 Cores, 128GB RAM
+r5.16xlarge - 64 Cores, 512GB RAM - Highest possible.
+```
+`t2.micro` instance - 750 hours/month is sufficient for the training, which has got 1 CPU core & 1GB RAM. It's storage is on the Elastic Block store. 30 GB of EBS is included in the Free Tier.
+
+Launching an EC2 instance:
+My first instance details:
+Name: My First Instance
+OS: Amazon Linux 2023 AMI
+Architecture: 64bit-x86
+Instance Type: t2.micro
+
+Created a new Key Pair for SSH login into the instance. Downloaded it as well.
+I've allowed logging in via SSH into my EC2 instance from anywhere.
+Created a User Data Script to launch it, it's written in bash as follows:
+```
+#!/bin/bash
+# Use this for your user data (script from top to bottom)
+# install httpd (Linux 2 version)
+yum update -y
+yum install -y httpd
+systemctl start httpd
+systemctl enable httpd
+echo "<h1>Hello, World from my first EC2 Instance - $(hostname -f)</h1>" > /var/www/index.html
+```
+
+Here we can now view our Webpage via `index.html` that was just created via our script above.
