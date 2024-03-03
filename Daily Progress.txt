@@ -84,3 +84,11 @@ Set up a zero spend budget on my AWS account. Also, set up notifiers for Hitesh,
 
 Day 19 - 29 February 2024:
 Started on the study of EC2.
+
+Day 20 - 2 March 2024 - Important Day - Revolutionary!!!!:
+Launched my first EC2 instance running Linux - The Journey of my very own startup begins...Revolutionary!!!!
+In the past few days My AWS account got suspended because of multiple clusters being launched accidently by me and also an Access Key got exposed on this Repo, so it delayed my studies of AWS due to it.
+But from today I'm back on track.
+
+Day 21 - 3 March 2024:
+Continuing with my study of EC2.

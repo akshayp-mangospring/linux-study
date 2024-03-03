@@ -141,7 +141,7 @@ Process Synchronization Mechanisms:
     Deadlock Ignorance
   But most systems like Linux and Windows focus more on performance than preventing Deadlocks, because most sytems are used for personal use.
 
-FUN QUESTION ABOUT INCREASING RAM AND MEMORY:
+FUN QUESTION ABOUT INCREASING RAM OR MEMORY:
 Why is it advised that we increase the RAM whenever our computer becomes slow?
 It's because when we increase the RAM it doesn't mean that our CPU has become faster, thus the computer has become faster. The CPU speed depends on the Clock speed. But instead of CPU becoming faster the degree of Multi Programming has increased due to availability of more memory when we increase the RAM. The processor can now use more memory to execute more processes in parallel. In collaboration of Virtual Memory and Main Memory the computer becomes faster.
 
