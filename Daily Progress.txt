@@ -92,3 +92,14 @@ But from today I'm back on track.
 
 Day 21 - 3 March 2024:
 Continuing with my study of EC2.
+
+Day 22 - 8 March 2024:
+Continuing with my study of EC2.
+
+Had a discussion with Siddhartha about the Certification to be done and he told to switch the priorities from SAA to DVA - Developer Associate. So, switched my own priorities and also had a discussion with the group and they too have decided to switch from SAA to DVA.
+Solutions Architect is more of a Theory Level, whereas Developer Associate is the guy who's actually doing it. So, Solutions Architect is more like a nice to have who's gonna suggest stuff to people which services to buy.
+
+VPC Configs, VPC networking - The most important topics.
+Buy the official study guide.
+
+Day 23 - 9 March 2024:

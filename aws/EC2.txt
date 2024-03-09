@@ -41,6 +41,7 @@ r5.16xlarge - 64 Cores, 512GB RAM - Highest possible.
 ```
 `t2.micro` instance - 750 hours/month is sufficient for the training, which has got 1 CPU core & 1GB RAM. It's storage is on the Elastic Block store. 30 GB of EBS is included in the Free Tier.
 
+
 Launching an EC2 instance:
 My first instance details:
 Name: My First Instance
@@ -63,3 +64,10 @@ echo "<h1>Hello, World from my first EC2 Instance - $(hostname -f)</h1>" > /var/
 ```
 
 Here we can now view our Webpage via `index.html` that was just created via our script above.
+
+Security Groups in EC2:
+
+
+Spot Instances & Spot Fleet:
+
+EC2 Hibernate:
