@@ -103,3 +103,5 @@ VPC Configs, VPC networking - The most important topics.
 Buy the official study guide.
 
 Day 23 - 9 March 2024:
+Went through a big picture overview of the most important AWS Services.
+Also, started viewing a bit of the VPC tutorial, because that's the most important of AWS configs to protect our cloud infra from hacks and data leaks.

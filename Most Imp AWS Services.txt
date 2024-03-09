@@ -1,0 +1,75 @@
+Examining a three tier Application Architecture:
+Service to use for DNS - Route 53.
+The DNS will Point to a Load Balancer. The Service to use for it - Elastic Load Balancer.
+  There are two types of Load Balancers - Application Load Balancer & Network Load Balancer.
+
+Web Backend Layer and Application Layer - Request from the Front End touches the Back End.
+  The Service to use for it - EC2 - Hands On, AWS Lambda - Hands Off, Elastic Container Service - ECS, Elastic Kubernetes Service - EKS.
+
+Rest APIs - API Gateway. It provides additional functionality on top of the Load balancer which kind of just distributes traffic.  API Gateway can provide API Throttling or Authorization on APIs. Thus we can also do DNS pointing to API Gateway which in turn points to the load balancer. API Gateway can be used in conjunction with AWS Cognito, which is basically a User Pool service, which can be used to store login information of the users and thus the private APIs can be prevented from unatuthorized access in API Gateway itself.
+
+Relational Database is for connection of DB with our App. The Service to be used for it is:
+  AWS RDS - It's the service in which we plug into our database configs.
+  AWS Aurora Serverless - It's an in house built AWS database. Compatible with MySql and Postgres. It helps with administration, monitoring, auto scaling, etc.
+NoSQL database services to be used are:
+  DocumentDB - It's compatible with MongoDB to store document based databases.
+  DynamoDB -It's a super powerful DB service, more on that later it seems.
+
+To Serve Cahced content - AWS Cloudfront is the option to go...
+TO store your source code we need to use AWS CodeCommit. In which we can integrate our Github repo...
+We can convert our source code into artefacts with using the AWS CodeBuild service.
+
+We actually deploy our source code from Code Commit/Code Build to our configuring infrastructure using Code Deploy.
+
+Cloud Watch is a service which is used for monitoring the entire infrastructure which we have just configured for ourselves.
+Cloud Trail provides logs for who is accessing the services and what actions are being performed on those services. This is useful for getting to know who's accessing what...
+The difference between Cloud Watch and Cloud Trail is that Cloud Watch provides Application level logs of end users interacting with the application, whereas Cloud Trail provides internal AWS logs of which user/resource is accessing or performing actions on which data.
+
+Elastic Search is now - Open Search. It's used for powerful querying.
+
+Some of the packaged/orchestrated services:
+  - LightSail - Beginner friendly, deploy your LAMP stack, MERN stack here quickly...
+  - Elastic BeanStalk - It's more like a packaged service which helps us orchestrate our app kind of Hands Off.
+
+AWS Lambda is pay per invoke. We don't have to buy a server and configure it. We just have to deploy our functions - Lambda functions and AWS will take care of scaling it as the number of requests increase.
+ECS is used mostly for Docker containers to be deployed.
+
+Elastic Cache is the service which we can have to embed Memcached or Redis for faster lookups of stuff.
+
+What's the difference between Web Back End layer and Application Layer?
+
+Infrastructure as Code - IaaC:
+No one goes on to the AWS console these days and does stuff by themselves, instead people use IaaC to spin up it's infrastructure from a config file or code file and that bring's alive our entire infrastructure. The AWS service to use for this is - Cloud Formation.
+So, we write our template YAML file and upload it to Cloud Formation and then Cloud Formation in turn calls out the relevant AWS services and spins up our infrastructure.
+We can integrate Terraform into AWS to spin up our infrastructure as well. However there's an AWS Cloud Development Kit(CDK) which can be used to be more expressive than the YAML files in Cloud Formation, in CDK we can write actual code, not just YAML. CDK internally calls Cloud Formation though.
+
+AWS Amplify - Don't take this seriously, because it's just an abstraction of the stuff. It doesn't provide us with anything other than an abstraction. When we need to dive deeper, we need to take a look at all the AWS services...
+
+AWS SAM - Build and  test your Lambda functions locally and can then deploy it...
+
+Event Notification Services:
+  Simple Notification Service (SNS) - It's the Pub in the PubSub.
+  It's publishes notification to a topic and a topic can have many different subscribers. The other AWS services are our subscribers such as our AWS Lambda functions, or EC2 instances as well.
+
+  Simple Queue Service (SQS) - It's the Sub in the PubSub.
+  It's responsible for holding messages which can be processed at a later time. We can connect our queue to a lambda function or an EC2 machine. It'll pull queue for new messages and perform some action on those messages.
+
+  Event Bridge - Just like SNS, SQS PubSub, Event Bridge also has got Event Bridge pubsubs through event buses, through subscriber groups. SNS, SQS is rudimentary, whereas Event Bridge is an advancement to it which can provide more granular details to the subscribers about the event.
+
+AWS Step Functions can be used to create workflows and  glue together AWS Lambda functions. Orchestration services can run through complicated workflows and through many steps.
+
+AWS S3 - It's the kitchen Sink of your storage. It's very cheap and scalable, can be used to store replicas and other stuff.
+We can store our asset files into S3 buckets and then connect it to our Cloudfront which can be then replicated into cloudfront and served to all our clients.
+We can even move our older assets into Cold Storage which is basically just read only data for cost effectiveness.
+
+AWS Athena is completely serverless, Big data processing service stored and retrieved from S3.
+AWS Redshift is necessary for Data Engineers and Business Intelligence guys. It can run real complex queries on massive amounts of data.
+Just need to figure out the difference between AWS Athena and AWS Redshift.
+
+Now adays everything is going serverless, because everything is being used as pay per use rather than pay once and stay unused.
+
+The below is the most important section of AWS:
+VPC is a Virtual Private Cloud/network. It's our very own firewall. It's like an isolation of all our configured and deployed services into our own private network. Other users from outher AWS accounts can't interfere or interact with our infra if we have got a VPC configured for our infra.
+This is done mostly for security reasons. We can even connect our VPCs to other VPCs as and when configured. We can do a lot of stuff with our VPCs.
+
+So basically, AWS provides in services which we can embed our tech stack into...
