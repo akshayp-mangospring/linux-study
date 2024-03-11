@@ -15,7 +15,7 @@ Vim editor opens up in Command mode by default. You can switch quickly between I
 Whenever we start editing a file in Vim editor a temporary file with the `.swp` extension gets created in the same directory in which the file resides. That file is useful to keep track to avoid multiple terminals making edits in the same file. So that helps avoid conflicting changes in the file.
 
 For example:
-If I am editing `primes.go` in the current directory, then a `primes.go.swp` temp file will get created in the current working directory as the editing of the file is taking place. Now if we try to edit the same file from another terminal window/tab then we will get a prompt saying that anotehr terminal is editing the same file. As we exit the Vim editor that temp file will get deleted.
+If I am editing `primes.go` in the current directory, then a `primes.go.swp` temp file will get created in the current working directory as the editing of the file is taking place. Now if we try to edit the same file from another terminal window/tab then we will get a prompt saying that another terminal is editing the same file. As we exit the Vim editor that temp file will get deleted.
 
 Modes of Vim:
   Command Mode - Default mode:

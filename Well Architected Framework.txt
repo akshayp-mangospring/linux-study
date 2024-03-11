@@ -1,0 +1,75 @@
+The well architected framework helps us tackle Common Cloud Computing challenges. This framework helps cloud architects build resilient architectures. It essentially tries to take off the guess work out of the Cloud. Resilient architectures is a necessity.
+
+Benefits:
+Avoid Common Pitfalls
+Decrease Risk
+Make sure that the applications are well architected
+
+There are 6 Pillars to AWS Well Architected Framework:
+  Operational Excellence - Very Important:
+    Running, Monitoring and continuously improving the application.
+      Operations as Code:
+        Think of your workload as a piece of software.
+        By turning operations into scripts and automating them.
+        We should never do stuff manually or via AWS Console as there are sophisticated tools available to do stuff in the Cloud.
+        We should never login into the AWS console to manually do stuff, instead all the deps should be managed with CDK or CloudFormation or Terraform.
+        We should also do configuration changes we should use Parameter Store or AWS App Config.
+      Frequent, Small, Reversible changes:
+        We should be doing Unit, Functional and Integration Tests. We should do stuff via the CI/CD pipelines.
+        Also, we should roll out changes incrementally to people with the use of feature flags and regional roll outs of features.
+        This sequential rolling out of features leads to quickly reversible changes if necessary.
+      Refine operations procedures frequently:
+        It's all about `Constant Improvement`.
+        As workloads evolve, your procedures must also evolve with it.
+      Anticipate Failure:
+        Try chunking out what kind of services might go down due to traffic overload or dependency failures.
+        Refine and streamline operations.
+      Learn from operational failures:
+        Every operational failure is a learninf opportunity.
+        Use these lessons to build more stringer, resilient systems.
+        Never make the same mistake twice and put processes in place to solve the mistakes which occurred once and will not occur again.
+        It is a problem to make a mistake and not learn from it.
+        Read the process of `Correction of Error` documents from AWS itself. They follow this rigorously.
+
+  Reliability - Very Important:
+    Ability to recover from disruptions, dynamically meet demand and mitigate disruptions.
+    Automatically recover from failure:
+      Monitor important metrics closely
+      Use automation to fix issues as soon as they occur
+      System should bounce back automatically if something goes wrong
+    Test Recovery procedures:
+      Actively test how our system handles failure
+      Use automation to simulate failure scenarios
+    Horizontal scale to increase aggregate workload availability:
+      The goal is to spread workload across multiple small resources
+      If one part fails, then the entire system should not come down
+    Stop guessing Capacity:
+      Monitor how much of our systems are actually being used
+      The goal is to have the exact resources as we need
+      Adjust our resources as we need them
+    Manage change through Automation:
+      Automate changes to our infrastructure
+      This method ensures eevrything is consistent, trackable and smoothly running
+
+  Performance Efficiency:
+    Using computing resources efficiently.
+    Maintaining the efficiency as changes occur to the technologies or hardware.
+    Be efficient with the hardware that we provision and the services that we use. We should not be using extra resources than required because we will be billed for it.
+    Pick the right tool for the job:
+
+    Use Serverless:
+    Go Global in minutes:
+
+  Cost Optimization:
+    Avoid unecessary costs.
+    Using the right of type of resources for workloads
+    Making cost effective decisions
+
+  Sustainability:
+    Minimizing environmental impact of running the Cloud workload.
+
+  Security:
+    Focuses on protecting data, systems and assets.
+    Maintains confidentiality of data.
+    IAM.
+    Controls to detect security threats.
