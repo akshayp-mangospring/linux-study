@@ -66,7 +66,33 @@ echo "<h1>Hello, World from my first EC2 Instance - $(hostname -f)</h1>" > /var/
 Here we can now view our Webpage via `index.html` that was just created via our script above.
 
 Security Groups in EC2:
+  These security groups are basically firewalls around our EC2 instances. This is a fundamental building block of our AWS Networking security.
+  It controls how traffic is allowed into and out of our EC2 instances. It wraps our EC2 instance. EC2 instance won't even be notified of the traffic that is blocked by the security group.
+  Security groups have got only `allow` rules inside them.
+  It can reference by IP address or by Security Group.
+  It's a good practice to maintain one security group for SSH access.
 
+  Security groups regulate:
+  Access to ports of our instance
+  Authorized IP Ranges to access our instance
+  It controls Inbound - From internet to the instance and Outbound - From instance to the internet, traffic of the instance
+
+  Rules of Security Groups:
+  One Security group can be attached to multiple instances. An instance can have multiple Security Groups too.
+  Security Groups are locked down to a region or VPC combination.
+  By default all inbound traffic is blocked.
+  By default all outbound traffic is allowed.
+  When we get a `Connection refused` error then the traffic went through the security group and hit the instance.
+  When the Security group blocks access to an instance then we always get a `Connection Timed Out` error.
+  We can reference one Security Group from another Security Group as well.
+
+  Ports to remember for Security Groups:
+  22 - SSH - To log into an instance via Secure Shell.
+  21 - FTP - To upload files to the instance
+  22 - SFTP - To securely upload files using SSH to the instance.
+  80 - HTTP - Access unsecured websites.
+  443 - HTTPS - Access secured websites.
+  3389 - RDP(Remote Desktop Protocol) - A Windows only alternative instance port to log into an instance like SSH.
 
 Spot Instances & Spot Fleet:
 

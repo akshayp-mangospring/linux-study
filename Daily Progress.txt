@@ -108,3 +108,6 @@ Also, started viewing a bit of the VPC tutorial, because that's the most importa
 
 Day 24 - 11 March 2024:
 Studied the basics about AWS Well Architected Framework
+
+Day 25 - 12 March 2024:
+Back to studying EC2. Studied about Security groups which is basically a firewall to an EC2 instance.
