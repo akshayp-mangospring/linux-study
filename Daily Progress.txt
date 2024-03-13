@@ -111,3 +111,6 @@ Studied the basics about AWS Well Architected Framework
 
 Day 25 - 12 March 2024:
 Back to studying EC2. Studied about Security groups which is basically a firewall to an EC2 instance.
+
+Day 26 - 13 March 2024:
+Studied the different types, naming conventions of EC2 instances.

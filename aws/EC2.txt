@@ -41,7 +41,6 @@ r5.16xlarge - 64 Cores, 512GB RAM - Highest possible.
 ```
 `t2.micro` instance - 750 hours/month is sufficient for the training, which has got 1 CPU core & 1GB RAM. It's storage is on the Elastic Block store. 30 GB of EBS is included in the Free Tier.
 
-
 Launching an EC2 instance:
 My first instance details:
 Name: My First Instance
@@ -64,6 +63,37 @@ echo "<h1>Hello, World from my first EC2 Instance - $(hostname -f)</h1>" > /var/
 ```
 
 Here we can now view our Webpage via `index.html` that was just created via our script above.
+
+There are different types of instances in EC2:
+  General Purpose:
+    It has a balance of Memory, Compute and Networking resources. It's ideal for resources in equal proportions, such as web servers and code.
+    Such instances come under the `t` classes of instances.
+  Compute Optimized:
+    It is compute resources optimized. It's used for compute intensive tasks that require high performance processors.
+    It's used for batch processing workloads, also used for media transcoding like converting images or videos into multiple sizes or compressing them.
+    Game servers, Machine Learning, High performance web servers.
+    Such instances come under the `c` classes of instances.
+  Memory Optimized:
+    It is memory optimized. Fast performance for workloads which Pprocess large datasets in memory.
+    High performance SQL, NoSQL queries.
+    Distributed Web Caches.
+    Business Intelligence and Real Time processing of big unstructured data.
+    Such instances come under the `r`, `x`, `z` classes of instances.
+  Storage Optimized:
+    It is storage optimized. Great for storage intensive tasks, that require high sequential, read and write access to data sets on local storage.
+    High frequency Online Transaction Processing Systems(OLTP)
+    Relational & NoSQL databases
+    Cache for in-memory databases(Redis, Memcached)
+    Data warehousing
+    Distributed file systems
+    Such instances come under the `i`, `d`, `h` classes of instances.
+  Accelerated Computing:
+
+Naming conventions of EC2 instances:
+  Suppose `m5.2xlarge` is the name of the instance. Then,
+  `m` is the instance class
+  `5` is the generation of the instance
+  `2xlarge` is the size of the instance class
 
 Security Groups in EC2:
   These security groups are basically firewalls around our EC2 instances. This is a fundamental building block of our AWS Networking security.
