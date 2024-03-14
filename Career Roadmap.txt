@@ -1,0 +1,4 @@
+Roadmap for the coming months for me:
+AWS Dev Associate Certification - At least 1 month - Until 14 April 2024
+90 Day goal - Database Design & SQL expert - Until 14 June 2024
+Systems Design - 6 Month goal - Util 14 September 2024

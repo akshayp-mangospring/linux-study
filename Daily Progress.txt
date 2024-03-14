@@ -114,3 +114,10 @@ Back to studying EC2. Studied about Security groups which is basically a firewal
 
 Day 26 - 13 March 2024:
 Studied the different types, naming conventions of EC2 instances.
+Also, had the first real use case of learning VIM Macros. Pallavi wanted to add a `,` at the end of every line in a file with about 8300 lines. That would have been really time consuming.
+So, for the first time ever, I found a use case for VIM Macros and applied it and Bam! It added a comma at the end of every line for 8300 lines in just 1 sec.
+It felt Revolutionary! My skills learnt in the past month aren't wasted and I'm proud of it.
+
+Day 27 - 14 March 2024:
+Chalked out roadmap for the coming months for myself with the help of ChatGPT.
+Studied basics of EC2 instance storages.

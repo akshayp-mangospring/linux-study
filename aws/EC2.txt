@@ -124,6 +124,19 @@ Security Groups in EC2:
   443 - HTTPS - Access secured websites.
   3389 - RDP(Remote Desktop Protocol) - A Windows only alternative instance port to log into an instance like SSH.
 
+  Thus for example we can block accessing of an EC2 instance from HTTP to make it available for access using SSH only, vice versa can also be true.
+  When we block or remove access of something from EC2 then it always gives a timeout. Thus a timeout is basically an indication of Security Group configs.
+  It's true for SSH, HTTP, or any other protocol.
+
+SSH into an EC2 instance:
+  SSH is one of the most important function. It allows us to control a remote machine, all using the command line.
+
+  We can access our EC2 instance using our terminal. We have to use access keys `.pem` file provided when we create our instance using the key pair.
+  Just like Cloud Shell - EC2 Instance Connect is a browser based solution for connecting to an EC2 instance via the browser itself.
+  But I prefer the normal SSH via terminal, because it's easier to access and it's not even chargeable, however just like Cloud Shell, EC2 Instance Connect is chargeable. The SSH access is also blocked through Instance Connect if we revoke the permissions of inbound traffic through SSH.
+
+  We access our instance using our instance's public IP.
+
 Spot Instances & Spot Fleet:
 
 EC2 Hibernate:
