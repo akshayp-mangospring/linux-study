@@ -121,3 +121,6 @@ It felt Revolutionary! My skills learnt in the past month aren't wasted and I'm 
 Day 27 - 14 March 2024:
 Chalked out roadmap for the coming months for myself with the help of ChatGPT.
 Studied basics of EC2 instance storages.
+
+Day 28 - 15 March 2024:
+Studied about EBS Volumes, Snapshots. Recycle Bin service, AMIs, EC2 instance Store.

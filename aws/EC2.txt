@@ -137,6 +137,54 @@ SSH into an EC2 instance:
 
   We access our instance using our instance's public IP.
 
-Spot Instances & Spot Fleet:
+Purchasing options of EC2 instances - Very important:
+The entire quiz of the fundamentals of EC2 instances was based on this section itself. Questions are asked about purchasing suggestions of EC2 instances based on a scenario or a requirement.
+  Spot Instances & Spot Fleet:
+
+Recycle Bin AWS Service:
+  This AWS Service helps us recover deleted Volume Snapshots and Amazon Machine Images(AMIs) based on the retention rule which we define for our Recycle Bin.
+  Recycle Bin only supports EBS Snapshots and AMIs only. Nothing else is supported for backup after deletion.
+  We have to create retention rules for the resources to be retained after deletion. Each retention rule will have a retention time attached to it.
+  One retention rule is for one type of resource only. We have to create different retention rules for different types of resources.
+  For example one retention rule for AMIs, one for EBS Snapshots.
+
+EC2 Instance storage:
+  Elastic Block Store(EBS) Volume:
+    We can store data in Network drive attached to our EC2 instances using EBS Volume while they run. It's like a Network USB stick attached to an EC2 instance.
+    It allows our instances to persist data even after our instance is terminated.
+    Since EBS volumes are network drives, they can be detached from one EC2 instance and attached to another instance very quickly.
+    Multiple EBS volumes can be attached to EC2 instances. But one EBS volume can't be attached to multiple instances at a time.
+    But EBS volumes are locked to a specific AZ or Region. We can't even change see the EC2 instances outside our AZ or Region when we want to attach a volume to any of our EC2 instances. We can see the EC2 instances only available in our own AZ or Region.
+    30 GB of free EBS Volume is eligible for Free Tier.
+    But if we really want to move an EBS VOlume then we can take a snapshot of the volume and move it across AZs or Regions as well.
+    By default the EBS Root Volume is deleted on termination of an EC2 instance. But we can change it if we want.
+    When we create an EBS Volume, we generally use the same availability zone as the EC2 instance resides in as a rule of thumb.
+
+    Snapshots of EBS Volumes:
+    We can take a snapshot of our EBS volume at any point in time. It's typically preferred to detach an EBS volume before we take it's snapshot.
+    The point is that we can transfer snapshots between AZs and Regions of EBS Volumes. Then it can be imported(in short Create a Volume from a Snapshot using the Volume from Snapshot feature) and used in another EC2 instance in another region as well.
+    EBS Snapshot archive is cold storage of an EBS Volume snapshot and is cheaper. But if we want to restore an EBS Snapshot in cold storage, it needs typically 24 to 72 hours. It's slower.
+    But when we simply delete a Snapshot then it's moved to Recycle Bin which can be restored based on the retention time of the Recycle Bin. It can be anywhere between 1 day or 1 year.
+
+  Amazon Machine Image(AMI):
+    AMIs power our EC2 isntances. An AMI is a customization of an EC2 instance. We can add our own software, configs, OS, monitoring, etc.
+    Until now, in our EC2 instances, we used pre shipped AMIs provided by AWS. However, we can build our own images from existing EC2 instances as Snapshots and create our own machine images which can be used for other EC2 instances as needed.
+    Amazon Machine Image is basically an image which contains pre packaged software installed in it, because we have used a snapshot from another EC2 instance as our base which already has the necessary software installed in it. It also leads to faster boot times and load times. Thus we can leverage those previously done installations and use it in our machine images. Thus making our work easier.
+    The big advantage of AMIs is that it can be built in one region and can be copied and used across regions, thus getting handy for leveraging the AWS Global Infra.
+
+    AMI creation process:
+    Start and EC2 instance and Customize it.
+    Stop the instance.
+    Build an AMI - It'll create EBS snapshots in the background.
+    Launch instances from other AMIs.
+
+  EC2 Instance Store - High performance hard drive, but temporary storage, cleaned up on instance termination:
+    EBS Volumes are network drives but with limited performance.
+    We should use EC2 instance store if we wanna have high performance, then we attach a hard disk to it using EC2 Instance Store.
+    But the bad thing about it is that if we stop an EC2 instance, then the data inside the EC2 Instance Store is also lost.
+    The ideal use case for this is then store a buffer, cache, scratch data, tmp files, etc.
+    Backups and replication can happen on it though, but it's to be done by ourselves.
+
+  Amazon EFS:
 
 EC2 Hibernate:
