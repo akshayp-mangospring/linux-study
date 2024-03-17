@@ -1,0 +1,48 @@
+Vertical Scaling:
+Buy bigger machines. It serves the principle of High Scalability, which means that more powerful machines can serve more traffic.
+
+Horizontal Scaling:
+Buy multiple machines. It serves the principle of High Availability, which means that we deploy our application in multiple regions and availability zones so that even if one availability zone crashes then ur requests would be rerouted and served from another availability zone.
+
+Note that High Availability is different from High Scalability. Availability means bounce back from crash, whereas High Scalability means increased performance.
+So, to serve the principle of High Scalability we can but more machines as well.
+
+Load Balancing:
+Load Balancers themselves are servers which forward traffic to multiple servers. A load balancer thus serves as a single point of connectivity from the outside world, which then sheilds, the exposure of EC2 instances directly to the internet. Thus the Load Balancer serves as the public IP address of our application.
+
+Adantages of Load Balancers:
+Spread load across multiple instances
+Expose a single point of access(DNS) to your application
+Seamlessly handle failures of downstream servers - EC2 instances which fail
+Do regular health checks on EC2 instances
+Provide SSL cerification for HTTPS.
+Enforce stickiness with cookies.
+High Availability across AZs.
+Separate public traffic from private traffic.
+
+Elastic Load Balancer is a managed Load Balancer. That's managed by AWS, so it's available all the time.
+Load Balancer is integrated with EC2, EC2 ASG, CloudWatch, Route 53, etc.
+The health checks on Load Balancers are done on a route - '/health' and a port - 4567. If an instance is unhealthy, then the load balancer doesn't send traffic to that instance.
+We can set up even internal and external Load Balancers as and when required.
+
+Types of Load Balancers:
+  Classic Load Balancer(CLB):
+    It's the oldest version of Load Balancer. It supports HTTP, HTTPS, TCP, SSL, Secure TCP. But it's deprecated now for usage.
+
+  Application Load Balancer(ALB):
+    This is an improvisation to CLB. It supports HTTP, HTTPS, WebSockets. Supported since 2016.
+
+  Network Load Balancer(NLB):
+    This is an improvisation to CLB. It supports TCP, TLS(Secure TCP), UDP. Supported since 2017.
+
+  Gateway Load Balancer(GWLB):
+    It operates at Layer 3, Network Layer. It supports IP protocol. Supported since 2020.
+
+  Overall, newer load balancers are better.
+
+How to sheild EC2 instance from external traffic and allow traffic only from Load Balancer?
+We basically set up a security group of all protocols of HTTP, HTTPS, WebSocket on relevant ports and allow it from 0.0.0.0  - Anywhere on our Load Balancer.
+Whereas on the EC2 instance, we set up the security group to allow incoming traffic only from the address of the Load Balancer. If anyone tries to access the EC2 instance directly through IP address then it'll automatically give a timeout thus sheilding the EC2 instance from external traffic.
+
+Application Load Balancer - ALB:
+Network Load Balancer - NLB:
