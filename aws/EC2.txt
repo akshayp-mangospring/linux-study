@@ -156,7 +156,7 @@ EC2 Instance storage:
     Multiple EBS volumes can be attached to EC2 instances. But one EBS volume can't be attached to multiple instances at a time.
     But EBS volumes are locked to a specific AZ or Region. We can't even change see the EC2 instances outside our AZ or Region when we want to attach a volume to any of our EC2 instances. We can see the EC2 instances only available in our own AZ or Region.
     30 GB of free EBS Volume is eligible for Free Tier.
-    But if we really want to move an EBS VOlume then we can take a snapshot of the volume and move it across AZs or Regions as well.
+    But if we really want to move an EBS Volume then we can take a snapshot of the volume and move it across AZs or Regions as well.
     By default the EBS Root Volume is deleted on termination of an EC2 instance. But we can change it if we want.
     When we create an EBS Volume, we generally use the same availability zone as the EC2 instance resides in as a rule of thumb.
 
@@ -165,6 +165,19 @@ EC2 Instance storage:
     The point is that we can transfer snapshots between AZs and Regions of EBS Volumes. Then it can be imported(in short Create a Volume from a Snapshot using the Volume from Snapshot feature) and used in another EC2 instance in another region as well.
     EBS Snapshot archive is cold storage of an EBS Volume snapshot and is cheaper. But if we want to restore an EBS Snapshot in cold storage, it needs typically 24 to 72 hours. It's slower.
     But when we simply delete a Snapshot then it's moved to Recycle Bin which can be restored based on the retention time of the Recycle Bin. It can be anywhere between 1 day or 1 year.
+
+    EBS Volume types:
+    EBS Volumes are characterized by Size, throughput and and IOPs(I/O operations/sec).
+    gp2, gp3 - SSD - General purpose SSD volumes. They both have a balance of throughput and storage.
+    io1 io2 - SSD - Highest performance SSDs for mission critical low latency stuff.
+    st1, sc1(Cold Storage) - HDD - Both can be used as storage. Being HDDs, they are lower in IOPs capacity, because their focus is more on storage than throughput. They are low cost.
+    Only gp2, gp3 and io1, io2 can be used as boot volumes where the OS resides.
+
+    EBS Volumes Multi Attach:
+    Multi attach basically means that the same EBS Volume can be attached to multiple EC2 instances in the same AZ.
+    It's supported only by the io1, io2 family. The provisioned EBS Volumes - PIOPs support the multi attach feature.
+    Each EC2 instance has full read-write permissions to the EBS Volume. Because it's designed specifically only for throughput.
+    It can be attached to a max of 16 EC2 instances at a time.
 
   Amazon Machine Image(AMI):
     AMIs power our EC2 isntances. An AMI is a customization of an EC2 instance. We can add our own software, configs, OS, monitoring, etc.
@@ -185,6 +198,13 @@ EC2 Instance storage:
     The ideal use case for this is then store a buffer, cache, scratch data, tmp files, etc.
     Backups and replication can happen on it though, but it's to be done by ourselves.
 
-  Amazon EFS:
+  Amazon Elastic File System - EFS:
+  EFS is a Network file system, and because it's a Network File System, it can be mounted on to many EC2 instances. Unlike EBS, it can be mounted on to multiple AZs.
+  It is very expensive though. It's 3 times expensive as gp2 volumes, due to high availability and scalability.
+  Just like an EC2 instance, we need to secure our EFS using a security group. It's governed by NFS v4.1 protocol.
+  It has a POSIX file system, that's why it's compatible with Linux AMIs only and not with Windows systems.
+  It has infinite capacity. It scales as per the usage.
+
+  The frequently accessed files are stored inside the EFS whereas if a time limit crosses, something like 30 days, it'll be moved to cold storage for cost saving purposes.
 
 EC2 Hibernate:

@@ -124,3 +124,8 @@ Studied basics of EC2 instance storages.
 
 Day 28 - 15 March 2024:
 Studied about EBS Volumes, Snapshots. Recycle Bin service, AMIs, EC2 instance Store.
+
+Day 29 - 17 March 2024:
+Studied about EBS Volume types, also EBS Multi Attach, AWS EFS.
+Also studied about Elatsic Load Balancing and Auto Scaling Groups.
+Took a session on EC2, ELB, ASG for the team.
