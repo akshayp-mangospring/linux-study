@@ -129,3 +129,7 @@ Day 29 - 17 March 2024:
 Studied about EBS Volume types, also EBS Multi Attach, AWS EFS.
 Also studied about Elatsic Load Balancing and Auto Scaling Groups.
 Took a session on EC2, ELB, ASG for the team.
+
+Day 30  - 19 March 2024:
+Studied about the OSI Model.
+Also studied about the Network Load Balancer which operates upon the network level of the OSI Model.

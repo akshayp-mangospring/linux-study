@@ -23,6 +23,8 @@ The topics to focus upon:
 
 In Cloud Practitioner, we only study about S3 and EC2, nothing else. But in Solutions Architect Associate, we study about a lot more services.
 Just keep in mind, that all the services are linked and interconnected to each other.
+Learning AWS we leave the field of Software Engineering and delve into Network Engineering. The funny thing is that we've been operating and working in the network since the beginning of our career without even knowing about it. Now's the time to get to know it.
+So, it's technical growth. It's Revolutionary!!!
 
 Right now: Netflix, Dropbox, Airbnb, NASA, Activision, McDonald's uses AWS for the Cloud Storage - That's Amazing!!!
 SQS, S3 and EC2 all were launched in 2006 as part of their initial release - 1.0.

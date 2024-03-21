@@ -9,6 +9,7 @@ So, to serve the principle of High Scalability we can but more machines as well.
 
 Load Balancing:
 Load Balancers themselves are servers which forward traffic to multiple servers. A load balancer thus serves as a single point of connectivity from the outside world, which then sheilds, the exposure of EC2 instances directly to the internet. Thus the Load Balancer serves as the public IP address of our application.
+To understand Load Balancers we need to first understand the OSI model upon which the entire internet operates.
 
 Adantages of Load Balancers:
 Spread load across multiple instances
