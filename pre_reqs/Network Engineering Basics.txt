@@ -1,0 +1,83 @@
+As a DevOps Engineer we need to know OSI Model, TCP/IP Protocol, how to calculate Subnet Sizes, basics of Routing and How to debug using ping, traceroute, telnet commands.
+
+What's a Network?
+  It's a group of devices which are connected. It could be any type of device: Computer, printer, mobile phone, scanner, sound systems, etc.
+  The purpose of a network is for the ability of Computers and other devices to talk to each other on that network.
+  Such a network is typically a private network.
+  There are two types of Networks:
+    Public:
+      It's a network of computers which can access each other via the internet.
+    Private:
+      It's a network of computers which is self contained. Other computers can't reach it. Like a Home or Office network.
+      I can still remember playing Counter Strike on LAN with my friends in Cyber Cafes.
+
+  Computers or devices within the private network can connect with a public network like the internet.
+  Typically, when we buy a Wifi via an ISP, it typically provides us with a Router which enables us to connect to the public network of the internet.
+  Even if our ISP is down, then the devices connected to our private network can still talk to each other.
+  We can have both a wired and a wireless network.
+
+What are the elements of a Network?
+  Cables - Over which the transmission of the data takes place.
+  Switches
+  Routers
+  NIC - In every device.
+    Wired - Physical NIC is required.
+    Wireless - Connect using Wifi SSID.
+
+Hostnames and IP Addresses:
+  Computers can connect or talk with each other using IP Addresses or Hostnames. But primarily IP Addresses is the way to go.
+  An IP Address is a means of uniquely identifying a Computer.
+  An IP address is a 32-bit number divided into four 8-bit sections called octets. It can be represented in both decimal and binary formats. We generally use the Decimal format.
+
+  Whenever a computer wants to talk to another computer, then we can't communicate with hostnames unless explicitly configured. We require the usage of IP addresses and that's the most common way to identify and talk with other computers.
+
+  We make edits in the `/etc/hosts` file which specfies which IP address to forward the request to when we hit a certain hostname.
+  That's why we specify our localhost hostnames as in front of 127.0.0.1
+  ```
+  127.0.0.1	localhost hello.ms.local mangospring.ms.local newms.ms.local
+  ```
+  Similarly of we know the IP of a specific computer/device we can make another entry in the hosts file for that IP address and all the requests from our computer on that hostname will automatically be redirected to that IP Address.
+
+What Is the 127.0.0.1 IP Address?
+  The IP address 127.0.0.1 is a special-purpose IPv4 address and is called the localhost or loopback address. All computers use this address as their own, but it doesn't let computers communicate with other devices as a real IP address does.
+  This loopback IP address/localhost is the universal home address for all computers.
+  That's why in our `/etc/hosts` file we get this address specified for redirecting our requests to our own computer - Localhost.
+
+  Internet Protocol v6 - IPv6 implements the same concept of a loopback address as IPv4. Instead of 127.0.0.01, IPv6 represents its loopback address as ::1
+
+DNS Server/Name Server:
+  Computers understand IP Addresses and Humans understand Hostnames.
+  But to translate every computer/device connected to the network and making entries of all the devices into our hosts file is really cumbersome, especially if the devices joining and leaving the network is dynamic, also if their IP addresses and hostnames change.
+
+  To solve, this very problem DNS Servers/Name Servers were invented which would resolve all IP Addresses to hostname and computers could talk to each other seamlessly. All that happens is - all the devices connect to this DNS Server and then it resolves the IP Addresses for us, it even handles dynamism for us.
+  This DNS has got a static public IP attached to it, so it won't be a problem for all computers to connect to it or maintain it's entry in our hosts file manually.
+
+Networking models are the reason that multiple devices made by different manufacturers can communicate with each other. OSI is a networking model. TCP/IP is another networking model. Computer manufacturers and OS guys had to implement these networking models into their systems.
+
+Rule of Thumb:
+Every machine which can be networked has got internal IP addresses.
+MAC Address - Media Access Control Address.
+
+Open Systems Interconnection Model:
+The Open Systems Interconnection (OSI) model is a set of standards that defines how computers communicate over a network. In the OSI model, data flow gets broken down into seven layers that build upon each other. Each layer uses data from the layer before it and serves a specific purpose in the broader network communication.
+The OSI model works from the bottom up, beginning from layer 1 (Physical) and ending with the top layer 7 (Application).
+
+Physical Layer - Ethernet Cables, Network Cards
+Data Link Layer - MAC Address
+Network Layer - IP Address
+Transport Layer
+Application Layer
+
+TCP/IP Model:
+
+IP Subnetting, Classless Inter-Domain Routing - CIDR:
+  The most critical component of networking is an IP Address. Every time we surf the internet, our browser is connected to its remote server using an IP address.
+
+  What's an IP Address?
+
+  Available IP Addresses Calculation:
+
+DNS:
+  Domain Name System - DNS, merges the needs of both humans and computers, converting human-readable domain names into computer-friendly IP addresses and vice versa.
+
+Network Troubleshooting Commands:

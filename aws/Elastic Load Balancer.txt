@@ -62,6 +62,7 @@ Whenever a request is hit onto a load balancer and it's supposed to forward it t
 
 Network Load Balancer - NLB:
 This is a ultra high performance load balancer. It can handle traffic of millions of requests/second. It operates on TCP, UDP and TLS layers.
+With Network Load Balancer, we have a simple load balancing service specifically designed to handle unpredictable burst TCP traffic. It makes a single static IP address available per Availability Zone, and it operates at the connection level (Layer 4) to route inbound connections to AWS targets. The target can be EC2 instances, containers, or an IP address.
 
 Gateway Load Balancer - GWLB:
 It's used for security, firewalls, network intrusion detection, etc. Basically to analyze and filter the Network traffic.

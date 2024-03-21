@@ -120,9 +120,16 @@ Security Groups in EC2:
   22 - SSH - To log into an instance via Secure Shell.
   21 - FTP - To upload files to the instance
   22 - SFTP - To securely upload files using SSH to the instance.
+  53 - DNS - Resolving Domain Names into IP Addresses.
   80 - HTTP - Access unsecured websites.
   443 - HTTPS - Access secured websites.
+  3306 - Database Connections like MySQL.
   3389 - RDP(Remote Desktop Protocol) - A Windows only alternative instance port to log into an instance like SSH.
+
+  These ports are for Transport layer of TCP/IP Protocol.
+  While many ports are non-privileged, - anyone can use them without special permission—some require root permissions. Ports 1-1023 are called 'well-known ports' and require root permissions before a server can listen to them.
+  It’s a good practice to avoid running web servers as root, assign minimal permissions to services, and use nonprivileged ports when possible.
+  That’s why sometimes we can see ports 8080 for HTTP and ports 6433 for HTTPS - they’re non-privileged.
 
   Thus for example we can block accessing of an EC2 instance from HTTP to make it available for access using SSH only, vice versa can also be true.
   When we block or remove access of something from EC2 then it always gives a timeout. Thus a timeout is basically an indication of Security Group configs.
