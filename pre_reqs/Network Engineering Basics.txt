@@ -45,6 +45,10 @@ What Is the 127.0.0.1 IP Address?
 
   Internet Protocol v6 - IPv6 implements the same concept of a loopback address as IPv4. Instead of 127.0.0.01, IPv6 represents its loopback address as ::1
 
+IP Addressing:
+
+Lazy Loading/Cache Aside/Lazy Population? - Study these concepts.
+
 DNS Server/Name Server:
   Computers understand IP Addresses and Humans understand Hostnames.
   But to translate every computer/device connected to the network and making entries of all the devices into our hosts file is really cumbersome, especially if the devices joining and leaving the network is dynamic, also if their IP addresses and hostnames change.

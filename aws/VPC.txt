@@ -1,0 +1,287 @@
+Virtual Private Cloud - VPC. It's a logically isolated portion of the Cloud.
+It decides complete control over defining your own CIDR Blocks, Selection of IP Ranges, creating your own subnets, defining security groups, configuring Route Tables and Internet gateways.
+
+Goals:
+  How to define your own address ranges for a VPC?
+  Launch resources into your VPC.
+  VPN Connections.
+  Access Control Lists.
+  Direct Connect.
+
+IPv4 Addressing:
+  What's an IPv4 Address?
+  Every device has got a Network interface and every web server has it too. So, it always has got a public IP Address attached to it.
+  IP Addresses are the addresses which computers use to communicate with each other.
+
+When we hit any url in Web Browser?
+  Our Computer first communicates to the DNS Server.
+  It fetches the Public IP address from the DNS Server and then hits it.
+  Connection between 2 computers over the internet is thus made using an IP address.
+
+Structure of an IP Address:
+IP addresses are written in dotted decimal notations. Each part of the address is a binary octet.
+127.0.0.1 - The reserved IP address for redirecting to local machine which acts as a server. Thus we make an entry into the `/etc/hosts` file to redirect IP addresses to locally running servers.
+
+To understand IP addressing we need to go back to understanding the Binary number system. Where numbers are represented in 0s and 1s.
+128 64 32 16 8 4 2 1 => The Order is from Left to Right. From the left is the most significant bit and to the right is the least significant bit.
+So, if we want to represent 192 in Binary format then it'll be: 11000000
+So, basically an IP adddress is a series of Binary Octets separated by `.`
+So `192.168.0.1` will be represented as `11000000.10101000.00000000.00000001`.
+
+Networks and Hosts:
+Every IP address has got Network and Host portion in it.
+The first 3 octets in an IP address is the Network portion and the last octet is the Host portion of the Address.
+Thus in `192.168.0.1` - 192.168.0 is the Network ID and `.1` is the Host ID.
+The Network ID will be the same for every computer in the network. Thus every computer within this network will have `192.168.0` in it's IP address.
+
+What is a Subnet Mask?
+
+2 Things - Number of networks wthin an IP Address Range and Number of addresses within that Network.
+
+Classless Inter Domain Routing(CIDR):
+It's basically varying lengths of subnet masks.
+
+Amazon VPC:
+  Amazon VPCs are within a Region. They can't span across regions. So, a VPC is a logically isolated portion of the AWS Cloud within a region.
+  We can create multiple VPCs within the same region. There's a limit of 5/region.
+  Each VPC has got a CIDR block. It's the overall block of addresses which you create and assign it to the block of the subnet.
+  From the overall CIDR Block we can create our multiple subnets within a VPC. But they have different subnet blocks. It's important to specify CIDR Blocks correctly to route them.
+  Each VPC should have enough networks and enough hosts/network.
+  We have full control over our VPC. We can create and assign subnets within an Availability Zone. Subnets are created within an AZ. It can't span multiple AZs.
+  We can have multiple subnets within a same AZ.
+  A VPC spans all the AZs within a region.
+  A subnet is within one AZ, it can't span over multiple AZs.
+  A default VPC is created in each region with a subnet in each AZ.
+  A VPC can consist of public and private subnets.
+  Each subnet has got a number of hosts available in it based on the subnet mask.
+  Public Subnets have got Public IP addresses assigned automatically.
+
+There's a thing called as a VPC Router. We can't interact directly with it but we can configure it with Route Tables.
+VPC Router takes care of Routing within and outside of a VPC.
+We need to specify the destinations and targets for certain networks.
+An Internet Gateway is also attached to a VPC, there's only one Internet Gateway per VPC.
+
+What kinds of resources can be inside a VPC?
+- EC2 instances
+- RDS Databases
+- Lambda functions
+
+VPC Terminology:
+  VPC:
+  A logically isolated Virtual Network in the AWS Cloud.
+  It's similar to having your own datacenter in AWS Cloud.
+
+  Subnet:
+  A segment of VPC's IP Address range where you can place groups of isolated resources.
+
+  Internet Gateway/Egress only Internet Gateway:
+  The Amazon VPC side of connection to the public internet for IPv4/v6.
+  Egress is for IPv6 and Ingress is for IPv4 as well as IPv6.
+
+  Router:
+  Routers interconnect subnets and direct traffic between Internet Gateways, Virtual Private Gateways, NAT Gateways and Subnets.
+  A Router controls all traffic entering/exiting the VPC.
+
+  Peering Connection:
+  Direct Connection between 2 VPCs.
+
+  VPC Endpoints:
+  Private Connection to public AWS Services. It allows private IP addresses to connect to public services.
+
+  NAT Instance:
+  Enables Internet Access for EC2 instances in private subnets managed by you.
+
+  NAT Gateway:
+  Enables Internet Access for EC2 instances in private subnets managed by AWS.
+
+  Virtual Private Gateway:
+  The Amazon VPC side of a Virtual Private Network(VPN) connection.
+
+  Customer Gateway:
+  Customer side of a VPN connection.
+
+  AWS Direct Connect:
+  High Speed, high bandwidth, private network connection from Customer to AWS.
+
+  Security Group:
+  Instance level Firewall.
+
+  Network ACL:
+  Subnet level Firewall.
+
+Defining CIDR Blocks:
+
+  Rules and Guidelines:
+    CIDR Block can be between `/16` and `/28` subnet Mask.
+    CIDR blocks must not overlap.
+    We only get to set teh CIDR Block once and then we're just stuck with it.
+    We can't increase/decrease the size of an existing CIDR Block.
+    The first 4 and last IP Address can't be used. They're reserved by AWS.
+    Bigger CIDR Blocks are typically better to ensure we've got enough hosts and addresses available to us.
+    Smaller subnets are okay for most use cases.
+    Split your High Availability resources across subnets in different AZs.
+    VPC Peering requries non-overlapping CIDR Blocks. Means that we can't reuse CIDR Blocks across regions, because of the overlap.
+
+  It is a standard convention to name the Public Route Table as `The Main Route Table`.
+  Private subnets are in Private Route table. Whereas public subnets are in the Main Route Table.
+  Network Address Translation(NAT) Device to let private subnets access the Internet.
+
+  Steps to define VPC:
+    Name of VPC
+    Define CIDR Block.
+    Define our public and private subnets per Availability Zone.
+    Create Route Table for Private Subnets.
+    Attach them to the Main/Public Route Table.
+    Create an Internet Gateway. Attach it to a VPC.
+    In the Main Route Table Attach the Internet Gateway to the address of `0.0.0.0/0`. This enables that everything within the VPC will be redirected to local network and everything outside VPC will be redirected to the Internet.
+    Create a NAT Gateway to route the traffic from Private subnets in a translated manner. Attach it to the Priavte subnet.
+    Create a Security Group. Attach it to our VPC.
+
+Security Groups and Network Access Control Lists(ACL):
+  A Network ACL operates upon Subnet level.
+  NACL applies to all traffic entering/exiting the subnet.
+  Rules needs to be set up for the traffic flow in our VPC.
+  Rules are of Inbound/Outbound type.
+  Rules set up in our VPC are like `if-else` statements which means they are processed `in-order` whcih means that if a rule is satisfied first then it won't process any further rules.
+  Only NACLs have got Allow/Deny rules.
+
+  Inbound Rules/Traffic:
+    Connections initiated through the internet to our AWS Resources.
+
+  Outbound Rules/Traffic:
+    Connections initiated by our AWS Resources to the internet.
+
+  A security group can be applied to multiple EC2 instances within or across subnets.
+  Security Group also controls traffic that's coming in/going out of the EC2 instances.
+  Stateful Firewall will allow the return traffic automatically. Whereas the stateless firewall will have to explicitly specify the inbound, outbound traffic.
+  NACL is a Stateless Firewall. Thus we need to setup inbound/outbound rules.
+  Security Group is a Stateful Firewall. It allows the setup of Inbound Rules only. If any traffic doesn't qualify inbound rules then it's automatically denied.
+
+  Security Groups - Across Subnets.
+  NACL - Just for one subnet.
+
+Best Practices in Security Groups:
+  Public Subnets have an Internet facing Load Balancer.
+  Private Subnets have an Private(Internal) Load Balancer.
+  We attach both public and private subnets to the VPC.
+
+  Public Subnet:
+    It has an Internet facing ALB.
+    It has got a public facing EC2 instance containing the Web Front End.
+    This public EC2 instance is going to accept traffic only from the Public ALB.
+
+  Private Subnet:
+    It has an Internal(Private) facing ALB.
+    It has got a private facing EC2 instance containing the Application Layer.
+    This Private EC2 instance is going to accept traffic only from the Private ALB.
+
+VPC Peering:
+  VPCs can talk to each other using VPC Peering. This communication is within the AWS Global Infra and is never with the internet.
+  This communication between VPCs is encrypted.
+  VPC peering enables routing using Private IPv4 addresses.
+  For VPC Peering CIDR blocks must never overlap.
+  VPC Peering can happen between VPCs within a region, across regions or even across User Accounts.
+  For VPC peering we need to have direct connections set up between VPCs. We don't have the ability of the VPCs communicate indirectly via other VPCs.
+  For VPC to VPC communication, it uses private IP addresses(within AWS Global Infra) of the resources.
+  We ping to other EC2 instances, VPC, even the Internet using The Internet Control Message Protocol (ICMP) protocol.
+
+  To create a VPC Peering connection:
+    We need to request a connection to another VPC and it has got to be accepted.
+    Once accepted we need to set Inbound and Outbound rules(Security Groups) in both the VPCs to enable the communication between the resources amongst the two VPCs.
+    We even need to add peering connections in our Route tables.
+
+VPC Endpoints:
+  Some services are private(EC2) and some services are public(S3).
+  VPC Gateway Endpoint - Used for S3.
+  VPC Interface Endpoint - Other services.
+
+  So, for the EC2 instance to communicate we create an Interface Endpoint which then provisions a Elastic Network Interface(ENI).
+  An ENI is within a subnet. Each subnet has got an ENI attached to it. Each interface endpoint can communicate between multiple AWS services.
+  EC2 instance connects to public AWS service using a Private IP.
+  Route table entries are important. A route table entry is required for the prefix list.
+
+  Interface Endpoint:
+    Elastic Network Interface with a private IP.
+    Uses DNS entries to redirect traffic.
+    API Gateway, CloudFormation, CloudWatch, EC2 are some of the services which use Interface Endpoints.
+    Security is defined in Security Groups.
+
+  Gateway Endpoint:
+    A Gateway that is a target for a specific route.
+    Uses Prefix lists in the Route table to redirect traffic.
+    Amazon S3, Dynamo DB are the ONLY services which use Gateway Endpoints.
+    Security is defined in VPC Endpoint Policies.
+
+  For Example an EC2 instance to S3 connection:
+    Any connections that go to S3 through the EC2 instance have to go through S3 Gateway Endpoint.
+    S3 Bucket Policy:
+      Resource based policy. It's used to control access to our buckets.
+    We can thus use this bucket policy to control access to our S3 bucket content.
+    But typically for our use case we are gonna allow only the traffic that comes through our EC2 instance VPC Endpoint to our S3 bucket and deny access from every other Resource or even the Internet.
+
+  Service Endpoint Model:
+    It is a classic Pub-Sub model.
+    In it, the Consumer VPC - Subscriber, Service Provider VPC - Publisher.
+
+AWS Client VPN:
+  We can connect our Client Computer to the AWS Datacenter to a AWS VPC through a VPN.
+  We create a VPN Endpoint and it's associated with a Subnet.
+  We can use OpenVPN which is free to connect to AWS VPC.
+  VPN Connects over SSL/TLS over port 443.
+  The VPN Client performs Source Network Address Translation(SNAT) from the CIDR Block associated with VPN to the CIDR Block associated to the VPC.
+  That then further points to the VPN Endpoint.
+
+  A Client VPN is an encrypted connection over the internet from your Computer to the VPC to communicate using Private IP addresses to your instances.
+
+Virtual Private Gateway(VGW):
+  It's deployed on the AWS site. It can be used for AWS resources such as EC2 instances to communicate with On-Premises Datacenters.
+  Multiple On-Premises Datacenters can also be used to communicate with each other using AWS VPN CloudHub.
+
+AWS Direct Connect(DX):
+  The most important point here is that it's a High speed Physical Fibre Connection.
+  But unlike other VPN connections to VPC, the DX Connections are NOT ENCRYPTED.
+  Just like VPC, DX is a Regional service. So multiple VPCs have got to use multiple DX connections.
+  VPNs typically run over the public internet. But the internet is unpredictable, because of latency or congestion or even complete failure.
+  To solve this problem, AWS provides a direct private connection between the Client and the AWS Resources.
+  It's done througn DX. In the AWS Global Infra, there are Direct Connect locations. Just like Edge Locations inside AZs.
+  But this is typically done for Private datacenters, where the datacenter will have a Customer Router and it'll communicate with the DX Location, which will in turn communicate with the AWS VPC.
+  AWS DX is a physical fibre connection to AWS running at 1Gbps to 10Gbps.
+  AWS DX Gateway is a workaround for DX to communicate our datacenter traffic between multiple regions because DX is primarily a Regional Service.
+
+AWS Transit Gateway(TGW):
+  Typically we need a VGW for each VPC to connect to our private datacenter and the VPCs would have independent peering connections amongst themselves as well.
+  Thus it becomes complex for the datacenter to connect and communicate with multiple VPCs.
+  So, we create a Transit Gateway to connect all of our VPCs.
+  So, the datacenter now has got to make only one request to the Transit gateway which will in turn make all the requests to teh concerned VPC. So, it acts like a router itself.
+  It becomes very useful when a company starts using a lot of VPCs in a lot of regions and our connectivity mesh can become connectivity hell. Thus, to avoid it, we can use TGW to simplify the connection mesh a bit.
+
+Using IPv6 In a VPC:
+  IPv4 provides 4.3 Billion addresses. Public IPv4 addresses are close to being exhausted, thus NAT is being extensively used.
+  For Example if a company has 1000s of computers then the network will use Private IPv4 addresses and when these PCs access the Internet, then through NAT just one static public IP address will be used by and to represent many PCs.
+  IPv6 is the way to go because we are running short of IPv4 addresses and in the future we are gonna be using IPv6 addresses extensively.
+
+  IPv4 Address:
+    127.0.0.1
+    It's made up of 4 binary octets separated by `.`. So, it's always 32 bits long.
+
+  IPv6 Address:
+    2020:0001:9d32:5bc2:1c48:32c1:a93b:b12c
+    It also consists of a Network and a Host part. But it's 128 bits long.
+    It uses Hexadecimal notation which is far more versatile than the regular binary octet notation.
+    The number of IPv6 addresses generated is so huge that we can assign 100 IPv6 addresses to every atom on Earth.
+    It definitely won't exhaust even in the coming century. That's for sure.
+
+  When we set up a VPC we can also set up a IPv6 CIDR Block.
+  AWS will assigna `/56` IPv6 address range to the VPC. So, those become `/64` subnets.
+  So, basically a `/64` subnet will give 18 million trillion addresses in just one subnet.
+  We still have to put them through the Route Tables as usual.
+  All IPv6 addresses are publicly routable. No NAT is necessary.
+
+VPC Flow Logs:
+  Flow Logs capture information about the IP traffic going to and from the network interfaces in a VPC.
+  Flow Log data is stored using Cloudwatch Logs or S3.
+  Flow logs can be created at:
+    VPC level
+    Subnet level
+    Network Interface(ENI) level
+  These logs are useful for troubleshooting and security purposes.
