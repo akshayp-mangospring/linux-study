@@ -74,12 +74,134 @@ Application Layer
 
 TCP/IP Model:
 
-IP Subnetting, Classless Inter-Domain Routing - CIDR:
+IP Addressing, Subnetting, Classless Inter-Domain Routing - CIDR & Ports:
   The most critical component of networking is an IP Address. Every time we surf the internet, our browser is connected to its remote server using an IP address.
 
-  What's an IP Address?
+  Device addresses:
+    Each device has at least 3 addresses:
+      Physical address => MAC address.
+      Logical address => IP address.
+      Hostname => Useful for humans to recognize the device.
 
-  Available IP Addresses Calculation:
+  What's an IP Address?
+    Unique address provided to a device that's connected to your network. It could be a Home network, Office network or even the Internet.
+    It's a unique address within your network.
+
+    Generally IP addresses are generated & represented in IPv4.
+    Each number in the IP address can be from 0-255.
+    An IP address is 32 bits(4 Bytes).
+    Example:
+    192.168.1.0 => `11000000.10101000.00000001.00000000`
+
+    An IP address consists of two parts network part and  host part.
+    The network part is common amongst all IP addresses in the network.
+    The host part is actually the unique indicator of an IP address.
+
+  Traditional IP Address Classes:
+    Class A:
+      Range: 10.0.0.0(10.0.0.0/8)
+      Subnet Mask: 255.0.0.0
+      Larger networks with many hosts.
+
+    Class B:
+      Range: 172.16.0.0(172.16.0.0/12)
+      Subnet Mask: 255.255.0.0
+      Medium networks with a moderate number of hosts.
+
+    Class C:
+      Range: 192.168.0.0(192.168.0.0/16)
+      Subnet Mask: 255.255.255.0
+      Smaller networks with fewer hosts.
+
+  IP Network:
+  An IP network is identified by a range of IP addresses and is typically associated with a subnet mask that helps to divide the IP address space into smaller subnets.
+
+  What is a Subnet?
+  A subnet(SubNetwork) is a logical subdivision of an IP Network.
+  It actually allows larger networks to be divided into smaller, manageable networks.
+  Each subnet is identified by a unique subnet address.
+  Subnetting helps efficiently utilizing IP addresses and controlling traffic.
+
+    Subnet Mask:
+    Subnet mask is the part which distinguishes the network part from the host part.
+    Subnet mask helps identify whether an IP address is local to the subnet or needs to be sent to other subnets(via a gateway/router).
+    In its binary form, the subnet mask consists of consecutive 1s followed by 0s. For example, a subnet mask of `255.255.255.0` (or `/24` in CIDR notation) in binary is `11111111.11111111.11111111.00000000`.
+
+  Network Prefix (CIDR Notation):
+    Network Prefix, also known as CIDR Notation allows for flexible allocation of IP addresses, than the traditional Class A, Class B and Class C.
+    In CIDR notation an IP address is followed by a `/` and a number indicating the network prefix length.
+    Format:  `<IP_address>/<prefix_length>`
+    For example:
+      `192.168.1.0/24` represents the IPv4 address `192.168.1.0` with a subnet mask of `255.255.255.0` (which has `24` bits set to 1 in the subnet mask).
+
+    Steps for calculation of Available IP Addresses in CIDR Block(Number of networks and IP addresses in those networks):
+      Understand the prefix length:
+        The prefix length indicates how many bits of the IP address are fixed as the network portion.
+        In `192.168.1.0/24`, `/24` means the first 24 bits of the address are the network part.
+        So, it means in the above the first 24 bits are set to 1 in every IP address within this network. This is common for all IP addresses in the network.
+      Calculate the number of host bits:
+        Subtract the prefix length from 32.
+        So, for `192.168.1.0/24` => 32 - 24 = 8.
+        So, these are the available host bits.
+      Calculate the number of host addresses:
+        The number of possible host addresses in the block is calculated as 2 ^ Number of host bits.
+        So, in our case, it's 2 ^ 8 = 256 addresses are available as host addresses.
+      Exclude Network & Broadcast addresses:
+        First address is always the Network address - All host bits set to 0.
+        Last address is always the Broadcast address - All host bits set to 1.
+
+        So, we get 2 less addresses for usage than the available block of addresses.
+        So, in our case, it's 256 - 2 = 254 total usable addresses in a network.
+
+        But, there's a caveat to it. AWS doesn't allow the usage of first 4 and last IP address. So, in AWS we get to use only 250 addresses in a network.
+
+  Creating a Subnet:
+    Subnets are created by borrowing bits from the host portion of an IP address and using them to create additional networks within the main network.
+
+    Steps to create subnets:
+    - Choose the subnet mask/prefix length.
+    - Identify the Subnet Bits:
+      Determine how many bits from the host portion of the IP address will be used for subnetting. This determines how many subnets will be available for usage.
+    - Calculate subnet increment:
+      Calculate the subnet increment based on the number of subnet bits.
+      Subnet increment is the value by which the network address increases to identify the boundaries between each subnet.
+    - Assign Subnet addresses:
+      Start allocating addresses within the IP address range using the calculated subnet increment.
+
+    Calculating Subnets and Hosts per Subnet:
+      Number of Subnets:
+      - Determine the number of subnet bits used in the Subnet Mask.
+      - 2 ^ n that's the number of available basic subnets.
+
+      Number of Hosts per Subnet:
+      - Calculate the number of host bits by subtracting the total bits in the Subnet Mask from the total number of bits in the IP address.
+      - 2 ^ h - 2 are the number of available IP addresses/Subnet.
+
+    Example:
+    Network: 192.168.1.0/24 (Subnet Mask: 255.255.255.0)
+    Desired Subnets: Divide into 4 subnets
+
+    IP Address '192.168.1.0' => 11000000.10101000.00000001.00000000
+
+    192.168.1.0/24 => `11111111.11111111.11111111` That's the network part because of the subnet mask.
+    Now to create 4 subnets we need two bits, because 2 ^ 2 = 4. So, two bits are enough for createting 4 subnets.
+    On the contrary to create 3 subnets we would still need two bits.
+    For 5 subnets, we would need to use 3 bits. But ideally, we generate 2 ^ n power of subnets. Generally we use 2, 4, 8, 16, 32... subnets in an IP address range.
+
+    So, our Subnet mask actually becomes from `192.168.1.0/24` to `192.168.1.0/26`.
+
+    So, now we have got 32 - 26 = 6.
+    These are the number of available bits for host addresses.
+    So, 2 ^ 6 is actually 64 addresses/Subnet.
+    But two addresses are reserved as Broadcast & Network address.
+    So, it just 64 - 2 = 62 usable IP addresses/subnet.
+
+    Subnet Addresses in the above example thus becomes separated by 64 because we had 64 IP addresses available to us for host bits.
+    So subnet addresses are:
+    Subnet 1's address: 192.168.1.0/26
+    Subnet 2's address: 192.168.1.64/26
+    Subnet 3's address: 192.168.1.128/26
+    Subnet 4's address: 192.168.1.192/26
 
 DNS:
   Domain Name System - DNS, merges the needs of both humans and computers, converting human-readable domain names into computer-friendly IP addresses and vice versa.

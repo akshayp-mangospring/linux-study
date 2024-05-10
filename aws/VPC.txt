@@ -35,11 +35,13 @@ Thus in `192.168.0.1` - 192.168.0 is the Network ID and `.1` is the Host ID.
 The Network ID will be the same for every computer in the network. Thus every computer within this network will have `192.168.0` in it's IP address.
 
 What is a Subnet Mask?
-
 2 Things - Number of networks wthin an IP Address Range and Number of addresses within that Network.
 
 Classless Inter Domain Routing(CIDR):
 It's basically varying lengths of subnet masks.
+
+How to calculate CIDR Block?
+
 
 Amazon VPC:
   Amazon VPCs are within a Region. They can't span across regions. So, a VPC is a logically isolated portion of the AWS Cloud within a region.

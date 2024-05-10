@@ -138,3 +138,6 @@ Day 31 - 5 May 2024:
 Was off track for a few weeks, but now, I'm back on track and have started studying.
 For the record - My AWS Solutions Architect Associate Exam is on 29 June 2024.
 Studied about AWS VPC.
+
+Day 32 - 10 May 2024:
+Studied about IP addresses and Subnets.
