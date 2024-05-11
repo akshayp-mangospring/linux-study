@@ -93,7 +93,7 @@ IP Addressing, Subnetting, Classless Inter-Domain Routing - CIDR & Ports:
     Example:
     192.168.1.0 => `11000000.10101000.00000001.00000000`
 
-    An IP address consists of two parts network part and  host part.
+    An IP address consists of two parts network part and host part.
     The network part is common amongst all IP addresses in the network.
     The host part is actually the unique indicator of an IP address.
 
@@ -153,7 +153,7 @@ IP Addressing, Subnetting, Classless Inter-Domain Routing - CIDR & Ports:
         So, we get 2 less addresses for usage than the available block of addresses.
         So, in our case, it's 256 - 2 = 254 total usable addresses in a network.
 
-        But, there's a caveat to it. AWS doesn't allow the usage of first 4 and last IP address. So, in AWS we get to use only 250 addresses in a network.
+        But, there's a caveat to it. AWS doesn't allow the usage of first 4 and last IP address. So, in AWS we get to use only 251 addresses in a network.
 
   Creating a Subnet:
     Subnets are created by borrowing bits from the host portion of an IP address and using them to create additional networks within the main network.

@@ -141,3 +141,8 @@ Studied about AWS VPC.
 
 Day 32 - 10 May 2024:
 Studied about IP addresses and Subnets.
+Also took a session on it.
+
+Day 33 - 11 May 2024.
+Studied the 1st chapter from the official Study Guide.
+Also started studying the 5th Chapter - Database Services from the study guide.

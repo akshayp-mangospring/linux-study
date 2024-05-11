@@ -28,3 +28,113 @@ So, it's technical growth. It's Revolutionary!!!
 
 Right now: Netflix, Dropbox, Airbnb, NASA, Activision, McDonald's uses AWS for the Cloud Storage - That's Amazing!!!
 SQS, S3 and EC2 all were launched in 2006 as part of their initial release - 1.0.
+
+Categories of AWS Services:
+  Compute:
+  Services replicating the traditional role of a local physical server in the Cloud.
+  It also offers advanced configurations like AutoScaling, Load Balancing, Containers and Serverless Architectures.
+
+  Networking:
+  Application Connectivity, Access control and enhanced remote connections.
+
+  Storage:
+  Various kinds of storage platforms designed to fit a range of both immediate accessibility and long-term backup needs.
+
+  Database:
+  Managed data solutions for use cases requiring multiple data formats such as Relational, Non Relational, Caching.
+
+  Application Management & Integration:
+  Monitoring, Auditing, configuring AWS account services and running resources.
+
+  Security & Identity:
+  Services for managing Authentication and Authorization, data and connection encryption and integration with Third party authentication and management systems.
+
+AWS Services by Category:
+  Compute Services:
+    Elastic Compute Cloud(EC2):
+    EC2 Server instance provides virtual versions of the server you would run in your local datacenter. EC2 instance can be provisioned with the CPU, memory, storage and network interface profile. To meet any application need, from a simple web server to one part of cluster of instances, providing an integrated multi-tiered flat architecture. Since EC2 instances are virtual, they are resource efficient and deploy nearly instantly.
+
+    Lambda:
+    Serverless Application architectures like the one provided by Amazon's Lambda Service allow you to provide responsive public-facing services, without the need for a server that's actually running 24/7. Instead, network events(like consumer requests) can trigger the execution of a predefined code-based operation. When the operation(which can currently run for as long as 15 mins) is complete, the Lambda event ends, and all resources automatically shutdown.
+
+    Auto Scaling:
+    Copies of running EC2 instances can be defined as image templates and automatically launched(or scaled up) when client demand can't be met by existing instances. As demand drops, unused instances can be terminated(or scaled down).
+
+    Elastic Load Balancing(ELB):
+    Incoming network traffic can be directed between multiple web servers to ensure that a single web server isn't overwhelmed while other servers are underused or that traffic isn't directed to failed servers.
+
+    Elastic Container Service(ECS):
+    Elastic Container Service, compute workloads using container technologies like Docker, Kubernetes, can be provisioned, automated, deployed and administered using full integration with your other AWS account resources. Kubernetes workloads have their own environment: Amazon Elastic Kubernetes Service(EKS).
+
+    Elastic BeanStalk:
+    BeanStalk is a managed service that abstracts the provisioning of AWS compute and networking infrastructure. You are required to do nothing more than push your application code, and BeanStalk automatically launches and manages all the necessary services in the background.
+
+  Networking Services:
+    Virtual Private Cloud(VPC):
+    VPCs are highly configurable networking environments designed to host your EC2(& RDS) instances. You use VPC based tools to secure and, if desried, isolate your instances by closely controlling inbound and outbound network access.
+
+    Direct Connect(DX):
+    By purchasing fast and secure network connections to AWS through a third-party provider you can use Direct Connect to establish and enhance Direct Connect between your local datacenter or office and your AWS based VPCs.
+
+    Route 53:
+    Route 53 is the AWS DNS service that let's you manage domain registration, record administration, routing protocols and health checks, which are all fully integrated with the rest of your AWS resources.
+
+    CloudFront:
+    CloudFront is Amazon's distributed global Content Delivery Network(CDN), when properly configured, a CloudFront distribution can store Cahced versions of your site's content at edge location around the world so that they can be delivered to customers on request with the greatest efficiency and lowest latency.
+
+  Storage Services:
+    Simple Storage Service(S3):
+    S3 offers highly versatile, reliable and inexpensive object storage that's great for data storage and backups. It's also commonly used as part of larger AWS production processes, including through the storage of script, template, log files.
+
+    S3 Glacier:
+    S3 Glacier, a good choice for when you need large data archive stored cheaply over the long term and can live with retrieval delays measuring in the hours.
+    Glacier's lifecycle management is closely integrated with S3.
+
+    Elastic Block Store(EBS):
+    EBS provides the persistent virtual storage drives that hold the OS and working data of an EC2 instance. They are meant to mimic the function of the storage drives and partition attached to physical servers.
+
+    Storage Gateway:
+    It's a hybrid storage system that exposes AWS Cloud Storage as local, on premises appliance. Storage Gateway can be a great tool for migration and data backup and as a part of disaster recovery operation.
+
+  Database Services:
+    Relational Database Service(RDS):
+    RDS is a managed that gives you a stable, secure and reliable database instance. You can run a variety of SQL database engines on RDS, including MySQL, Microsoft SQL Server, Oracle and Amazon's own Aurora.
+
+    DynamoDB:
+    DynamoDB can be used for fast, flexible, highly scalable and manage non relational(NoSQL) database workloads.
+
+  Application Management Services:
+    CloudWatch:
+    CloudWatch can be said to monitor, process performance and resource utilization when preset thresholds are met, either send you a message or trigger an automated response.
+
+    CloudFormation:
+    This service enables you to use template files to define full and complex AWS deployments. The ability to script your use of any AWS resources make it easier to automate, standardizing speeding up the application launch process.
+
+    CloudTrail:
+    CloudTrail collects records of all your accounts API events. This history is useful for Account auditing and trobleshooting purposes.
+
+    Config:
+    The Config Service is designed to help you with, change management and compliance for your AWS Account. You first define a desired configuration state and Config evaluates any future states against that ideal. When configuration change pushes too far from the ideal baseline, you'll be notified.
+
+  Security & Identity Services:
+    Identity & Access Management(IAM):
+    You use IAM to administer users and programmatic access and authentication to your AWS account. Through the use of users, groups, roles, policies, you can control exactly who and what can access and/or work with any of your AWS resources.
+
+    Key Management Service(KMS):
+    KMS is a managed service that allows you to administrate the creation and use of encryption keys to secure data used by and for any of your AWS resources.
+
+    Directory Service:
+    For AWS that need to manage identities and relationships, Directory service can integrate AWS resources with identity providers like Amazon Cognito and Microsoft AD domains.
+
+  Application Integration Services:
+    Simple Notification Service(SNS):
+    SNS is a Notification tool that can automate the publishing of alert topics to other services(to an SQS Queue or to trigger a Lambda function for instance), to mobile devices or to recipients using Emails or SMS.
+
+    Simple Workflow(SWF):
+    SWF lets you co-ordinate a series of tasks that must be performed using a range of AWS services or even non-digital(meaning human) events.
+
+    Simple Queue Service(SQS):
+    SQS allows for event driven messaging within distributed systems that can decouple while co-ordinating the discrete steps of a larger process. The data content in your SQS messages will be reliably delivered, adding to the fault tolerant qualities of an application.
+
+    API Gateway:
+    This service enables you to create and manage secure and reliable APIs for your AWS based application.
