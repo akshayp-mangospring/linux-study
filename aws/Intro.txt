@@ -1,5 +1,50 @@
 This exam will focus on architecting an application. I'll be studying over 30 AWS services. Brace yourself, it's gonna change your life. It's gonna be Revolutionary!!!
 
+Platform as a Service(PaaS):
+It's designed for Developers who would worry about code than about the Infra.
+Focus on Deployment and Management of the App rather than the infrastructure.
+Examples: Heroku, Elastic BeanStalk, Google's App Engine.
+
+Infrastructure as a Service(IaaS):
+It's designed for Admins who want fine grained control over the infrastructure on which our apps run.
+The IaaS providers gives the necessary Networking, Storage and Compute capabilities for it's users.
+It's mostly about provisioning and configuring.
+Examples: Cloud Providers like AWS, GCP, Azure.
+
+What is Cloud Computing?
+  You don't own the servers. Instead, you rent them.
+  Data being regulated is a big time decider for whether the app and the data is gonna be in the Cloud, it's actually inversely proportional to the regulations.
+  Meaning the more regulations the less likely it's gonna be on the cloud.
+    Cloud is generally used by Startups, tech companies of small to medium scale projects.
+    Hybrid deployments are used by FinTech, legacy enterprises and somewhat regulated data.
+    On Premises deployments is used not only by Big Corps like Google, Facebook, but also by Government, Public Sector and Hospitals which have super sensitive info in it. In cases of On-Premises deployments the cost and the data is the decider.
+
+  Region:
+  Physical location with multiple Availability Zones. There are 33 Public Regions right now(2 in China with different protocols to access it). Other than that AWS also has GovCloud to host Government Data of USA.
+
+  GovCloud:
+  GovCloud allows customers to host Controlled Unclassified Information.
+  It's operated by US Citizens on the US Soil only.
+
+  Availability Zone:
+  An AZ is a Data Center owned and operated by AWS. It could have one or more discrete data centers though.
+  There are at least 3 AZs/region.
+  There are at least 105 AZs in the Global Infra.
+  AZs are represented by a Region Code followed by an alphabet `us-east-1a`, where `us-east-1` is region code and `a` is the AZ.
+
+  Edge Location:
+  Get data fast or upload data fast to AWS.
+  An Edge location is a Node in the AWS CloudFront Content Delivery Network.
+  It's owned and managed by a trusted partner of AWS.
+  Edge Locations serve requests for CloudFront and Route53.
+  S3 transfer acceleration, API Gateway also use `AWS Edge network` - Network of AWS Content Delivery.
+
+Regions:
+ Each region has at least 2 AZs.
+ US East - Virginia is the largest region(6 AZs). New Services are always available in that region first.
+ Not all services are available in all regions. So, services can be region specific.
+ US East 1 is where you see all your billing information.
+
 The topics to focus upon:
   IAM - Identity and Access Management
   AWS CLI - AWS console, but with it you can access the server from local

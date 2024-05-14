@@ -1,0 +1,226 @@
+Best Practices for Users:
+  Apply MFA on your Root Account.
+  Create Individual IAM Users and never use the root account apart from the first time.
+  Create a new use with `AdministratorAccess` which is kind of equivalent to the root user level and then perform all your actions including creating users and billing info from this new  Admin User.
+  User Groups to assign permissions.
+  Apply an IAM password policy. Like one uppercase, one lowercase, one symbol in password, password expiration, etc. for all the users.
+
+EC2:
+  Choose an OS, choose the CPU and Memory.
+  Number of instances - Number of Servers.
+  Choose the default VPC, make it public facing. If you want to make it provate then we need to add an ALB to the VPC first and then add that instance to the VPC.
+  Create an IAM Role for EC2. It'll be used for logging into the EC2 instance using SSM.
+  Add instance storage.
+  Add a security group to the instance.
+  Create a Key Pair - That's used for logging in to the server.
+
+AWS Simple Systems Manager(SSM):
+  There are 3 ways to get into a server.
+  - SSH using the generated Key Pair - Preferred option
+  - EC2 Instance Connect
+  - Session Manager using SSM. It's similar to Instance Connect.
+
+  SSM is also called Systems Manager and it offers:
+  - Session Manager
+  - Maintenance Windows
+  - State Manager
+  - Patch Manager
+  - Fleet Manager
+  - Inventory
+
+  Session Manager sessions are recorded in AWS thus it provides transparency for people who are accessing the servers, but SSH, although is a simpler way doesn't provide for such transparency.
+
+How to create an AMI?
+  We basically create an AMI by taking a snapshot of an EC2 instance with all of our required dependencies installed in it.
+  But the real question is that our dependencies constantly keep on increasing, so what do we do? Create a new AMI after a dependency has increased? That'll lead to a ton of AMIs in our account.
+
+Auto Scaling Groups:
+  Auto Scaling ensures that there's at least a minimum number of instances running for our App, within a region.
+  So, even if we manually stop a healthy instance, the Auto Scaling group responds to it by spinning up new instances to maintain the configured desired number of healthy instances in the ASG.
+
+  To create an ASG is very similar to creating an EC2 instance. But with add-ons to it.
+  We choose the Min, Max and the Desired Group Size.
+  Add it to one VPC, also to subnets within the VPC. It also internally means that an ASG can at max span to a region only.
+  Add Scaling policies for the ASG.
+
+  When we delete an ASG, it also takes down(terminates) the Auto Scaled instances in it.
+
+  The deciding factor to spin up even more instances than the desired capacity is taken upon the amount of traffic and the `average workload` upon the number of instances.
+
+Application Load Balancer(ALB):
+  ALB has the responsibility to evenly distribute traffic in our EC2 instances.
+  A Load balancer lies in the region, generally our EC2 instances lie in different AZs.
+  So, an ALB is connected to a VPC, which is limited to a region, thus ALB is also limited to a region. We need to have at least 2 AZs for an ALB to operate.
+  In creation of an ALB, we generally make it internet facing.
+  An ALB also has got a target group which could have target types of Instance/IP/Lambda function. This Target group then references instances to which we target the traffic to.
+  Then we add all the instances within the Target group to the ALB.
+  An ALB has got a DNS domain name attached to it.
+
+What's an IAM Role?
+  It was used in logging into EC2 instannce for sessions.
+
+Simple Storage Service(S3):
+  S3 is a global service.
+  But the Buckets in S3 are gonna be Region Specific.
+  `Please note that S3 !== RDS. RDS is a database software just like MySQL and S3 is actually the File storage.`
+  In the very basics we store our Image, Video, Audio files in S3.
+  S3 is used in conjunction with CloudFront a lot.
+
+CloudFront:
+  It's a Global Service.
+  CloudFront Edge Locations is from where we serve our files quickly via a Content Delivery Network.
+  It takes the content and copies it on multiple locations over the world. It serves content to the end user from the nearest Edge location to the end user.
+
+  Creation:
+    We create a distribution for ourselves.
+    It basically creates a network of the content for us in this. So, it takes time for creation.
+
+  So, what it basically does is that once a file is uploaded to a S3 bucket then it takes it and copies it over to all the other nodes of the network.
+  Just like an ALB, a CloudFront distribution has got a DNS domain name attached to it.
+
+Relational Database Service(RDS):
+  There is pricing for the database as well based on the plan.
+    For production it's $600/month
+    For developer it's $200/month
+
+  The storage on DB will be Auto Scaled.
+  We will have to launch the RDS in a VPC.
+  It's like a Multi AZ db that can be launched.
+  We can even have back ups based on a time interval like 12 hours, 1 day, etc.
+  This back up is done by taking Snapshots of the DB.
+  We can even get the metrics if required on the DB instance.
+  A DB also lies within one region itself. It can't be scaled to multiple regions.
+
+AWS Lambda:
+  An AWS Lambda is basically a function which is triggered when required. It doesn't require us to set up a server which is running 24/7.
+  It can be written in all major programming languages.
+  These functions also have got access to AWS Services, such as a function which is gonna run on CloudWatch logs.
+  We just need to give permissions to the function for it.
+  The permissions are granted with the help of Roles.
+  Lambda functions can be run only for 15 mins or less.
+  We can even test the functions in AWS itself.
+
+  These functions can be triggered from different AWS services as well.
+  We just have to set up the trigger configuration as that service in the Lambda function.
+
+EC2 Pricing Model:
+  EC2 has only 4 Pricing models or offerings in pricing:
+    On Demand - Least Commitment
+    Reserved - Best Long Term - Upto 75% off
+    Spot - Biggest Savings - Upto 90% off
+    Dedicated - Most Expensive
+
+  On Demand:
+    Whenever we launch a new EC2 instance it's by default On Demand.
+    It has no upfront payment, thus no long term commitment.
+    We are charged by the hour.
+    This is ideal for Short Term, Spikey, unpredictable workloads, when you have a new experimental app to run.
+
+  Reserved Instances:
+    It needs to have a 1 Year or 3 Year contract. - Term
+    We can make an upfront payment if we want to and we can even make it after the the tenure. But if we pay upfront then we'll have more savings on the instances. - Payment Type
+    We can even schedule a reserving of an instance as per hour or week or day. - Class Offering.
+    Reserved instances can be shared amongst multiple accounts and also unused RIs can be sold on Reserved Instances Marketplace.
+    Class Offerings can be:
+      Standard
+      Convertible
+      Scheduled
+
+    Reduced Pricing Formula =  Term * Class Offering * Payment type
+
+  Spot Instances:
+    These instances are offered by AWS so that they can maximize the utilty of their idle servers. It's like hotel offers discounts for their vacant rooms.
+    But the caveat here is that AWS can terminate these instances any time that they want.
+    They really want to make us use their spare computing capacity.
+    If they terminate it then you won't be charged for the partial hour of usage. But if you terminate the instance on your own then you're gonna be charged for even the partial hour of usage.
+
+  Dedicated Instances:
+    It is dedicated servers.
+    Please note that even though expensive, these servers don't provide any performance enhancements whatsoever. Just the pricing differes due to regulatory models.
+    This is designed to meet up the regulatory requirement when you have strict server-bound licensing that won't have multi-tenancy on their hardware.
+    These are offered both in On-Demand and Reserved Instances - 70% off on-demand pricing
+    Enterprises and Large Organizations may have security concerns or obligations, thus Dedicated Instances are the way to go.
+
+VPC has only 2-3 things in it:
+- EC2 instances
+- ASGs
+- RDS
+- ALB
+
+Free Services in AWS:
+There are Free Services in AWS, but there are also services that spin up resources, then they'll cost you.
+
+Fully Free Services:
+  IAM
+  VPC
+  Cost Explorer
+  Organizations
+  Billing
+
+The services which are themselves free but can cost you money once they provision resources:
+  Auto Scaling
+  CloudFormation
+  Elastic BeanStalk
+  OpsWorks
+  Amplify
+  AppSync
+  CodeStar
+
+AWS Support Plans:
+  Basic - Free
+  Developer - $20/month - Tech support via Email, General Guidance.
+  Business - $100/month - Tech support via Chat, Phone.
+  Enterprise - $15,000/month - Gets a TAM assigned.
+
+AWS Marketplace:
+In AWS Marketplace allows you to buy/sell solutions from/to other AWS Customers.
+A product can be free or can have an associated charge on it.
+Products can be:
+  AMIs
+  CloudFormation Templates
+  WAF Rules
+  Web ACLs
+  SaaS offerings
+
+The product usage charge will be a part of your AWS Bill. We pay AWS first which in turn pays the product vendor.
+
+AWS Trusted Advisor:
+  This advises you on Security, saving money, performance, service limits and fault tolerance.
+  It's nothing but an automated checklist on best practices on AWS.
+
+  Free Plan - 7 Trusted Advisor Checks
+  Business, Enterprise - All Trusted Advisor Checks
+
+  It advises on:
+    Cost Optimization
+    Security
+    Performance
+    Fault Tolerance
+    Service Limits
+
+  We can set up Email Notifications for it as well.
+
+AWS Organizations:
+  We can get one Bill for all accounts in our Organization using the AWS Organization.
+  We design one master account that pays all the bills of all the master and member accounts.
+  We can use the Cost Explorer Service for this.
+
+  AWS Organizational billing has also got another advantage which is called `Volume Discounts`
+  By principle it says - The more you use, the more you save.
+
+  So, if one account uses one service and another account uses the same service, then by consolidated billing, we combine the two and get the cost of the billing kind of reduced because of the `Volume Discounts` Principle.
+
+AWS Cost Explorer:
+  This service is specifically designed to see our usage costs. It let's us visualize, understand and manage our costs.
+  We can also forecasting to get an idea of our future costs.
+  We can generate and download our cost reports in a `.csv` file.
+  We can view data with granularity - Monthly or Daily.
+  We can view it in a graphical format as well. We can group and filter data as well.
+
+Total Cost of Ownership(TCO):
+  It tells us why we should use AWS in terms of cost savings.
+  It helps is estimate how much money would we save when moving from On-Premise to AWS.
+  It's only for approximation purposes only and not an exact calculator for resources.
+  We can download a detailed report for the upcoming 3 years of approx. costing.
+
+AWS Landing Zone:

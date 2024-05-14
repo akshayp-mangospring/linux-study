@@ -1,6 +1,32 @@
 Billing Info is accessible only to the Root Account and not to any other account in AWS by default, we need to enable it to IAM users if necessary.
 Right now I've enabled the Billing info to the IAM users with full admin access.
 
+2 Rules of thumb:
+- Budgets exist in Billing - Virginia Region.
+- Alarms exist in CloudWatch Service.
+
 Budgets:
 We can set up a budget which basically is an alert notification sent via email to get to know that we have reached a particular threshold to avoid any extra costs to be billed to us.
 We can turn off the specific or set of services when we have reached the threshold. We need to be much more familiar to the Billing section of AWS for this, because it eventually decides the cost for any project.
+The notification can be in the form of an SMS and/or Email.
+The alarm can be upon the full budget(100%) or a percentage of the budget as we prefer to set it up.
+The first 2 Budgets are free.
+Each budget is $0.02/day or $0.6/month
+Alerts support EC2, RDS, RedShift and ElastiCache.
+It can easily be controlled over AWS Budgets dashboard.
+
+We can even set up alarms for when our buget is about to reach the limit.
+It can provide forecasts as well.
+There are 2 types of alerts which can be based on:
+- The Actual Cost incurred
+- The Forecasted Cost
+
+Billing Metrics always exist in `us-east-1` - Virginia Region.
+A Billing Alarm exists in CloudWatch.
+
+We can choose our own support plan, based on which we can get support from AWS.
+The support provided per plan are different.
+There are 3 plans:
+- Basic: Free
+- Developer: $29/month
+- Business: $100/month
