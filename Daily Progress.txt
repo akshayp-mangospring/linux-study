@@ -147,8 +147,12 @@ Day 33 - 11 May 2024.
 Studied the 1st chapter from the official Study Guide.
 Also started studying the 5th Chapter - Database Services from the study guide.
 
-Day 34 - 13 Day 2024 - Voting Day for 2024 Elections:
+Day 34 - 13 May 2024 - Voting Day for 2024 Elections:
 Started studying the Cloud Practitioner Syllabus.
 
-Day 35 - 14 Day 2024:
+Day 35 - 14 May 2024:
 Studied the Cloud Practitioner Syllabus.
+
+Day 36 - 19 May 2024:
+Completed the Cloud Practitioner Syllabus.
+Also studied the AWS Security Module.

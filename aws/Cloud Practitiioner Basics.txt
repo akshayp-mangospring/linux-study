@@ -59,6 +59,29 @@ Application Load Balancer(ALB):
 What's an IAM Role?
   It was used in logging into EC2 instannce for sessions.
 
+VPC Basics:
+  A VPC resides in a Region.
+  Each VPC has got subnets in it.
+  A Subnet resides in an Availability Zone.
+  Each subnet has a NACL.
+  Each subnet has a Route Table.
+  Each public subnet has got a NAT.
+  Each VPC has a Router.
+  Each VPC has an Internet Gateway.
+  Generally EC2 instances lie in a Public Subnet.
+  Generally RDS instances lie in a Private subnet.
+
+Databases in AWS:
+  DynamoDB: NoSQL, key/value database - Cassandra.
+  DocumentDB: NoSQL, documents database - MongoDB.
+  RDS that support multiple engines.
+    Engines supported - MySQL, Postgres, Maria DB, Aurora.
+    Aurora - AWS developed, fully managed database. 5x faster MySQL, 3x faster Postgres
+    Aurora Serverless - Only runs when you need it, like Lambda functions.
+  Neptune: Managed Graph Database.
+  Redshift: Columnar(Instead of reading rows it reads columns) database, petabyte warehouse.
+  ElastiCache: Redis or MemCached Database.
+
 Simple Storage Service(S3):
   S3 is a global service.
   But the Buckets in S3 are gonna be Region Specific.
@@ -204,6 +227,19 @@ AWS Organizations:
   We can get one Bill for all accounts in our Organization using the AWS Organization.
   We design one master account that pays all the bills of all the master and member accounts.
   We can use the Cost Explorer Service for this.
+  AWS allows us to centrally manage Billing, compliance, security and share resources across your AWS accounts.
+
+  It can even allow us to have Service Control Policies, which says that, we can give central control over the allowed permissions for all accounts. Such as the developers might get access only to EC2 services, VPC, RDS and not anything else.
+
+  It consists of:
+    Root Account User:
+      It's a Single Sign-In identity taht has complete access.
+    Organization Units:
+      It is a group of accounts within an organization which can contain other organizatin units.
+      It thus allows us to create a hierarchy.
+
+  Whenever we create a new account, we need to use the `Forgot password` feature to let the new user login to the new account.
+  At the time of an account removal we first have to delete the member account and then remove it from the Organization.
 
   AWS Organizational billing has also got another advantage which is called `Volume Discounts`
   By principle it says - The more you use, the more you save.
@@ -224,3 +260,99 @@ Total Cost of Ownership(TCO):
   We can download a detailed report for the upcoming 3 years of approx. costing.
 
 AWS Landing Zone:
+  Helps Enterprises quickly set-up secure AWS Multi Account.
+  Basically for Multi Account Architecture.
+
+AWS Account Vending Machine(AVM):
+  Automatically provisions and configures new accounts via Service Catalog Template.
+  Uses Single Sign-On(SSO) for managing and accessing accounts.
+  It allows customers to set up their own account baselines through a Landing Zone configuration and update pipeline.
+  It encourages to have separate accounts for stuff, such a separate logging archives account, a security account, a shared services account, etc.
+  AWS best practices in this area center around the need to isolate resources and workloads into multiple AWS accounts (resource containers) for isolation and scope of impact reductions.
+
+Resource Groups and Tagging:
+  Tags are words or phrases that act as metadata for organizing your AWS resources.
+  Resource Groups are a collection of resources which share one or more tags.
+  It helps in details with Metrics, Alarma, Configuration Settings.
+  It can be organized according to projects, such as adding a tag of a project to a resource and then grouping it together for project tag.
+  We can even apply multiple tags on a resource for efficient grouping.
+
+AWS QuickStart:
+  It has pre built templates built by AWS that helps us deploy popular stacks.
+  It reduces 100s of manual steps.
+
+  It is composed of 3 parts:
+    A reference architecture for deployment
+    AWS CloudFormation templates that automate and configure the deployment
+    A deployment guide explaining the architecture and implementation in detail
+
+  Most of the Quick Start reference deployments enable us to spin up fully functional architectures in less than an hour.
+  Example: AWS Managed BlockChain.
+
+AWS Cost and Usage Report:
+  Generates a detailed spreadsheet, enabling us to analyze data and understand your AWS costs.
+  Places the reports into S3 buckets.
+  Use AWS Athena to turn the report into a queryable database.
+  Use AWS QuickSight to visualize your billing data as graphs.
+
+AWS Provisioning Services:
+
+AWS Security Module:
+  AWS Security module apart from the regular AWS Security are as follows:
+
+  Artifact:
+    AWS Artifact provides customers with on-demand access to AWS compliance reports and select online agreements. It allows you to download AWS security and compliance documents such as ISO certifications, Payment Card Industry (PCI) reports, and Service Organization Control (SOC) reports. This service helps you ensure that AWS meets your internal security and compliance requirements. For example, a financial services company can use AWS Artifact to access SOC 2 reports to demonstrate compliance to auditors.
+
+  Audit Manager:
+    AWS Audit Manager simplifies the process of auditing AWS usage to ensure compliance with industry standards and regulations. It continuously collects evidence and provides a customizable framework to manage your compliance efforts. This helps reduce the time and effort required to prepare for audits. For example, a healthcare provider can use Audit Manager to ensure compliance with HIPAA regulations by automatically generating audit reports based on their AWS resource configurations and usage.
+
+  ACM (AWS Certificate Manager):
+    AWS Certificate Manager (ACM) simplifies the provisioning, managing, and deployment of public and private SSL/TLS certificates for use with AWS services and your internal connected resources. ACM handles the complexity of creating and managing certificates, including renewing them automatically. This service allows you to secure websites and applications without managing SSL/TLS certificates manually. For instance, an e-commerce website can use ACM to secure its customer transactions by deploying SSL certificates to its CloudFront distribution and Elastic Load Balancers.
+
+  CloudHSM (Cloud Hardware Security Module):
+    AWS CloudHSM provides dedicated hardware security modules (HSMs) in the AWS Cloud to help you meet corporate, contractual, and regulatory compliance requirements for data security. It enables you to generate and use your own encryption keys within AWS and manage them using FIPS 140-2 Level 3 validated HSMs. CloudHSM is fully managed, which reduces the administrative overhead of running an HSM cluster. For example, a government agency can use CloudHSM to store encryption keys securely and meet stringent regulatory requirements for data protection.
+
+  Detective:
+    AWS Detective makes it easy to analyze, investigate, and quickly identify the root cause of potential security issues or suspicious activities. It automatically collects log data from AWS resources and uses machine learning, statistical analysis, and graph theory to build a linked set of data that can be used for security investigations. Detective helps you identify unusual activities and understand their context within your AWS environment. For example, a security team can use Detective to investigate a suspicious login attempt and trace its origin back through the network activities and user behavior.
+
+  Directory Service:
+    AWS Directory Service offers multiple ways to set up and run Microsoft Active Directory (AD) in the AWS Cloud, or connect AWS resources with an existing on-premises AD. It provides a fully managed service, making it easier to manage and scale directory-aware workloads and AWS resources. This service supports AWS applications such as Amazon RDS for SQL Server and Amazon WorkSpaces. For instance, a company can use AWS Directory Service to integrate its on-premises Active Directory with AWS, allowing seamless access to cloud resources for its employees.
+
+  Firewall Manager:
+    AWS Firewall Manager simplifies the process of configuring and managing firewall rules across your AWS accounts and applications. It provides centralized control over security policies and lets you enforce them consistently across all your resources. Firewall Manager integrates with AWS WAF, AWS Shield, and VPC security groups. For example, an organization can use Firewall Manager to enforce a common set of security policies, such as blocking specific IP addresses or protecting against DDoS attacks, across all their AWS accounts.
+
+  GuardDuty:
+    AWS GuardDuty is a threat detection service that continuously monitors for malicious activity and unauthorized behavior to protect your AWS accounts and workloads. It uses machine learning, anomaly detection, and integrated threat intelligence to identify potential threats. GuardDuty analyzes data from AWS CloudTrail, VPC Flow Logs, and DNS logs to detect unusual behavior. For example, a company can use GuardDuty to identify and respond to potential security threats, such as compromised EC2 instances or unauthorized access attempts.
+
+  IAM (Identity and Access Management):
+    AWS Identity and Access Management (IAM) enables you to securely control access to AWS services and resources for your users. You can create and manage AWS users and groups, and use permissions to allow and deny access to AWS resources. IAM also supports multi-factor authentication (MFA) to enhance security. For instance, a development team can use IAM to grant specific permissions to its members, ensuring they have the necessary access to resources like S3 buckets and EC2 instances while maintaining security best practices.
+
+  Identity Center (AWS Single Sign-On):
+    AWS Identity Center (formerly AWS Single Sign-On) makes it easy to centrally manage SSO access and user permissions to all of your AWS accounts and applications. It provides a unified sign-in experience and allows you to manage user identities and access in a single place. Identity Center integrates with Microsoft Active Directory and other identity providers. For example, an enterprise can use Identity Center to enable its employees to access multiple AWS accounts and third-party applications using their existing corporate credentials.
+
+  Inspector:
+    AWS Inspector is an automated security assessment service that helps improve the security and compliance of applications deployed on AWS. It automatically assesses applications for vulnerabilities and deviations from best practices. Inspector provides detailed findings and remediation steps to help you fix issues quickly. For instance, a SaaS provider can use Inspector to regularly scan its EC2 instances for security vulnerabilities, ensuring they meet compliance requirements and reducing the risk of security breaches.
+
+  KMS (Key Management Service):
+    AWS Key Management Service (KMS) is a managed service that makes it easy to create and control the encryption keys used to encrypt your data. KMS integrates with many other AWS services to help you protect your data using encryption. It provides centralized control over the lifecycle and permissions of your encryption keys. For example, a healthcare application can use KMS to encrypt patient records stored in S3, ensuring that sensitive data is protected and access is controlled.
+
+  Macie:
+    AWS Macie is a fully managed data security and data privacy service that uses machine learning and pattern matching to discover and protect your sensitive data in AWS. Macie automatically identifies and alerts you to sensitive data, such as personally identifiable information (PII), in your Amazon S3 buckets. It helps you meet compliance requirements and reduce the risk of data breaches. For instance, an e-commerce company can use Macie to monitor and protect customer data stored in S3, ensuring compliance with data protection regulations like GDPR.
+
+  Network Firewall:
+    AWS Network Firewall is a managed service that provides essential network protections for your Amazon VPCs. It includes stateful inspection, intrusion prevention and detection, and web filtering capabilities. Network Firewall allows you to set up rules to protect your applications and data from external and internal threats. For example, a financial institution can use Network Firewall to implement strict security policies, such as blocking malicious traffic and preventing unauthorized access to sensitive financial data.
+
+  AWS RAM (Resource Access Manager):
+    AWS Resource Access Manager (RAM) allows you to share your AWS resources with any AWS account or within your AWS organization. It helps you reduce costs and improve resource utilization by sharing resources like VPCs, subnets, and transit gateways. RAM simplifies resource management and enhances collaboration across different teams and departments. For instance, a large enterprise can use RAM to share a single VPC across multiple business units, ensuring efficient use of network resources and simplifying management.
+
+  Secrets Manager:
+    AWS Secrets Manager helps you protect access to your applications, services, and IT resources without the upfront cost and complexity of managing your own hardware security modules (HSMs). It allows you to securely store, retrieve, and manage secrets such as database credentials, API keys, and other sensitive information. Secrets Manager automatically rotates secrets to help you meet security and compliance requirements. For example, a development team can use Secrets Manager to store and rotate database credentials, ensuring that their applications have secure access to the database without exposing sensitive information.
+
+  Security Hub:
+    AWS Security Hub provides a comprehensive view of your high-priority security alerts and compliance status across AWS accounts. It aggregates, organizes, and prioritizes security findings from multiple AWS services and third-party solutions. Security Hub helps you identify and manage security risks more effectively. For instance, a security operations team can use Security Hub to monitor and respond to security alerts from services like GuardDuty, Inspector, and Macie, ensuring a unified approach to security management.
+
+  Shield:
+    AWS Shield is a managed Distributed Denial of Service (DDoS) protection service that safeguards applications running on AWS. It offers two levels of protection: Shield Standard, which provides automatic protection at no additional cost, and Shield Advanced, which provides enhanced DDoS protection and 24/7 access to the AWS DDoS Response Team (DRT). Shield helps you minimize application downtime and latency. For example, an online gaming company can use Shield Advanced to protect its gaming servers from DDoS attacks, ensuring a smooth gaming experience for its users.
+
+  WAF (Web Application Firewall):
+    AWS WAF is a web application firewall that helps protect your web applications from common web exploits and attacks. It allows you to create custom security rules to block common attack patterns, such as SQL injection and cross-site scripting (XSS). WAF integrates with services like Amazon CloudFront, Application Load Balancer, and API Gateway. For example, an e-commerce website can use AWS WAF to create rules that block malicious requests and protect customer data, enhancing the security of their online transactions.
