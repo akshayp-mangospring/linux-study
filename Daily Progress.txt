@@ -156,3 +156,5 @@ Studied the Cloud Practitioner Syllabus.
 Day 36 - 19 May 2024:
 Completed the Cloud Practitioner Syllabus.
 Also studied the AWS Security Module.
+Newest thing which I have ever experienced in My Life => BEND PROGRAMMING LANGUAGE.
+It's based on Rust Programming Language.
