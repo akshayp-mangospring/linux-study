@@ -5,6 +5,65 @@ Best Practices for Users:
   User Groups to assign permissions.
   Apply an IAM password policy. Like one uppercase, one lowercase, one symbol in password, password expiration, etc. for all the users.
 
+Compute Services in AWS:
+  EC2 - Highly Configurable Server: CPU, OS, Network, Memory
+  ECS, EKS - Easy to deploy containerized Scaled Applications using Docker & Kubernetes.
+  Fargate - Evolution of ECS, EKS. Microservices where you don't have to think about the infrastructure. It's kind of like Lambdas but for ECS, EKS.
+  AWS Batch - Plans, Schedules and executes Batch Computing WOrkloads across the full range of AWS Compute Services and features such as EC2 and Spot Instances.
+  Elastic BeanStalk - Orchestrates various AWS Services including EC2, S3, SNS, CloudWatch, Auto Scaling, etc.
+  Lambdas - Serverless functions.
+
+Storage Services in AWS:
+  S3 - Object Storage
+  S3 Glacier - Low cost storage for archiving long-term backup
+  Storage Gateway - Hybrid Cloud Storage with Local Caching, extension of On Premises storage on to the Cloud
+    - File Gateway
+    - Volume Gateway
+    - Tape Gateway
+  EBS - Hard drive in the cloud you attach to EC2 instances. It can be attached to only 1 EC2 instance. It could be SSD, HDD.
+  EFS - File Storage mountable to multiple EC2 instances at the same time.
+  Snowball:
+    Physially migrate lots of data via a computer suitcase, because online transfer is gonna be very costly as well as slow - 50 - 80 TB
+    Snowball Edge: A better version of Snowball - 100 TB
+    SnowMobile: Shipping Container, pulled by a truck - 100 PB
+
+Enterprise Integration Services:
+  Direct Connect - DX:
+    Dedicated fibre running straight to AWS.
+  VPN - Establish a secure network connection to AWS.
+    Allows you to establish a secure and private tunnel from your network or device to the AWS Global Network.
+    Site to Site VPN - Connecting your on-premise to your AWS Network
+    Client VPN - Connecting your Laptop to your AWS Network
+  Storage Gateway:
+    Hybrid Storage service that enables on-premises apps to use AWS Cloud.
+    You can use this for back up and archiving.
+  Active Directory:
+    Enables AWS resources to use managed Microsoft Active Directory in AWS Cloud.
+
+Logging Services:
+  CloudTrail:
+    Logs API calls(SDK, CLI), between AWS Services(who can we blame).
+    It's stored in S3.
+    Who created this bucket?
+    Who spun up that EC2 instance?
+
+    It can also be used to detect malicious activities, detect misconfiguration, etc.
+
+  CloudWatch:
+    It's actually a resource monitor. Collection of Multiple services:
+      Logs:
+        It's the main service.
+        Performance data about AWS Services, CPU utilization, Memory, Network Application Logs, etc.
+        Lambda Logs.
+      Metrics:
+        Represents a time-ordered set of data points.
+      Events:
+        Trigger an event based on a condition. Eg: Every hour take Snapshots of servers.
+      Alarms:
+        Trigger notifications based on metrics.
+      Dashboard:
+        Create visualizations based on metrics.
+
 EC2:
   Choose an OS, choose the CPU and Memory.
   Number of instances - Number of Servers.
@@ -63,13 +122,15 @@ VPC Basics:
   A VPC resides in a Region.
   Each VPC has got subnets in it.
   A Subnet resides in an Availability Zone.
-  Each subnet has a NACL.
+  Each subnet has a NACL - Subnet level Firewall.
   Each subnet has a Route Table.
   Each public subnet has got a NAT.
   Each VPC has a Router.
   Each VPC has an Internet Gateway.
   Generally EC2 instances lie in a Public Subnet.
-  Generally RDS instances lie in a Private subnet.
+  Generally RDS instances lie in a Private Subnet.
+  EC2 instances have Security Groups which is - Instance Level Firewall.
+  Security Groups implicitly denies all trafiic so, we have to create `Allow` only rules.
 
 Databases in AWS:
   DynamoDB: NoSQL, key/value database - Cassandra.
@@ -182,7 +243,7 @@ Fully Free Services:
 
 The services which are themselves free but can cost you money once they provision resources:
   Auto Scaling
-  CloudFormation
+  CloudFormation(CFN)
   Elastic BeanStalk
   OpsWorks
   Amplify
@@ -296,12 +357,84 @@ AWS Cost and Usage Report:
   Use AWS QuickSight to visualize your billing data as graphs.
 
 AWS Provisioning Services:
+  The allocation or creation of resources to a customer.
+
+  OpsWorks - Configuration Management Service, that provides managed instances. - Chef or Puppet are examples of it.
+  Elastic BeanStalk is specifically geared towards web applications deployments.
+  Whereas AWS QuickStart is kind of geared towards other things like BlockChain, etc.
+  CloudFormation(CFN) - IaaC through JSON or YAML. It's the most complex but the most flexible option.
+
+Shared Responsibility Model:
+  Customers are responsible for the Data and Security in the Cloud(Data & Configs). Specifically, IAM, Firewall configs, Encryptions, etc.
+  AWS is responsible for Security of the Cloud. Hardware, Global Infra, Operation of Managed Services.
+
+AWS Compliance Programs:
+  Compliance programs are a set of internal policies and procedures of a company to comply with laws, rules and regulations to uphold business reputation.
+  There are tons of compliance programs:
+    ISO 9001, HIPAA, FIPS, FedRAMP, PCI, NIST, etc.
+    It can also be country specific.
+
+Kinesis:
+  It's specifically designed for Video streaming.
+
+Amazon Connect:
+  AWS's own Call Center.
+
+Comparative Study:
+  Media Connect & Elastic Transcoder:
+    It's actually the new version of Elastic Transcoder.
+    Converts videos to different Video types.
+    It has AWS Elemental MediaConvert - The new way, it has additional features.
+      Both AWS Elemental MediaConvert and Elastic Transcoder - transcodes videos to streaming formats
+      Overlays Images
+      Extracts Captions
+
+  SNS & SQS:
+    Both are application integration services. They Both connect Apps via Messages.
+    SNS - Pass along messages - PubSub.
+      Really good for WebHooks, Simple Internal Emails, Triggering Lambda functions.
+    SQS - Queue up messages, guaranteed delivery.
+      Really good for delayed tasks, queueing up emails.
+
+  Inspector & Trusted Advisor:
+    Both are security tools and both performs audits.
+    Inspector Audits a single EC2 instance.
+    Trusted Advisor doesn't generate a PDF report.
+      Gives you a holistic view of recommendations across multiple services and best practices.
+
+  ALB & NLB:
+    Both have target groups.
+    ALB operates on Layer 7 of OSI model - HTTP, HTTPS traffic.
+      Can attach WAF.
+    NLB operates on Layer 4(Transport) of OSI model - IP Protocol Data - TCP & TLS traffic.
+      Handles millions of requests/second while maintaining ultra-low latencies.
+      Optimized for traffic spikes while using a single static IP address/AZ.
+
+  SNS & SES:
+    Both sends emails.
+    SNS sends plain text emails.
+      Sends notifications to subscribers only.
+      SNS has wide scope of integration with other AWS services.
+    SES sends HTML supported emails.
+      Cloud based Email Service.
+      SES can receive inbound emails.
+
+  Artifact & Inspector:
+    Artifact - Should an enterpise trust AWS?
+      Generates security reports based on Global Compliance Rules.
+    Inspector - How do we know this EC2 instance is secure?
+      Audit tool for security of EC2 instances only.
 
 AWS Security Module:
   AWS Security module apart from the regular AWS Security are as follows:
 
   Artifact:
+    How do we prove AWS meets a compliance?
+    It's an on-demand acceess to AWS's security & compliance reports.
+    These reports can be in `.pdf` and `.xlsx` formats.
     AWS Artifact provides customers with on-demand access to AWS compliance reports and select online agreements. It allows you to download AWS security and compliance documents such as ISO certifications, Payment Card Industry (PCI) reports, and Service Organization Control (SOC) reports. This service helps you ensure that AWS meets your internal security and compliance requirements. For example, a financial services company can use AWS Artifact to access SOC 2 reports to demonstrate compliance to auditors.
+    It's free and Managed Service.
+    It's logging is done in CloudTrail.
 
   Audit Manager:
     AWS Audit Manager simplifies the process of auditing AWS usage to ensure compliance with industry standards and regulations. It continuously collects evidence and provides a customizable framework to manage your compliance efforts. This helps reduce the time and effort required to prepare for audits. For example, a healthcare provider can use Audit Manager to ensure compliance with HIPAA regulations by automatically generating audit reports based on their AWS resource configurations and usage.
@@ -309,20 +442,43 @@ AWS Security Module:
   ACM (AWS Certificate Manager):
     AWS Certificate Manager (ACM) simplifies the provisioning, managing, and deployment of public and private SSL/TLS certificates for use with AWS services and your internal connected resources. ACM handles the complexity of creating and managing certificates, including renewing them automatically. This service allows you to secure websites and applications without managing SSL/TLS certificates manually. For instance, an e-commerce website can use ACM to secure its customer transactions by deploying SSL certificates to its CloudFront distribution and Elastic Load Balancers.
 
+  AWS Private Certificate Authority:
+    You, yourself can become CA, instead of purchasing certificate from a third party.
+
   CloudHSM (Cloud Hardware Security Module):
     AWS CloudHSM provides dedicated hardware security modules (HSMs) in the AWS Cloud to help you meet corporate, contractual, and regulatory compliance requirements for data security. It enables you to generate and use your own encryption keys within AWS and manage them using FIPS 140-2 Level 3 validated HSMs. CloudHSM is fully managed, which reduces the administrative overhead of running an HSM cluster. For example, a government agency can use CloudHSM to store encryption keys securely and meet stringent regulatory requirements for data protection.
 
+    HSM and KMS is connected.
+    HSM Cluster's main job is to manage Encryption Keys.
+
   Detective:
     AWS Detective makes it easy to analyze, investigate, and quickly identify the root cause of potential security issues or suspicious activities. It automatically collects log data from AWS resources and uses machine learning, statistical analysis, and graph theory to build a linked set of data that can be used for security investigations. Detective helps you identify unusual activities and understand their context within your AWS environment. For example, a security team can use Detective to investigate a suspicious login attempt and trace its origin back through the network activities and user behavior.
+    It returns data in the form of graphs and tables.
+    It needs Guard Duty to be running for 48 hours. It then provides the GuardDuty data to Detective for finding the `root cause`.
 
   Directory Service:
+    Identity providers can be SAML, LDAP, etc.
+    Active Directory is an identity provider.
+    Active Directory contains information of the Users. Those users can be then be imported with AD Connector.
     AWS Directory Service offers multiple ways to set up and run Microsoft Active Directory (AD) in the AWS Cloud, or connect AWS resources with an existing on-premises AD. It provides a fully managed service, making it easier to manage and scale directory-aware workloads and AWS resources. This service supports AWS applications such as Amazon RDS for SQL Server and Amazon WorkSpaces. For instance, a company can use AWS Directory Service to integrate its on-premises Active Directory with AWS, allowing seamless access to cloud resources for its employees.
 
   Firewall Manager:
     AWS Firewall Manager simplifies the process of configuring and managing firewall rules across your AWS accounts and applications. It provides centralized control over security policies and lets you enforce them consistently across all your resources. Firewall Manager integrates with AWS WAF, AWS Shield, and VPC security groups. For example, an organization can use Firewall Manager to enforce a common set of security policies, such as blocking specific IP addresses or protecting against DDoS attacks, across all their AWS accounts.
 
-  GuardDuty:
-    AWS GuardDuty is a threat detection service that continuously monitors for malicious activity and unauthorized behavior to protect your AWS accounts and workloads. It uses machine learning, anomaly detection, and integrated threat intelligence to identify potential threats. GuardDuty analyzes data from AWS CloudTrail, VPC Flow Logs, and DNS logs to detect unusual behavior. For example, a company can use GuardDuty to identify and respond to potential security threats, such as compromised EC2 instances or unauthorized access attempts.
+  GuardDuty - Threat Detection:
+    It's AWS's own Intrusion Detection and Protection System(IDS/IPS).
+    It's actually a software application which monitors a network or systems for malicious activity or policy violations.
+
+    It basically answers the question:
+    How do we detect if someone is attempting to gain access to our AWS account or resources?
+
+    AWS GuardDuty is a threat detection service that continuously monitors for malicious activity and unauthorized behavior to protect your AWS accounts and workloads. It uses machine learning, anomaly detection, and integrated threat intelligence to identify potential threats.
+    GuardDuty analyzes data from:
+    - AWS CloudTrail
+    - VPC Flow Logs
+    - DNS logs
+    to detect unusual behavior. For example, a company can use GuardDuty to identify and respond to potential security threats, such as compromised EC2 instances or unauthorized access attempts.
+    Malicious activities and unauthorized access tracking.
 
   IAM (Identity and Access Management):
     AWS Identity and Access Management (IAM) enables you to securely control access to AWS services and resources for your users. You can create and manage AWS users and groups, and use permissions to allow and deny access to AWS resources. IAM also supports multi-factor authentication (MFA) to enhance security. For instance, a development team can use IAM to grant specific permissions to its members, ensuring they have the necessary access to resources like S3 buckets and EC2 instances while maintaining security best practices.
@@ -330,29 +486,82 @@ AWS Security Module:
   Identity Center (AWS Single Sign-On):
     AWS Identity Center (formerly AWS Single Sign-On) makes it easy to centrally manage SSO access and user permissions to all of your AWS accounts and applications. It provides a unified sign-in experience and allows you to manage user identities and access in a single place. Identity Center integrates with Microsoft Active Directory and other identity providers. For example, an enterprise can use Identity Center to enable its employees to access multiple AWS accounts and third-party applications using their existing corporate credentials.
 
-  Inspector:
+  Inspector - Vulnerabilities - Guard of deviations from Best Practices:
     AWS Inspector is an automated security assessment service that helps improve the security and compliance of applications deployed on AWS. It automatically assesses applications for vulnerabilities and deviations from best practices. Inspector provides detailed findings and remediation steps to help you fix issues quickly. For instance, a SaaS provider can use Inspector to regularly scan its EC2 instances for security vulnerabilities, ensuring they meet compliance requirements and reducing the risk of security breaches.
+    Compute resources can have vulnerabilities.
+    Hardening of an EC2 instance:
+      The act of eliminating as many security risks as possible.
+    Inspector runs a security benchmark against specific EC2 instances. It can perform both Network and Host Assessments.
+    We need to install Inspector on EC2 instances. Run an assessment target and review your findings.
 
   KMS (Key Management Service):
-    AWS Key Management Service (KMS) is a managed service that makes it easy to create and control the encryption keys used to encrypt your data. KMS integrates with many other AWS services to help you protect your data using encryption. It provides centralized control over the lifecycle and permissions of your encryption keys. For example, a healthcare application can use KMS to encrypt patient records stored in S3, ensuring that sensitive data is protected and access is controlled.
+    It only Stores Keys in AWS.
+    KMS is a multi-tenant HSM(Hardware Security Module).
+    AWS Key Management Service (KMS) is a managed service that makes it easy to create and control the encryption keys used to encrypt your data.
+    KMS integrates with many other AWS services to help you protect your data using encryption.
+    It provides centralized control over the lifecycle and permissions of your encryption keys.
+    For example, a healthcare application can use KMS to encrypt patient records stored in S3, ensuring that sensitive data is protected and access is controlled.
+    KMS uses Envelope Encryption.
 
-  Macie:
+    Envelope Encryption:
+      When you encrypt your data, your data is protected, but you have to protect your encryption key.
+      When you encrypt your data key with a master key as an additional layer of security.
+
+  Macie - Data regulation, discovery through ML:
+    Macie continuously monitors S3 data access activity.
     AWS Macie is a fully managed data security and data privacy service that uses machine learning and pattern matching to discover and protect your sensitive data in AWS. Macie automatically identifies and alerts you to sensitive data, such as personally identifiable information (PII), in your Amazon S3 buckets. It helps you meet compliance requirements and reduce the risk of data breaches. For instance, an e-commerce company can use Macie to monitor and protect customer data stored in S3, ensuring compliance with data protection regulations like GDPR.
+    If you mistakenly put PII into your S3 buckets, then it will tell you.
+    So, basically, it's Data Privacy Regulation through ML.
+    Macie will identify your most at-risk users which could lead to a compromise.
 
   Network Firewall:
     AWS Network Firewall is a managed service that provides essential network protections for your Amazon VPCs. It includes stateful inspection, intrusion prevention and detection, and web filtering capabilities. Network Firewall allows you to set up rules to protect your applications and data from external and internal threats. For example, a financial institution can use Network Firewall to implement strict security policies, such as blocking malicious traffic and preventing unauthorized access to sensitive financial data.
+      Firewall Policy.
+      Firewall Rule Group.
 
-  AWS RAM (Resource Access Manager):
+  AWS RAM (Resource Access Manager) - Resource Sharing:
     AWS Resource Access Manager (RAM) allows you to share your AWS resources with any AWS account or within your AWS organization. It helps you reduce costs and improve resource utilization by sharing resources like VPCs, subnets, and transit gateways. RAM simplifies resource management and enhances collaboration across different teams and departments. For instance, a large enterprise can use RAM to share a single VPC across multiple business units, ensuring efficient use of network resources and simplifying management.
 
   Secrets Manager:
     AWS Secrets Manager helps you protect access to your applications, services, and IT resources without the upfront cost and complexity of managing your own hardware security modules (HSMs). It allows you to securely store, retrieve, and manage secrets such as database credentials, API keys, and other sensitive information. Secrets Manager automatically rotates secrets to help you meet security and compliance requirements. For example, a development team can use Secrets Manager to store and rotate database credentials, ensuring that their applications have secure access to the database without exposing sensitive information.
 
+    Remember:
+      For other types of secrets we have another services:
+        AWS Credential: IAM
+        Encryption Keys: AWS KMS
+        SSH keys: EC2 instance Connect
+        Private Keys & Certificate: AWS ACM
+
   Security Hub:
     AWS Security Hub provides a comprehensive view of your high-priority security alerts and compliance status across AWS accounts. It aggregates, organizes, and prioritizes security findings from multiple AWS services and third-party solutions. Security Hub helps you identify and manage security risks more effectively. For instance, a security operations team can use Security Hub to monitor and respond to security alerts from services like GuardDuty, Inspector, and Macie, ensuring a unified approach to security management.
 
   Shield:
+    Distributed DDoS attack:
+      A malicious attempt to disrupt normal traffic by flodding a large amount of Fake Traffic.
+    It protects you against Layer 3, 4, 7 of OSI model attacks:
+      3 - Network
+      4 - Transport
+      7 - Application
+    When you route traffic through Route53, or CloudFront we can use AWS Shield.
+
     AWS Shield is a managed Distributed Denial of Service (DDoS) protection service that safeguards applications running on AWS. It offers two levels of protection: Shield Standard, which provides automatic protection at no additional cost, and Shield Advanced, which provides enhanced DDoS protection and 24/7 access to the AWS DDoS Response Team (DRT). Shield helps you minimize application downtime and latency. For example, an online gaming company can use Shield Advanced to protect its gaming servers from DDoS attacks, ensuring a smooth gaming experience for its users.
+    So, CloudFront is protected by AWS Shield as well as WAF.
+
+    Shield Advanced is additional protection on these services:
+      Route53
+      CloudFront
+      ELB
+      Global Accelerator
+      Elastic IP(EC2, NLB)
 
   WAF (Web Application Firewall):
     AWS WAF is a web application firewall that helps protect your web applications from common web exploits and attacks. It allows you to create custom security rules to block common attack patterns, such as SQL injection and cross-site scripting (XSS). WAF integrates with services like Amazon CloudFront, Application Load Balancer, and API Gateway. For example, an e-commerce website can use AWS WAF to create rules that block malicious requests and protect customer data, enhancing the security of their online transactions.
+    Just like ALB is integrated with EC2 instances, CloudFront is integrated with S3.
+    ALB lies ahead of EC2, CloudFront lies ahead of S3.
+    So, we apply WAF on ALB, CloudFront.
+    IP whitelisting, blacklisting. It also provides count of the requests hit.
+    Run Capcha or challenge checks.
+
+Penetration Testing:
+  It's an Authorized Simulated Cyber Attack on a Computer System, performed to evaluate Security of the system.
+  We can perform PenTesting on AWS.
