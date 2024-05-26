@@ -375,7 +375,51 @@ AWS Compliance Programs:
     It can also be country specific.
 
 Kinesis:
-  It's specifically designed for Video streaming.
+  It's specifically designed for Video/Data streaming.
+
+PinPoint:
+  It's an evolution to SNS, SQS, when we want to do full blown marketing stuff.
+  Scalable 2 way inbound-outbound Marketing Communications Service.
+  Supports Email, SMS, push, voice, in-app messaging. But the main use case is SMS.
+  Use case is to send bulk marketing, transactional messages.
+  We can even receive replies.
+  It's integrated with SNS, Kinesis Data Firehose, CloudWatch Logs.
+
+  In SNS, SES we manage each message's audience, content can delivery schedule.
+  In PinPoint we create message templates, delivery schedules, targeted segments and full campaigns. The content delivery if fully managed.
+
+AWS Cost Explorer:
+  We can get detailed cost reports and visualizations on a granular level like even hourly basis.
+  We can even get forecasts for the upcoming year using this service.
+  There's also something called as Savings Plan which gives us the optimal solution for the costs to be incurred at a less price.
+
+  Cost Anamoly detection will continuously monitor your data and use ML to detect unusual spends/spikes.
+  It takes into accounr historical usage pattern and detect spikes/unusual spends. Through this monitoring, it sends us an Anamoly Detection report with the Root Cause analysis.
+  It can identify daily, weekly or summary alerts using SNS.
+
+AWS Batch:
+  It's a fully managed service that allows batch processing at scale.
+  It can efficiently run 100,000s of batch jobs.
+  A Batch jobs is a job which starts and ends(as opposed to continuos jobs).
+  For Example: It'll dynamically launch EC2 instances or Spot instances.
+
+  We have to submit or schedule batch jobs and AWS Batch does the rest.
+  Please note that this will only run as Docker Images and can be run on ECS.
+  It means that a batch can run on any runtime as long as it's packaged as Docker image.
+
+AWS AppFlow:
+  Fully managed integration service which allows you to securely transfer data between SaaS applications and AWS.
+  For Example:
+    Source - SalesForce, Zendesk.
+    Destination - AWS S3, AWS Redshift.
+  The transfer is encrypted over the public internet or via a AWS PrivateLink.
+
+AWS Amplify:
+  Web and Mobile application development tool.
+  It's basically a set of tools and services that helps you develop and deploy full stack web and mobile apps.
+  It allows you to connect Github for code pulls.
+  It's basically BeanStalk for Web and Mobile Applications.
+  Is this the one which we might have to use all the time?
 
 Amazon Connect:
   AWS's own Call Center.
@@ -424,6 +468,14 @@ Comparative Study:
       Generates security reports based on Global Compliance Rules.
     Inspector - How do we know this EC2 instance is secure?
       Audit tool for security of EC2 instances only.
+
+  Batch & Lambda:
+    Batch - Runs as Docker images with EC2 instances inside it.
+      It has no time limit to execute.
+      Relies on EBS, EC2 Instance Store as storage.
+    Lambda - Serverless, thus no explicit provisioning.
+      It has a time limit of 15 minutes max.
+      Limited temporary disk storage.
 
 AWS Security Module:
   AWS Security module apart from the regular AWS Security are as follows:

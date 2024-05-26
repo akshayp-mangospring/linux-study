@@ -1,0 +1,45 @@
+The main motto of CloudFormation is Deploying and Managing Infrastructure at Scale.
+It'a a very powerful service. It'll provision and destroy resources through reading Code!!!
+CloudFormation is a declarative way of outlining your AWS Infra, for any resources.
+That declaration is done in CloudFormation `Templates`.
+In CloudFormation we create something called as a Stack.
+For Example, in it we declare:
+  I want a Security Group
+  I want 2 EC2 instances to use this Security Group
+  I want an S3 bucket
+  I want a Load Balancer in front of these machines
+
+Sample Template:
+```
+Resources:
+  MyInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: us-east-1a
+      ImageId: ami-a4c7edb2
+      InstanceType: t2.micro
+```
+
+Reading this template, CloudFormation will create all these resources for you, in the right order, with the exact configuration you specify.
+
+Benefits of CloudFormation:
+  Infrastructure as Code:
+    No resources are manually created, which is excellent for control.
+    Changes to the infrastructure are reviewed through code.
+  Cost:
+    Each resource within the stack is tagged with an identifier so that you can easily see how much each stack costs you.
+    You can estimate the cost of your resources using the CloudFormation template.
+  Productivity:
+    You can destroy and recreate your infrastructure on the fly.
+    Application Composer - Automated generation of diagrams on your template. Specifies all the resources. We can see relations between all the resources.
+    Declarative - No need to figure out ordering and orchestration like ECS, because it's already in order.
+  DRY:
+    Leverage existing templates on the Web.
+    Leverage the documentation.
+  Every service specified in the SA Course is supported in CloudFormation.
+
+Service Roles:
+  These are IAM Roles which you create which are dedicated to the CloudFormation service.
+  IAM role which allows CloudFormation to CRUD Stack resources on your behalf.
+  In these roles we can specify which users can spin up Stacks related to which resources.
+  Suppose we have an IAM role which only has access to S3, then we can't spin up EC2 instances using a CloudFormation Template.

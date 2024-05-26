@@ -1,0 +1,6 @@
+3 Papers are very important to be read for this Exam:
+  Architecting for the Cloud: AWS Best Practices
+  AWS Well Architected Framework
+  AWS Disaster Recovery
+
+Service Level FAQs cover a lot of the questions which are gonna be asked in the Exam.

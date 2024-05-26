@@ -1,9 +1,22 @@
 The well architected framework helps us tackle Common Cloud Computing challenges. This framework helps cloud architects build resilient architectures. It essentially tries to take off the guess work out of the Cloud. Resilient architectures is a necessity.
+It is a tool(AWS Well Architected Tool) as well as a framework.
 
 Benefits:
 Avoid Common Pitfalls
 Decrease Risk
 Make sure that the applications are well architected
+
+Guiding Principles:
+  Stop guessing your capacity needs.
+  Test Systems at Production Scale.
+  Automate to make architectural experimentation easy.
+  Allow for evolutionary architecture.
+    Design based on changing requirements.
+  Drive architectures using data.
+  Improve through Game days.
+    Simulate applications for flash sale days.
+
+The Pillars of Well Architected frameworks are not a trade-off(either-or) or something to balance. They are a synergy.
 
 There are 6 Pillars to AWS Well Architected Framework:
   Operational Excellence - Very Important:
@@ -49,7 +62,7 @@ There are 6 Pillars to AWS Well Architected Framework:
       Adjust our resources as we need them
     Manage change through Automation:
       Automate changes to our infrastructure
-      This method ensures eevrything is consistent, trackable and smoothly running
+      This method ensures everything is consistent, trackable and smoothly running
 
   Performance Efficiency:
     Using computing resources efficiently.
@@ -73,3 +86,25 @@ There are 6 Pillars to AWS Well Architected Framework:
     Maintains confidentiality of data.
     IAM.
     Controls to detect security threats.
+
+AWS Well Arhitected Tool:
+  It's a free tool to review your application architecture against the 6 Pillars of the Well Architected Framework. It helps us adopt best practices.
+  In this framework based on the workload we are asked a series of questions to answer.
+  For this to take place we apply the lens of the Well Architected Framework.
+  After the Questions, we get an overview of the current state of the architecture as well as an Improvement Plan.
+  It makes sure that our system is production ready and compliant to the Well Arhitected Framework.
+
+AWS Trusted Advisor:
+  It provides a high level assessment to the AWS applications.
+  It checks stuff like:
+    Do you have EBS public Snapshots?
+    Do you have RDS public Snapshots?
+  It also has checks divided into 6 categories:
+    Cost Optimization
+    Performance
+    Security
+    Fault Tolerance
+    Service Limits
+    Operational Excellence
+
+  Business and Enterprise Accounts only have got access to the AWS Support API

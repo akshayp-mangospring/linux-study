@@ -1,3 +1,7 @@
+Most Important Links for already available Solutions on AWS:
+  Solutions: https://aws.amazon.com/solutions/
+  Architectures: https://aws.amazon.com/architecture/
+
 Examining a three tier Application Architecture:
 Service to use for DNS - Route 53.
 The DNS will Point to a Load Balancer. The Service to use for it - Elastic Load Balancer.
@@ -6,7 +10,7 @@ The DNS will Point to a Load Balancer. The Service to use for it - Elastic Load 
 Web Backend Layer and Application Layer - Request from the Front End touches the Back End.
   The Service to use for it - EC2 - Hands On, AWS Lambda - Hands Off, Elastic Container Service - ECS, Elastic Kubernetes Service - EKS.
 
-Rest APIs - API Gateway. It provides additional functionality on top of the Load balancer which kind of just distributes traffic.  API Gateway can provide API Throttling or Authorization on APIs. Thus we can also do DNS pointing to API Gateway which in turn points to the load balancer. API Gateway can be used in conjunction with AWS Cognito, which is basically a User Pool service, which can be used to store login information of the users and thus the private APIs can be prevented from unatuthorized access in API Gateway itself.
+Rest APIs - API Gateway. It provides additional functionality on top of the Load balancer which kind of just distributes traffic. API Gateway can provide API Throttling or Authorization on APIs. Thus we can also do DNS pointing to API Gateway which in turn points to the load balancer. API Gateway can be used in conjunction with AWS Cognito, which is basically a User Pool service, which can be used to store login information of the users and thus the private APIs can be prevented from unatuthorized access in API Gateway itself.
 
 Relational Database is for connection of DB with our App. The Service to be used for it is:
   AWS RDS - It's the service in which we plug into our database configs.

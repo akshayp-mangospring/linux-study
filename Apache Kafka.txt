@@ -1,0 +1,19 @@
+Apache Kafka was developed by LinkedIn.
+Apache Kafka solves the problem of data streaming.
+Just imagine a scenario in which we have to send constant streaming data to thousands of clients.
+In such a case there are 2 steps to be performed every second.
+- First is to store the data in the DB.
+- Second is to then publish the data for all the subscribers of the data stream.
+
+Due to this two major problems arise:
+- The system which is supposed to be real time is not real time anymore, because writing data to DB also requires some time. Writing to disk is far slower than writing to memory.
+- Due to heavy amount of IO/s (IOPS) performed on every second for multiple data streams the DB system might go down.
+
+Thus Kafka is a distrbuted streaming service which is open source and is widely used in the Tech industry.
+It has high throughput. It's the main feature of Kafka. It can handle loads of even 100,000 transactions/second. But that doesn't mean that we stop using the DB system altogether.
+It's not an alternative to DBs. Kafka can store data only temporarily. It also doesn't have querying capabilities.
+
+Kafka does Bulk inserts into processed data than the raw data. Thus it reduces the amounts of writes in teh DB thus increases the performance.
+Kafka is only used as a transportation mechanism.
+
+Netflix, LinkedIn, Uber, Airbnb uses Kafka.

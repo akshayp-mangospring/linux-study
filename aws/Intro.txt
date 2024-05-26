@@ -1,5 +1,10 @@
 This exam will focus on architecting an application. I'll be studying over 30 AWS services. Brace yourself, it's gonna change your life. It's gonna be Revolutionary!!!
 
+AWS first launched SQS, S3 and EC2 as their initial offerings in 2006.
+Those are the 3 core services of AWS, rest of the services are built around them.
+AWS has 47% market Share, Azure has 22% which is the second.
+We can run Game servers on the Cloud, not just Website hosting.
+
 Platform as a Service(PaaS):
 It's designed for Developers who would worry about code than about the Infra.
 Focus on Deployment and Management of the App rather than the infrastructure.
@@ -21,6 +26,13 @@ What is Cloud Computing?
 
   Region:
   Physical location with multiple Availability Zones. There are 33 Public Regions right now(2 in China with different protocols to access it). Other than that AWS also has GovCloud to host Government Data of USA.
+  Most AWS Services are Region Scoped. But there are Global Services as well such as Route53, IAM, CloudFront, WAF.
+  Region names can be us-east-1, us-east-2, etc.
+  While Choosing a region for our App:
+    Think about Compliance - Data must not leave the region.
+    Think about Proximity
+    Think about the availability of the services within that region
+    Think about Pricing - It varies from Region to Region
 
   GovCloud:
   GovCloud allows customers to host Controlled Unclassified Information.
@@ -30,7 +42,7 @@ What is Cloud Computing?
   An AZ is a Data Center owned and operated by AWS. It could have one or more discrete data centers though.
   There are at least 3 AZs/region.
   There are at least 105 AZs in the Global Infra.
-  AZs are represented by a Region Code followed by an alphabet `us-east-1a`, where `us-east-1` is region code and `a` is the AZ.
+  AZs are represented by a Region Code followed by an alphabet `us-east-1a`, `us-east-1b`, where `us-east-1` is region code and `a` & `b` is the AZ.
 
   Edge Location:
   Get data fast or upload data fast to AWS.
@@ -57,8 +69,8 @@ The topics to focus upon:
   Route 53 - Scalable Cloud Domain Name System (DNS) web service
   RDS, Aurora, ElastiCache
   Serverless
-  Kinesis, Active MQ
-  SQS - Simple Queue Service
+  Kinesis, Active MQ - ALternative to Apache Kafka
+  SQS - Simple Queue Service - Alternative to RabbitMQ
   SNS - Simple Notification Service
   SES - Simple Email Service
   CloudFront - Content Delivery Network

@@ -144,7 +144,7 @@ Security Groups and Network Access Control Lists(ACL):
   NACL applies to all traffic entering/exiting the subnet.
   Rules needs to be set up for the traffic flow in our VPC.
   Rules are of Inbound/Outbound type.
-  Rules set up in our VPC are like `if-else` statements which means they are processed `in-order` whcih means that if a rule is satisfied first then it won't process any further rules.
+  Rules set up in our VPC are like `if-else` statements which means they are processed `in-order` which means that if a rule is satisfied first then it won't process any further rules.
   Only NACLs have got Allow/Deny rules.
 
   Inbound Rules/Traffic:

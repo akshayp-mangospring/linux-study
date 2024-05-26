@@ -1,0 +1,27 @@
+It's an AWS Session Manager Service.
+Quickly access your Windows and Linux instances.
+It allows you to start a secure shell on your EC2 instance and On-Premises Server.
+Each EC2 instance has a SSM Agent in it. We can connect to an EC2 instance using the EC2 Instance Role. We don't even need to enable SSH ports for this.
+
+There are 3 ways to access your EC2 instances:
+  SSH using terminal
+  EC2 instance connect
+  Session Manager
+
+  Out of which SSH, Instance connect, both require the port 22 to be open in the instance, but Session Manager doesn't.
+
+Systems Manager - Run Command:
+  Execute a Document or just run a command.
+  Run commands across multiple instances using Instance Groups.
+  No need for SSH.
+  Command output can be sent to S3 or CloudWatch Logs as per the need.
+  Send notitifications to SNS about command failed, success, etc.
+  Integrated with IAM, CloudTrail.
+  It can be invoked using Event Bridge.
+
+Systems Manager - Automation:
+  Simplifies common maintenance, deployment tasks of EC2 instances and other AWS resources.
+  Automation Runbook - SSM documents to define actions performed on your EC2 instances or AWS resources.
+  Restart instances, Create an AMI, EBS Snapshot, etc.
+  Runbooks will be used by SSM Automation to perform actions on EC2 instances.
+  Automation can be triggered using AWS Console, CLI, SDK, EventBridge, AWS Config.
