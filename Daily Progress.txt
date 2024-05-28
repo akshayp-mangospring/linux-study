@@ -169,3 +169,6 @@ Day 39 - 26 May 2024:
 Completed 7 small sections in Udemy's course.
 Studied about CloudFormation, SSM, PinPoint, Cost Explorer, Batch, Amplify and AppFlow.
 Also studied a bit about Apache Kafka. It seems to be revolutionary and also an essential software to be studied for becoming a good engineer.
+
+Day 40 - 27 May 2024:
+Studied the basics about ECS, Fargate, EKS, ECR, App Runner.

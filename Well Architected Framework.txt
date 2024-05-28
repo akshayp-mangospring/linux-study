@@ -87,12 +87,12 @@ There are 6 Pillars to AWS Well Architected Framework:
     IAM.
     Controls to detect security threats.
 
-AWS Well Arhitected Tool:
+AWS Well Architected Tool:
   It's a free tool to review your application architecture against the 6 Pillars of the Well Architected Framework. It helps us adopt best practices.
   In this framework based on the workload we are asked a series of questions to answer.
   For this to take place we apply the lens of the Well Architected Framework.
   After the Questions, we get an overview of the current state of the architecture as well as an Improvement Plan.
-  It makes sure that our system is production ready and compliant to the Well Arhitected Framework.
+  It makes sure that our system is production ready and compliant to the Well Architected Framework.
 
 AWS Trusted Advisor:
   It provides a high level assessment to the AWS applications.

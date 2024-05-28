@@ -1,5 +1,5 @@
 The main motto of CloudFormation is Deploying and Managing Infrastructure at Scale.
-It'a a very powerful service. It'll provision and destroy resources through reading Code!!!
+It's a very powerful service. It'll provision and destroy resources through reading Code!!!
 CloudFormation is a declarative way of outlining your AWS Infra, for any resources.
 That declaration is done in CloudFormation `Templates`.
 In CloudFormation we create something called as a Stack.

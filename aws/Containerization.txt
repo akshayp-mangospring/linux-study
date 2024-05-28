@@ -1,0 +1,146 @@
+What's Docker?
+It's a software development platform to deploy Apps.
+Apps are packaged into containers that can be run on any OS.
+Apps run the same regardless of where they are run:
+  Any machine
+  No compatibility issues
+  Predictable behavior
+  Easier to maintain and deploy
+Microservices Architecture, Lift & Shift apps from on-premises to AWS Cloud.
+
+Docker Hub:
+  Docker images are stored in something called Docker Repositories.
+
+We need to configure 2 things:
+  - ECS Cluster
+  - Task Definitions - They don't cost any money because they by itself are not resources. Only resources cost money.
+
+We also have to provide the Network settings just like regular EC2 configs.
+Auto Scaling group gets created as normal EC2 instances.
+We will also need to configure Security Groups.
+We then add those task definitions onto our ECS Cluster.
+Both ECS, Fargate can be integrated with Event Bridge for emitting events and performing callback actions.
+
+Amazon Elastic Container Registry(ECR):
+  Private Repository, we can host our very own docker images there.
+  But there's also an option of hosting a public docker image via Amazon ECR Public Gallery.
+
+Docker v/s Virtualization - Resource sharing is the main difference:
+  Docker is sort of a Virtualization technology but not exactly, because it doesn't operate on a hypervisor.
+  In virtaulization the resources aren't shared. But in Docker the resources are shared with the host => Many containers on one server.
+  Virtualization runs on Hypervisor whereas Docker containers run on Docker Daemon.
+  Virtual machines are much more secure because of resource isolation than Docker containers.
+
+How to work with Docker?
+  Write a `Dockerfile`.
+  Then build an image from that `Dockerfile`.
+  Then push that Docker image to Docker Hub - which is public Repo or to Amazon ECR which can host private repositories.
+  Then we run those images, when we run those images it becomes Docker Containers.
+  These containers then run the actual app.
+
+Working with Docker on AWS:
+  In Elastic Container Service(ECS) - Container Orchestration Service.
+  In Elastic Kubernetes Service(EKS).
+  In AWS Fargate which is Amazon's own Serverless container platform. It works with ECS and EKS. It supports only EFS as it's storage.
+  In ECR we store our container images.
+
+Amazon ECS:
+  Launch Docker Containers on AWS = Launch ECS tasks on ECS Clusters.
+
+  EC2 Launch Type:
+    For an ECS Cluster with EC2 Launch Type we must ourselves provision and maintain the infrastructure.
+    ECS Cluster is gonna be composed of multiple EC2 instances. Each EC2 instance must run the ECS Agent.
+    Once we have an ECS Cluster in place, AWS is gonna take care of starting and stopping containers.
+
+  Fargate Launch Type:
+    It's way easier to manage than EC2 Launch Type.
+    Launch containers on AWS.
+    We don't have to provision the infrastructure ourselves(No EC2 instances to manage).
+    It's all Serverless. So, it's pay as you go service.
+    Instead of an ECS Cluster we now have a Fargate Cluster.
+    We just create task definitions.
+    AWS just runs ECS tasks for you based on the CPU/RAM you need.
+    To scale, we just need to increase the number of tasks.
+
+  IAM Roles for ECS:
+    We have to create an EC2 instance profile which is valid only if we use EC2 Launch type.
+
+    EC2 Instance Profile Role:
+      Used by ECS Agent inside the EC2 instances.
+      Makes API calls to all the ECS Services.
+      Send container logs to CloudWatch Logs.
+      Pull Docker image from ECR.
+      Reference Secret Data from Secrets Manager or SSM parameter store.
+
+    ECS Task Role:
+      Allows each task to have a specific role.
+      Use different roles for the different ECS Services you run.
+      Task Role is defined in the task definition.
+      It allows containers in the task to make API requests to AWS Services.
+
+ECS Load Balancer Integrations:
+  Each EC2 instance can have multiple tasks running.
+  We want to expose these tasks as HTTP/HTTPS endpoints.
+  Thus we can run an ALB in front of it.
+
+Data Volumes - EFS:
+  Mount EFS File Systems onto ECS tasks.
+  Works for both EC2 and Fargate launch types.
+  Tasks running in any AZ will share the same data in the EFS File System.
+  Persistent Multi-AZ shared storage on your containers.
+
+  Fargate + EFS = Serverless.
+  Because, EBS Volumes are attached to EC2 instances, to be truly serverless we make use of EFS.
+  S3 can't be mounted on your ECS Tasks as a file system.
+
+ECS Auto Scaling:
+  Automatically increase/decrease the desired number of ECS tasks.
+  ECS Auto Scaling uses AWS Application Auto Scaling. It can depend on 3 factors:
+  - Average CPU Utilization
+  - Average Memory Utilization
+  - ALB request count
+  We can set up Step Scaling/Scheduled Scaling/Target Tracking for Auto Scaling.
+
+  ECS Auto Scaling(Task level) !== EC2 Auto Scaling(Instance level)
+
+  Fargate Auto Scaling is much easier to set up because it's Serverless.
+  Exam asks about Fargate a lot.
+
+EC2 Launch Type - Auto Scaling EC2 instances:
+  It scales underlying EC2 instances.
+  Auto Scaling Group Scaling:
+    Scaling your ASG based on CPU Utilization
+    Add EC2 instances overtime
+  ECS Cluster Capacity provider:
+    Automatically scale and provision your infrastructure for your ECS tasks
+    Capacity provider is paired with an ASG
+    Add EC2 instances when you're missing capacity
+
+Elastic Container Registry(ECR):
+  Store and Manage Docker Images on AWS.
+  We can have public and private repositories. We can even publish to the ECR Public Gallery.
+  Fully integrated with ECS, backed by S3. This means all of our Images are stored in S3.
+  Access to ECR is controlled through IAM Roles.
+
+Elastic Kubernetes Service (EKS):
+  It's NOT a free service.
+  It's a way to launch and manage Kubernetes Clusters on AWS.
+  Kubernetes is an open-source system for automatic deployment, scaling and management of containerized (usually Docker) applications.
+  It's an alternative to ECS which has a similar goal but a different API.
+  ECS is not open-source whereas Kubernetes is open-source.
+  Like ECS, EKS also provides 2 modes of deployment, which has EC2 and Fargate deployments.
+
+  Kubernetes is Cloud-Agnostic - It can be deployed on any Cloud Provider - Azure, GCP.
+  It has the concept of Nodes and Pods.
+  A Node contains multiple Pods.
+  EKS Public Service Load Balancer is the Load Balancer that can be used for EKS.
+
+AWS AppRunner:
+  It's also NOT a free service.
+  It's a fully managed service which makes it easy to deploy Web and API applications at scale.
+  No infrastructure experience is required to do this.
+  Start with your source code.
+  Automatically builds and deploys your web app.
+  It has all the required features like:
+    Automatic scaling, highly available, load balancer, encryption, VPC support, DB connection, Cache and Message Queue Services.
+  Use case for this is to very quickly deploy Web Apps, Microservices, APIs, rapid production deployments.
