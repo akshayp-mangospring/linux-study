@@ -172,3 +172,11 @@ Also studied a bit about Apache Kafka. It seems to be revolutionary and also an 
 
 Day 40 - 27 May 2024:
 Studied the basics about ECS, Fargate, EKS, ECR, App Runner.
+
+Day 41 - 23 June 2024: - Very Important & Revolutionary Day.
+Today, I fulfilled my dream of many years.
+I deployed my first full fleged Web App on AWS. It's deployed on `http://dipakc.in.net`
+It's deployed on EC2 instance, uses AWS RDS, Route 53 for the domain.
+It's very important for me because I was not mentored daily by anyone, I pulled off the stuff on my own.
+I am proud of myself.
+But I realized that it's been 6 months since I started studying AWS. Time flies so quickly, I need to be fast & I have to make the most of it now...
