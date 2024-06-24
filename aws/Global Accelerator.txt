@@ -1,0 +1,6 @@
+The AWS Global Accelerator utilizes the AWS Global Infra.
+The AWS Global Infra is highly optimized for high throughput and low latency.
+It can be used for assigning Elastic IP addresses.
+It can also operate upon UDP Protocol, rather than the regular HTTP/HTTPS protocols.
+Global Accelerator is a suitable option in cases of cross regional traffic handling, because mostly the infrastructure and settings lie on Regional level.
+Thus Global Accelerator makes the difference.

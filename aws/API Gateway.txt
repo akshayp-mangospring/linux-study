@@ -1,0 +1,63 @@
+Common Design Pattern used for distributed systems by companies to accept requests by exposing internal APIs to the external world.
+
+What you can do with it?
+  User Authentication, Authorization.
+  Transformation of request, adding extra headers.
+  Request Validation, whether the request being processed is in valid format or not.
+  Rate Limiting. Prevents DDoS Attacks.
+  Similar to ALB, we can route requests to different Microservices using API Gateway.
+  Even the response returned to the user is via API Gateway.
+  Load Balancing based on Health Checks. But if there's already too much logic in API Gateway, then we leave the Load Balancing to an ALB within each micro service or a NLB.
+  We can even extract out Rate Limiting, Authorization into separate services if we want.
+  But a big disadvantage of many micro services is that we move into a service mesh. Thus many startups or companies are moving back to Monoliths to keep things simple. The hype around microservices is over.
+
+CDNs(Static content) - CloudFront backed by S3 and DNS(Sub Domain lookups) - Route 53 can take away a lot of load from the API Gateway.
+So when a user hots the API Gateway it will also internally hit CloudFront backed by S3 and Route 53 most of the times.
+
+API Gateway is a thing of the 2010s????
+Whenever a new API has been added, we need to inform it to the API Gateway. The way to inform it by RESTARTING.
+It was not frustrating for the customers, but it was rather frustrating for the developers of micro services. So, whenever a new API was added, we had to take down the entrie system because the entire system was dependent on API Gateway and only after the restart the new APIs were reflected.
+For the customers, we generally had to do it only at the time of releases.
+Thus bug companies even had API Gateway Engineers to do that stuff, because they also had to make code and versioning changes in a systematic manner.
+BUt that's okay. What's the alternative if API Gateway is very 2010s??
+
+Concurrency is not Parallelism.
+Concurrency is switching between tasks whereas Parallelism is deploying multiple resources to do multiple tasks parallely.
+In the real world, we use the combination of Concurrency and Parallelism to achieve maximum efficiency.
+
+The Main use case of API Gateway is to allow you to build REST endpoints.
+
+AWS API Gateway:
+  Can be thought of as the Front door to all of your AWS Resources.
+  API Gateway is Serverless!
+  It's a managed service for HTTP, REST and WebSockets endpoints.
+  Since it being a managed service, Scalability is built in, we don't have to worry about it.
+  Even Monitoring is supported of it.
+  It allows us to build endpoints with your clients so that you can expose it and hit your AWS resources.
+  HTTP/REST have request response protocols.
+  WebSockets support Bi-directional communication and broadcasting.
+
+  API Gateway supported features are very different when working with HTTP/REST or WebSockets.
+  It also supports Rate Limiting, Caching.
+
+  HTTP has low latency but a very basic feature set with it.
+  REST has higher cost and higher latency.
+  Custom Authorizers that integrate with AWS Cognito.
+
+Service Proxy:
+  Service proxy is just the idea that the API Gateway will forward the request and interact with the AWS resources.
+  But we generally use the AWS Lambda to interact with AWS resources than the Service Proxy.
+
+  We can even make calls via Lambda functions to API Gateway endpoints in other AWS Accounts which is not like a public facing endpoint/url. Such API Gateway endpoints are also called as Private APIs.
+
+API Gateway with WebSockets:
+  We first connect to a WebSocket, which then returns the Connection ID.
+  Then the communication continues to happen between the User and the Server via Websocket using that Connection ID.
+  This communication can happen using WebSockets as well. It's pretty common to use WebSockets with Lambda because both are Serverless.
+  Similar to connection API, we provide a disconnect API.
+
+  For broadcasting messages we design a separate Lambda function which then performs broadcasting of all the connected clients.
+
+Routes and Stages:
+  API Endpoints are called as Routes/Resources in AWS interchangably.
+  Stages are actually the environments on which we deploy stuff, such as QA, Prod and Staging.

@@ -1,0 +1,5 @@
+I was under the impression that ALB can only distribute traffic evenly amongst healthy EC2 instances based on the metrics of it's utilization. But that's wrong, we can even route traffic to different Microservices using an ALB based on rules which you can apply onto Port Listeners.
+Like EC2 instances ALB also has got ports.
+The port for HTTP traffic in Application Load Balancer is 80.
+For HTTPS it's 443.
+We can't directly attach an Elastic IP address to an ALB, but we cna do it with the help of a NLB. The NLB will get an Elastic IP assigned which then can route traffic to ALB.

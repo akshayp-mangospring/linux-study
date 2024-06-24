@@ -1,0 +1,51 @@
+Step 1:
+  Create an EC2 instance
+  SSH in the EC2 instance
+  Upgrade all the existing software.
+    - sudo apt update
+    - sudo apt upgrade
+  Install all the necessary dependencies in your EC2 instance.
+    - Node JS
+Step 2:
+  Create an RDS instance.
+  Connect it to your EC2 instance.
+Step 3:
+  Pull your Github Repos in the EC2 instance.
+  Make the necessary edits in the `.env` files for pointing to the Public IP of the EC2 instance and RDS instance End point.
+Step 4:
+  Run the migrations on your DB instance.
+Step 5:
+  Make the Back End server up and running in the background.
+    - npm install -g pm2
+    - pm2 start index.js
+    - pm2 startup
+    - pm2 save
+  Make the Front End server up and running in the background.
+    - npm install -g serve
+    - nohup serve -s build > serve.log 2>&1 &
+Step 6:
+  Open up the ports on EC2 instance
+  Install nginx to move the traffic from 80 port to your server port - 3000 in my case
+  `sudo nano /etc/nginx/sites-available/dipakc.in.net`
+  ```
+  server {
+    listen 80;
+    server_name dipakc.in.net;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+  }
+  ```
+  Reload the nginx configurations.
+Step 7:
+  Create a hosted zone for your domain.
+  Create an A Record with the public IP address of your EC2 instance.
+  Add the name server entries in the Website from which you bought the domain.
+Step 8:
+  Site is live!

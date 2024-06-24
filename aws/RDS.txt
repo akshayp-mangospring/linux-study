@@ -1,0 +1,12 @@
+Database instances can be stored with:
+  General Purpose SSD:
+  It is actually for cost-effective, moderate I/O workloads
+  - 3,000 IOPS till 16,000 IOPS.
+  It has gp2, gp3 with gp3 has more of the processing power.
+  Ideal for small to medium sized databases for development and test environments.
+
+  Provisioned IOPS SSD:
+  It is for High performance I/O intensive workloads
+  - 64,000 IOPS till 256,000 IOPS.
+  But it also guarantees performance.
+  Ideal for mission-critical apps and also for Prod environments.

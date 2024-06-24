@@ -1,0 +1,6 @@
+SQL stored procedures. It turns time complexity to O(n) instead of O(1). They can make your app blazingly fast. It can offload logic to DB. It reduces the number of network calls.
+It is typically not "The Rails Way" to use Stored procedures. You have to create and execute a migration if you want to rewrite a procedure.
+
+Whenever a Server is restarted/Server Crashed the Cache like Redis is flushed out.
+The advantage is that it's pretty fast, but not to be used in Rails.
+The disadvantage of Stored Procedures is that it starts moving the Business Logic which should be written in the Application code into the DB, which is the database code.

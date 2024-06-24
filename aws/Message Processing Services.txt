@@ -1,0 +1,121 @@
+SNS, SQS, EventBridge and Kinesis seem to somewhat be the same. They do message processing, but they are intended to do different stuff.
+
+Simple Queue Service(SQS):
+  This was the first service launched by AWS along with EC2, back in 2006.
+  A reliable asynchronous communication service.
+  It allows to publish messages in a queue and decouple applications from one another.
+  We can have an unlimited amount of SQS messages and queues in our architecture.
+  3 main concepts:
+    Queues
+    Polling
+    Messages
+
+  Queues are the main part of SQS:
+  We can create queues through the Console, the CLI or IAC.
+  Queues are the destination where we are gonna publish the messages to.
+  Temporary storage where we can publish a message to be processed later asynchronously.
+  Order is not guaranteed unless specified.
+  Delivers messages from Point A to Point B.
+  We can even define the messages with a retention period. The retention period can be from 1 minute to 14 days.
+
+  Messages are basically a raw JSON blob that contains any data that you want.
+
+  Polling is a mechanism in which a subscriber can read messages from a queue from.
+  But it's the subscriber's responsibility to delete the message itself from the queue that it read from.
+  A subscriber polls that queue, and then receives the relevant messages and processes them.
+  The beauty of this is that even if a subscriber service goes down then the messages to be received by the service stays in the queue and then when the service is up then the subcriber can start polling again from the queue. So, it makes sure that no messages are lost even if the subscriber service is down for sometime.
+  Although the messages themselves have got only a specific retention period associated with it. If that retention period expires then the message is removed from the queu automatically and is lost forever.
+  The Max default message size is 256kb, but if it exceeds that limit then the message is stored into S3 with a unique id and then it can be read from there. The max size of the payload to be uploaded to S3 itself is 2GB.
+
+  SQS is the #1 Event Trigger/Source for Lambda functions.
+  SQS is the life blood that keeps serverless running. It helps in decoupled Lambda functions.
+  You can have many lambda functions and have a queue in the middle of it and every lambda function is gonna poll that queue and we can thus have a perfectly decoupled serverless system that's fault tolerant as well.
+
+  There are 2 types of queues:
+    Standard Queue:
+      It's the default queue.
+      Has very high throughput.
+      It allows unlimited number of transactions/sec.
+      Each message is delivered at least once, although the same messsage can be delivered multiple times.
+      The messages might arrive in order or might not. AWS follows best effort ordering, but it's not always guaranteed.
+
+    FIFO Queue:
+      Has messages delivered in Order. It's in FIFO.
+      Each message is delivered exactly once.
+      It has a throughput of 300 messages/sec or we can optimize it by having 3000 messages/sec in batches of 10 messages.
+
+  Visibility Timeout:
+  When a message is being consumed and processed by one consumer from the queue then it becomes invisible to the other consumers until the processing from the current consumer has been completed. Thus it's processing is mutually exclusive. This also aids the functionality of the subscriber/consumer deleting the message from the queue.
+  This is known as Visibility Timeout.
+  It's 30 seconds by default. But the Consumer has the power to programatically extend the Visibility Timeout by itself, it can be extended upto 12 hours. When the Visibility Timeout expires and the consumer hasn't finished processing the message or hasn't deleted the message from the queue then, it gets dropped right back in the queue. Thus it can lead to the same message being processed multiple times. This also achieves the functionality of multiple subscribers to the same message.
+  Multiple subscriptions can be Intentional or Non Intentional. But the last subscriber of the message must make sure to delete the message from the queue or then it'll have to rely back on the retention period for the message to be deleted automatically. But that's not useful because the maximum retention period is 14 days!
+
+  Long Polling:
+  When a queue is empty, then rather than polling a queue continuously. We can switch the poll timing wait to be 20 seconds until the next poll happens. This can help save costs.
+
+  Dead Letter Queues:
+  Messages that failed to process in the 'regular' queues can be moved to Dead Letter queues to be handled and processed separately.
+  So, basically when we get parsing errors we can move the messages in the queues to Dead Letter Queues for separate handling.
+
+  Use Cases:
+  Decouple the main components and insert a queue in between.
+  It's great for decoupling services. It's Lambda functions we want to decouple or Services we want to decouple.
+  If we want 2 services communicate then we can put up a Queue in the middle.
+  But if we get to the point of too many Queues then we might wanna think of EventBridge.
+  We can use queues internally in the microservices as well. When we want 2 Lambda functions in a microservice to talk to each other we can put up a queue.
+  We can use it to keep things local through the messages.
+  Then we can use EventBridge to communicate between independent MicroServices.
+  It has a major differentiator which is batch processing of messages. We can send, receive or delete messages in batches in SQS.
+  So, messages will be processed in batches. So thus it avoid overload of the messages to the Pollers of the queue.
+
+Simple Notification Service(SNS):
+  It's a pub-sub service. It's basically 1 to Many.
+  The services subscribe to `Topics`.
+  We create a Topic for different services to subscribe to.
+  It's basically a push service. The messages of topics gets pushed directly to the subscribing services, which can lead to message overload to the subscribers.
+  Message Filtering is available which can help reduce the messages provided to the subscribing services.
+  It has very high throughput.
+
+  SNS is typically used in conjunction with SQS.
+  The services are gonna push messages to the SQS queue and thus buffer the messages and the services are gonna receive messages from the queue rather than the SNS topic notifications directly.
+
+  Use Cases:
+  It can be used in a similar fashion as Load Balancers. We can have an SNS in front and all the different queues that subscribe to the specific topics behind it.
+  We can even send emails and text messages and push notifications with it. But mails form SNS are plain text, as opposed to the SES mails which have got the rich text feature in it.
+  It can be used effectively in Event Driven architectures.
+  For Example: If we have an image processing service and we need 3 things in it.
+  - After an image upload create it's thumbnail
+  - Add a watermark to the original image
+  - Send an email to the uploader that the upload and conversion process is successful.
+
+  Then we can have notifications sent to the specific services, one after the other using SNS.
+  We can send text messages, plain text emails, Push notifications, alerts into systems, etc.
+
+EventBridge:
+  It's a new service. It was launched in July 2019.
+  This is the best service while using with Lambda.
+  Rather than 1 to Many, it's a Many Providers to Many Consumers messaging service.
+  It doesn't have the best throughput but It's a good service for creating a MicroServices Architecture.
+  In it we have got Event Bus in which we define the rules.
+  It's also a push service in which messages are pushed to the Event Bus.
+  In which every time a message comes inside the Event Bus, it'll evaluate against every message.
+  Every message has got a set of target destinations to which the message is gonna be sent. So, it can be effectively sent to multiple destinations.
+  It has support for 3rd party provider events along with AWS Events and our very own Custom Events.
+  We can have multiple Event Buses for us.
+  We can have our custom Event Buses defined as well.
+
+  Use Cases:
+  We have this for complex architectures when queues become too much for processing and we can use event buses for communication between micro services.
+  We can even hook multiple Event Buses from different AWS accounts together. Thus we can effectively build all our Microservices in different AWS accounts and have them communicate via EventBridge. It's with the same concept that EventBridge is able to communicate with 3rd party providers.
+
+Kinesis:
+  Ingest with super high throughput.
+  Collect streaming data in Real Time.
+  It allows us to send data in real time to Lambda functions, EC2 and S3.
+  It has Many to Many as well.
+  It stores events for 7 days and allows us to replay it as well!!!
+
+  Use Cases:
+  The main use cases are Data Ingestion and Data Streaming.
+  Game streams, click streams, stock markets, video streaming.
+  We can have petabytes of data daily thanks to Kinesis.

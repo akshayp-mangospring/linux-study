@@ -1,0 +1,59 @@
+Lambda is kind of old and matured as well. It was launched in 2014.
+Lambda is still a compute service. It offers us the ability to run and execute code. The sole differentiator is that we pay for the execution rather than the hardware on which the execution happens in cases of EC2 instances. The maximum execution time for a Lambda function is 15 mins.
+It can also still leverage the abilities to Load Balancing, Scaling and Monitoring which is specifically advantages of using EC2 instances.
+So, it's essentially just pay per use Cloud Computing.
+Functions are the primary unit of Lambda.
+
+The Tech Stack that's most often used with Lambda functions:
+  API Gateway
+  - To expose the Lambda function to the world, we put an API Gateway endpoint in front of it. So, when we wire these two together we get a RESTful endpoint, which is basically a URL that's gonna invoke our Lambda function.
+  Step Functions - For proper orchestration when there's a series of Lambda functions to be invoked.
+  SQS
+  DynamoDB
+  S3
+
+Benefits:
+  We don't have to worry about Patching, Security updates which we have to manage with an EC2 instance. We leverage AWS's existing Security, Patching mechanisms.
+  We don't have to worry about Auto Scaling, it literally auto scales. It helps us focus more on the functionality rather than the infra below it.
+  Pay per use.
+  It's very high performant. We can make it even faster by adding more provisioned memory to it.
+  The most important one is that we can integrate any service we want. The most commonly integrated services with Lambda are DynamoDB, S3 and SNS. It enhances Event Driven Processing.
+  Easy for usage. Let's us focus on business deliverables.
+
+Disadvantages:
+  You gain the flexibility at the expense of your control. Meaning you can rely on Scalability, Integration, Monitoring of Serverless but lose the low level visibility of your infrastructure. So, we really kind of depend upon AWS to do the stuff right for us. Even we lose the visibility of the billing that's applied to us by AWS, because we don't know what they did behind the scenes.
+
+Use Cases:
+  API Hosting
+  Event Processing
+  Ad Hoc or Timer based jobs.
+
+Typical Workflow:
+  Create a function:
+    We can create a function with AWS Console, IAC, CLI.
+  Write and Upload Code:
+    Any programming language of your choice.
+  Deploy and Run your function:
+    Invoke it directly
+    Link it to an API
+    Link it to Event Processor
+
+Anti Patterns in Lambda function implementations:
+  Just like any other function we should not overload a Lambda function with multiple responsibilities.
+  We generally hook up a Lambda function to an API Gateway endpoint to serve as a REST endpoint and hook it up to an SQS Queue to act as an Event Processor.
+  But that's the multiple responsibilities problem. Ideally we should have 2 different Lambda functions one for the SQS Event Processing and one for the API Gateway endpoint.
+  Chaining Lambda functions synchronously. That's BS, because it just stacks up the invocation time.
+  Lambda functions shouldn't be used as Orchestrators themselves. A lot of people combine SQS with Lambda fucntions because it's an easy way to move things around. It becomes problematic when data is bpuncing around between your Lambda functions.
+
+  Log streams are independent to the Lambda functions. So, it's difficult to pair the logs to different invocations. The solution for this is Step Functions.
+  Step functions allows you to build a workflow within AWS and allows you to integrate with Lambda functions as well. It gives a very detailed view of the Input and Output of each step of the workflow of the Step functions.
+
+Top use cases:
+  API Gateway Integration
+  Schedule Serverless CRON Jobs
+  Event Processing using SQS/SNS. It's just a fancy way of saying we get notified asynchronously and we want to respond/react to that event. We can trigger a Lambda function in response to any change in the system. SNS is a fan out service(One publisher, many subscribers) whereas SQS is a one-to-one service.
+  SNS to Lambda isn't used that much. SQS to Lambda is the way to go. Someone publishes to SNS, then SNS publishes to SQS which is then polled by the Lambda function.
+  File upload processing with S3. Upload Trigger. Whenever an upload occurs, we trigger a Lambda function to process it.
+  Glue Logic for Step Function Workflows(It's predescessor was Simple Workflow Service - SWF) - Most popular use case. It kind of provides an If-Else Logic for any step that fails in the workflow. It also has branching logic and retry logics as applicable.
+
+EC2 V/s ECS V/s Lambda:
