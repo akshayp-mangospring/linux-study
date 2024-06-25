@@ -24,28 +24,31 @@ Step 5:
     - npm install -g serve
     - nohup serve -s build > serve.log 2>&1 &
 Step 6:
-  Open up the ports on EC2 instance
   Install nginx to move the traffic from 80 port to your server port - 3000 in my case
-  `sudo nano /etc/nginx/sites-available/dipakc.in.net`
-  ```
-  server {
-    listen 80;
-    server_name dipakc.in.net;
+    sudo apt update
+    sudo apt install nginx
+    sudo nano /etc/nginx/sites-available/dipakc.in.net
+  Put the below code in the file for port forwarding.
+    server {
+      listen 80;
+      server_name dipakc.in.net;
 
-    location / {
-        proxy_pass http://localhost:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
+      location / {
+          proxy_pass http://localhost:3000;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection 'upgrade';
+          proxy_set_header Host $host;
+          proxy_cache_bypass $http_upgrade;
+      }
     }
-  }
-  ```
   Reload the nginx configurations.
+    sudo ln -s /etc/nginx/sites-available/dipakc.in.net /etc/nginx/sites-enabled/
+    sudo nginx -t
+    sudo systemctl restart nginx
 Step 7:
   Create a hosted zone for your domain.
   Create an A Record with the public IP address of your EC2 instance.
   Add the name server entries in the Website from which you bought the domain.
 Step 8:
-  Site is live!
+  Rejoice! Site is live!

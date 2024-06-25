@@ -180,3 +180,8 @@ It's deployed on EC2 instance, uses AWS RDS, Route 53 for the domain.
 It's very important for me because I was not mentored daily by anyone, I pulled off the stuff on my own.
 I am proud of myself.
 But I realized that it's been 6 months since I started studying AWS. Time flies so quickly, I need to be fast & I have to make the most of it now...
+
+Day 42 - 25 June 2024:
+Today, I've deployed the site on 2 independent EC2 instances.
+I've also deployed APIs on a subdomain - `api.dipakc.in.net` and Client on - `dipakc.in.net`.
+I'm proud to be making strides like this.
